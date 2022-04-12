@@ -1,0 +1,1 @@
+# thespot_staking_frontend
