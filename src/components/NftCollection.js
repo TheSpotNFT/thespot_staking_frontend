@@ -177,8 +177,8 @@ const NftCollection = () => {
   useEffect(() => {
     getNumberMinted();
   }, []);
-
-  const renderCard = (collection, index) => {
+  //render staking cards
+  /*const renderCard = (collection, index) => {
     return (
       <Card
         key={collection.id}
@@ -189,7 +189,11 @@ const NftCollection = () => {
         contract={collection.contract}
       />
     );
-  };
+  };*/
+
+  function alertClick() {
+    alert("Analog: Launching Soon");
+  }
 
   return (
     <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
@@ -279,7 +283,7 @@ const NftCollection = () => {
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                onClick={onClickUrl("/analog")}
+                onClick={alertClick}
               >
                 Enter Analog
               </button>

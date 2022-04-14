@@ -8,7 +8,6 @@ export const Navbar = () => {
     { name: "Home", link: "/" },
     { name: "Analog", link: "/analog" },
     { name: "Goatd", link: "https://thespot.wtf" },
-    ,
     { name: "Twitter", link: "https://twitter.com/TheSpotnft" },
     { name: "Discord", link: "https://discord.com/invite/4wvC6xTFyB" },
   ];
