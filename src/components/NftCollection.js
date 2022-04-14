@@ -1,33 +1,45 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Cards";
-import collection from "../Collection";
+import collection from "../StakingCollections";
 import thespot from "../images/thespotmaster.png";
-import {
-  useMoralis,
-  useMoralisWeb3Api,
-  useWeb3ExecuteFunction,
-} from "react-moralis";
+import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
+import goatdimg from "../images/goatd.JPG";
+import analog from "../images/analogtitle.png";
 
 const NftCollection = () => {
   const { Moralis } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
+  const [spotsMinted, setSpotsMinted] = useState([]);
+  const onClickUrl = (url) => {
+    return () => openInNewTab(url);
+  };
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
 
-  //get nftCount from contract for how many nfts minted
   async function getNumberMinted() {
-    const data = await Moralis.Web3API.native.runContractFunction({
-      chain: "avalanche",
-      address: "0x0c6945e825fc3c80f0a1ea1d3e24d6854f7460d8",
-      function_name: "nftCount",
-      params: {},
-      abi: {
+    const ABI = [
+      {
         inputs: [],
         name: "nftCount",
         outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
         stateMutability: "view",
         type: "function",
       },
-    });
-    //console.log(data);
+    ];
+
+    const nftCountOptions = {
+      chain: "avalanche",
+      address: "0x0c6945e825fc3c80f0a1ea1d3e24d6854f7460d8",
+      function_name: "nftCount",
+      abi: ABI,
+      params: {},
+    };
+    const nftsMinted = await Moralis.Web3API.native.runContractFunction(
+      nftCountOptions
+    );
+    setSpotsMinted(nftsMinted);
   }
 
   //Minting: cleanup. try to use one function with inputs from buttons changing number of mints and value vs multiple functions
@@ -180,59 +192,103 @@ const NftCollection = () => {
   };
 
   return (
-    <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10 font-mono text-spot-yellow bg-slate-900">
+    <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
       <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
         <img className="w-full" src={thespot} alt=""></img>
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2 flex justify-center">
-            <h1>MINT IS LIVE!</h1>
+            <h1>MINTING IS LIVE! (0.69 avax)</h1>
           </div>
+
           <div className="text-slate-50 text-base">
-            <div className="flex flex-col grid gap-4 grid-cols-5 px-4 py-10 place-contents-center">
+            <div className="flex flex-col grid gap-4 grid-cols-5 px-4 py-4 place-contents-center">
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
                 onClick={mint1Nft}
               >
-                Mint 1 Spot
+                1
               </button>
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
                 onClick={mint2Nft}
               >
-                Mint 2 Spots
+                2
               </button>
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
                 onClick={mint3Nft}
               >
-                Mint 3 Spots
+                3
               </button>
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
                 onClick={mint4Nft}
               >
-                Mint 4 Spots
+                4
               </button>
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
                 onClick={mint5Nft}
               >
-                Mint 5 Spots
+                5
               </button>
-              <div className="font-bold text-xl mb-2 flex justify-center py-6">
-                <h3>333/610 Minted</h3>
-              </div>
+            </div>
+            <div className="font-bold text-xl py-4 flex justify-center">
+              <h3>^ How many Spots? ^</h3>
+            </div>
+            <div className="font-bold text-l py-6">
+              <h3>{spotsMinted}/610 Minted</h3>
             </div>
           </div>
         </div>
       </div>
 
-      {collection.map(renderCard)}
+      <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
+        <img className="w-full" src={goatdimg} alt=""></img>
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2 flex justify-center">
+            <h1>GoatD: Customizable pfp</h1>
+          </div>
+          <div className="text-slate-50 text-base">
+            <div className="flex flex-col space-y-4 py-4">
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                onClick={onClickUrl("https://thespot.wtf")}
+              >
+                Enter the Transmorphisizer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
+        <img className="w-full" src={analog} alt=""></img>
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2 flex justify-center">
+            <h1>Analog: 1/1 Customizable NFTs</h1>
+          </div>
+          <div className="text-slate-50 text-base">
+            <div className="flex flex-col space-y-4 py-4">
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                onClick={onClickUrl("/analog")}
+              >
+                Enter Analog
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*Staking Cards Below*/}
+      {/* {collection.map(renderCard)}*/}
     </div>
   );
 };
