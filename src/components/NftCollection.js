@@ -3,7 +3,7 @@ import Card from "./Cards";
 import collection from "../StakingCollections";
 import thespot from "../images/thespotmaster.png";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
-import goatdimg from "../images/goatd.JPG";
+import goatdmain from "../images/goatdmain.png";
 import analog from "../images/analogtitle.png";
 
 const NftCollection = () => {
@@ -253,7 +253,7 @@ const NftCollection = () => {
       </div>
 
       <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
-        <img className="w-full" src={goatdimg} alt=""></img>
+        <img className="w-full" src={goatdmain} alt=""></img>
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2 flex justify-center">
             <h1>GoatD: Customizable pfp</h1>
