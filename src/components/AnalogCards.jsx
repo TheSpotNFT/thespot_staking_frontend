@@ -1,10 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 
 function Card(props) {
   const { Moralis } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
   const [variation, setVariation] = useState(props.image1);
+  const { account, isAuthenticated } = useMoralis();
+  const analogContract = "0xc2A39aDc4b3445e130172CFa0F437BBE2264f730";
+  const [checkMyNFTs, setCheckMyNFTs] = useState(false);
+  const [walletNFTs, setWalletNFTs] = useState([]);
+  const [apiLoaded, setApiLoaded] = useState(false);
+  const userAddress = account;
+
+  function getNFTs() {
+    const options = {
+      chain: "avalanche testnet",
+      address: userAddress,
+      token_address: analogContract,
+    };
+    Moralis.Web3API.account.getNFTsForContract(options).then((data) => {
+      const result = data.result;
+      setWalletNFTs(result.map((nft) => nft.token_id));
+      setApiLoaded(true);
+      console.log({ result });
+    });
+  }
+  useEffect(() => {
+    getNFTs();
+  }, [checkMyNFTs, account]);
 
   function changeVariation1() {
     setVariation(props.image1);
@@ -129,7 +152,10 @@ function Card(props) {
     });
   }
   return (
-    <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
+    <div
+      className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300"
+      onMouseLeave={changeVariation1}
+    >
       <img className="w-full" src={variation} alt={props.nftName}></img>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">
@@ -137,39 +163,43 @@ function Card(props) {
         </div>
         <div className="text-slate-50 text-base">
           <h5>ID: {props.id}</h5>
-          <div className="flex flex-col space-y-4 py-4">
+          <div className="font-mono text-white list-none flex pb-3"></div>
+          <div className="flex flex-col grid gap-4 grid-cols-4 py-6 place-contents-center">
             <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-    hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
               onMouseEnter={changeVariation1}
               onClick={commitVariation1}
             >
-              Variation 1 (Click to Commit)
+              1
             </button>
             <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-    hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
               onMouseEnter={changeVariation2}
               onClick={commitVariation2}
             >
-              Variation 2 (Click to Commit)
+              2
             </button>
             <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-    hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
               onMouseEnter={changeVariation3}
               onClick={commitVariation3}
             >
-              Variation 3 (Click to Commit)
+              3
             </button>
             <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-    hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
               onMouseEnter={changeVariation4}
               onClick={commitVariation4}
             >
-              Variation 4 (Click to Commit)
+              4
             </button>
+          </div>
+          <div className="flex justify-center">
+            <h5>Click number of variaton to commit change to NFT</h5>
           </div>
         </div>
       </div>

@@ -1,27 +1,364 @@
+import analogimg1 from ".//images/analog/1.png";
+import analogimg1a from ".//images/analog/1-a.png";
+import analogimg1b from ".//images/analog/1-b.png";
+import analogimg1c from ".//images/analog/1-c.png";
+import analogimg2 from ".//images/analog/2.png";
+import analogimg2a from ".//images/analog/2-a.png";
+import analogimg2b from ".//images/analog/2-b.png";
+import analogimg2c from ".//images/analog/2-c.png";
+import analogimg3 from ".//images/analog/3.png";
+import analogimg3a from ".//images/analog/3-a.png";
+import analogimg3b from ".//images/analog/3-b.png";
+import analogimg3c from ".//images/analog/3-c.png";
+import analogimg4 from ".//images/analog/4.png";
+import analogimg4a from ".//images/analog/4-a.png";
+import analogimg4b from ".//images/analog/4-b.png";
+import analogimg4c from ".//images/analog/4-c.png";
+import analogimg5 from ".//images/analog/5.png";
+import analogimg5a from ".//images/analog/5-a.png";
+import analogimg5b from ".//images/analog/5-b.png";
+import analogimg5c from ".//images/analog/5-c.png";
+import analogimg6 from ".//images/analog/6.png";
+import analogimg6a from ".//images/analog/6-a.png";
+import analogimg6b from ".//images/analog/6-a.png";
+import analogimg6c from ".//images/analog/6-c.png";
+import analogimg7 from ".//images/analog/7.png";
+import analogimg7a from ".//images/analog/7-a.png";
+import analogimg7b from ".//images/analog/7-b.png";
+import analogimg7c from ".//images/analog/7-c.png";
+import analogimg8 from ".//images/analog/8.png";
+import analogimg8a from ".//images/analog/8-a.png";
+import analogimg8b from ".//images/analog/8-b.png";
+import analogimg8c from ".//images/analog/8-c.png";
+import analogimg9 from ".//images/analog/9.png";
+import analogimg9a from ".//images/analog/9-a.png";
+import analogimg9b from ".//images/analog/9-b.png";
+import analogimg9c from ".//images/analog/9-c.png";
+import analogimg10 from ".//images/analog/10.png";
+import analogimg10a from ".//images/analog/10-a.png";
+import analogimg10b from ".//images/analog/10-b.png";
+import analogimg10c from ".//images/analog/10-c.png";
+import analogimg11 from ".//images/analog/11.png";
+import analogimg11a from ".//images/analog/11-a.png";
+import analogimg11b from ".//images/analog/11-b.png";
+import analogimg11c from ".//images/analog/11-c.png";
+import analogimg12 from ".//images/analog/12.png";
+import analogimg12a from ".//images/analog/12-a.png";
+import analogimg12b from ".//images/analog/12-b.png";
+import analogimg12c from ".//images/analog/12-c.png";
+import analogimg13 from ".//images/analog/13.png";
+import analogimg13a from ".//images/analog/13-a.png";
+import analogimg13b from ".//images/analog/13-b.png";
+import analogimg13c from ".//images/analog/13-c.png";
+import analogimg14 from ".//images/analog/14.png";
+import analogimg14a from ".//images/analog/14-a.png";
+import analogimg14b from ".//images/analog/14-b.png";
+import analogimg14c from ".//images/analog/14-c.png";
+import analogimg15 from ".//images/analog/15.png";
+import analogimg15a from ".//images/analog/15-a.png";
+import analogimg15b from ".//images/analog/15-b.png";
+import analogimg15c from ".//images/analog/15-c.png";
+import analogimg16 from ".//images/analog/16.png";
+import analogimg16a from ".//images/analog/16-a.png";
+import analogimg16b from ".//images/analog/16-b.png";
+import analogimg16c from ".//images/analog/16-c.png";
+import analogimg17 from ".//images/analog/17.png";
+import analogimg17a from ".//images/analog/17-a.png";
+import analogimg17b from ".//images/analog/17-b.png";
+import analogimg17c from ".//images/analog/17-c.png";
+import analogimg18 from ".//images/analog/18.png";
+import analogimg18a from ".//images/analog/18-a.png";
+import analogimg18b from ".//images/analog/18-b.png";
+import analogimg18c from ".//images/analog/18-c.png";
+import analogimg19 from ".//images/analog/19.png";
+import analogimg19a from ".//images/analog/19-a.png";
+import analogimg19b from ".//images/analog/19-b.png";
+import analogimg19c from ".//images/analog/19-c.png";
+import analogimg20 from ".//images/analog/20.png";
+import analogimg20a from ".//images/analog/20-a.png";
+import analogimg20b from ".//images/analog/20-b.png";
+import analogimg20c from ".//images/analog/20-c.png";
+import analogimg21 from ".//images/analog/21.png";
+import analogimg21a from ".//images/analog/21-a.png";
+import analogimg21b from ".//images/analog/21-b.png";
+import analogimg21c from ".//images/analog/21-c.png";
+import analogimg22 from ".//images/analog/22.png";
+import analogimg22a from ".//images/analog/22-a.png";
+import analogimg22b from ".//images/analog/22-b.png";
+import analogimg22c from ".//images/analog/22-c.png";
+import analogimg23 from ".//images/analog/23.png";
+import analogimg23a from ".//images/analog/23-a.png";
+import analogimg23b from ".//images/analog/23-b.png";
+import analogimg23c from ".//images/analog/23-c.png";
+import analogimg24 from ".//images/analog/24.png";
+import analogimg24a from ".//images/analog/24-a.png";
+import analogimg24b from ".//images/analog/24-b.png";
+import analogimg24c from ".//images/analog/24-c.png";
+import analogimg25 from ".//images/analog/25.png";
+import analogimg25a from ".//images/analog/25-a.png";
+import analogimg25b from ".//images/analog/25-b.png";
+import analogimg25c from ".//images/analog/25-c.png";
+import analogimg26 from ".//images/analog/26.png";
+import analogimg26a from ".//images/analog/26-a.png";
+import analogimg26b from ".//images/analog/26-b.png";
+import analogimg26c from ".//images/analog/26-c.png";
+import analogimg27 from ".//images/analog/27.png";
+import analogimg27a from ".//images/analog/27-a.png";
+import analogimg27b from ".//images/analog/27-b.png";
+import analogimg27c from ".//images/analog/27-c.png";
+import analogimg28 from ".//images/analog/28.png";
+import analogimg28a from ".//images/analog/28-a.png";
+import analogimg28b from ".//images/analog/28-b.png";
+import analogimg28c from ".//images/analog/28-c.png";
+import analogimg29 from ".//images/analog/29.png";
+import analogimg29a from ".//images/analog/29-a.png";
+import analogimg29b from ".//images/analog/29-b.png";
+import analogimg29c from ".//images/analog/29-c.png";
+import analogimg30 from ".//images/analog/30.png";
+import analogimg30a from ".//images/analog/30-a.png";
+import analogimg30b from ".//images/analog/30-b.png";
+import analogimg30c from ".//images/analog/30-c.png";
+
 const analogNfts = [
   {
-    image1:
-      "https://gateway.ipfs.io/ipfs/QmSJPxvPwbsi6oVaRzGUoqco83YHXFRqCxf9hGpL264uYc",
-    image2:
-      "https://gateway.ipfs.io/ipfs/QmQEhsNhJWAWfZzNuuWqGXZNkuT6hsiE2QqKxaUr5DBnyH",
-    image3:
-      "https://gateway.ipfs.io/ipfs/QmctGLqkgsvxboKMPtt2GXp5mPH8inweXiv1mYhBXPMmB1",
-    image4:
-      "https://gateway.ipfs.io/ipfs/QmYLmaCDWzKebirkirjUUDQ8LCdYhSywb9G5BQYQVVssrT",
+    image1: analogimg1,
+    image2: analogimg1a,
+    image3: analogimg1b,
+    image4: analogimg1c,
     id: "1",
-    name: "Birds Nest",
+    name: "The Gherkin",
   },
   {
-    image1:
-      "https://gateway.ipfs.io/ipfs/QmSJPxvPwbsi6oVaRzGUoqco83YHXFRqCxf9hGpL264uYc",
-    image2:
-      "https://gateway.ipfs.io/ipfs/QmQEhsNhJWAWfZzNuuWqGXZNkuT6hsiE2QqKxaUr5DBnyH",
-    image3:
-      "https://gateway.ipfs.io/ipfs/QmctGLqkgsvxboKMPtt2GXp5mPH8inweXiv1mYhBXPMmB1",
-    image4:
-      "https://gateway.ipfs.io/ipfs/QmYLmaCDWzKebirkirjUUDQ8LCdYhSywb9G5BQYQVVssrT",
+    image1: analogimg2,
+    image2: analogimg2a,
+    image3: analogimg2b,
+    image4: analogimg2c,
     id: "2",
-    name: "Birds Nest",
+    name: "Colosseum",
+  },
+  {
+    image1: analogimg3,
+    image2: analogimg3a,
+    image3: analogimg3b,
+    image4: analogimg3c,
+    id: "3",
+    name: "Stonehenge",
+  },
+  {
+    image1: analogimg4,
+    image2: analogimg4a,
+    image3: analogimg4b,
+    image4: analogimg4c,
+    id: "4",
+    name: "The Great Pyramids",
+  },
+  {
+    image1: analogimg5,
+    image2: analogimg5a,
+    image3: analogimg5b,
+    image4: analogimg5c,
+    id: "5",
+    name: "Beijing National Stadium",
+  },
+  {
+    image1: analogimg6,
+    image2: analogimg6a,
+    image3: analogimg6b,
+    image4: analogimg6c,
+    id: "6",
+    name: "Sydney Opera House",
+  },
+  {
+    image1: analogimg7,
+    image2: analogimg7a,
+    image3: analogimg7b,
+    image4: analogimg7c,
+    id: "7",
+    name: "Petronas Towers",
+  },
+  {
+    image1: analogimg8,
+    image2: analogimg8a,
+    image3: analogimg8b,
+    image4: analogimg8c,
+    id: "8",
+    name: "The Eiffel Tower",
+  },
+  {
+    image1: analogimg9,
+    image2: analogimg9a,
+    image3: analogimg9b,
+    image4: analogimg9c,
+    id: "9",
+    name: "Burj Khalifa",
+  },
+  {
+    image1: analogimg10,
+    image2: analogimg10a,
+    image3: analogimg10b,
+    image4: analogimg10c,
+    id: "10",
+    name: "Big Ben",
+  },
+  {
+    image1: analogimg11,
+    image2: analogimg11a,
+    image3: analogimg11b,
+    image4: analogimg11c,
+    id: "11",
+    name: "Taj Mahal",
+  },
+  {
+    image1: analogimg12,
+    image2: analogimg12a,
+    image3: analogimg12b,
+    image4: analogimg12c,
+    id: "12",
+    name: "Forbidden City",
+  },
+  {
+    image1: analogimg13,
+    image2: analogimg13a,
+    image3: analogimg13b,
+    image4: analogimg13c,
+    id: "13",
+    name: "Saint Basil's Cathedral",
+  },
+  {
+    image1: analogimg14,
+    image2: analogimg14a,
+    image3: analogimg14b,
+    image4: analogimg14c,
+    id: "14",
+    name: "Chrysler Building",
+  },
+  {
+    image1: analogimg15,
+    image2: analogimg15a,
+    image3: analogimg15b,
+    image4: analogimg15c,
+    id: "15",
+    name: "One World Trade Center",
+  },
+  {
+    image1: analogimg16,
+    image2: analogimg16a,
+    image3: analogimg16b,
+    image4: analogimg16c,
+    id: "16",
+    name: "Empire State Building",
+  },
+  {
+    image1: analogimg17,
+    image2: analogimg17a,
+    image3: analogimg17b,
+    image4: analogimg17c,
+    id: "17",
+    name: "Dong Fang Ming Zhu",
+  },
+  {
+    image1: analogimg18,
+    image2: analogimg18a,
+    image3: analogimg18b,
+    image4: analogimg18c,
+    id: "18",
+    name: "BC Parliment Buildings",
+  },
+  {
+    image1: analogimg19,
+    image2: analogimg19a,
+    image3: analogimg19b,
+    image4: analogimg19c,
+    id: "19",
+    name: "Chataeu Laurier",
+  },
+  {
+    image1: analogimg20,
+    image2: analogimg20a,
+    image3: analogimg20b,
+    image4: analogimg20c,
+    id: "20",
+    name: "National Gallery of Canada",
+  },
+  {
+    image1: analogimg21,
+    image2: analogimg21a,
+    image3: analogimg21b,
+    image4: analogimg21c,
+    id: "21",
+    name: "Notre Dame Cathedral",
+  },
+  {
+    image1: analogimg22,
+    image2: analogimg22a,
+    image3: analogimg22b,
+    image4: analogimg22c,
+    id: "22",
+    name: "The Palace of Pena",
+  },
+  {
+    image1: analogimg23,
+    image2: analogimg23a,
+    image3: analogimg23b,
+    image4: analogimg23c,
+    id: "23",
+    name: "The Neuschwanstein Castle",
+  },
+  {
+    image1: analogimg24,
+    image2: analogimg24a,
+    image3: analogimg24b,
+    image4: analogimg24c,
+    id: "24",
+    name: "The Eltz Castle ",
+  },
+  {
+    image1: analogimg25,
+    image2: analogimg25a,
+    image3: analogimg25b,
+    image4: analogimg25c,
+    id: "25",
+    name: "Culzean Castle",
+  },
+  {
+    image1: analogimg26,
+    image2: analogimg26a,
+    image3: analogimg26b,
+    image4: analogimg26c,
+    id: "26",
+    name: "Frederiksborg Castle",
+  },
+  {
+    image1: analogimg27,
+    image2: analogimg27a,
+    image3: analogimg27b,
+    image4: analogimg27c,
+    id: "27",
+    name: "Bellagio ",
+  },
+  {
+    image1: analogimg28,
+    image2: analogimg28a,
+    image3: analogimg28b,
+    image4: analogimg28c,
+    id: "28",
+    name: "Perth Bell Tower",
+  },
+  {
+    image1: analogimg29,
+    image2: analogimg29a,
+    image3: analogimg29b,
+    image4: analogimg29c,
+    id: "29",
+    name: "The Beehive",
+  },
+  {
+    image1: analogimg30,
+    image2: analogimg30a,
+    image3: analogimg30b,
+    image4: analogimg30c,
+    id: "30",
+    name: "Les Invalides",
   },
 ];
 export default analogNfts;

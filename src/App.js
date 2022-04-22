@@ -5,12 +5,10 @@ import { Navbar } from "./components/Navbar";
 import Authenticate from "./components/Authenticate";
 import { useChain } from "react-moralis";
 import Footer from "./components/Footer";
-import Home from "./pages";
-import Hero from "./components/Hero";
-import Nfts from "./components/Nft";
 import NftCollection from "./components/NftCollection";
 import AnalogCollection from "./components/AnalogCollection";
-import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import TraitDashboard from "./components/TraitDashboard";
 
 function App() {
   const {
@@ -42,6 +40,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<NftCollection />} />
         <Route path="/analog" exact element={<AnalogCollection />} />
+        <Route path="/traitdashboard" exact element={<TraitDashboard />} />
       </Routes>
       <Footer />
     </>

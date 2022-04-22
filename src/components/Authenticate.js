@@ -5,11 +5,11 @@ import theSpot from "../images/thespotmaster.png";
 export default function Authenticate() {
   const { authenticate } = useMoralis();
   return (
-    <div className="bg-slate-900 flex w-full h-screen align-middle">
+    <div className="bg-slate-900 flex w-full h-screen align-middle flex">
       <div className="m-auto">
         <img
           src={theSpot}
-          className="shadow rounded h-auto align-middle border-none sm:"
+          className="shadow rounded h-auto align-middle border-none"
           alt="The Spot Logo"
         ></img>
         <div className="flex justify-center align-middle px-40 py-10">
