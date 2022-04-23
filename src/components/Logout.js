@@ -30,7 +30,7 @@ function LogoutButton() {
               className="text-[red]"
               onClick={() => switchNetwork("0xa86a")}
             >
-              Switch to FUJI!
+              Switch to Mainnet!
             </button>
           )}
         </h1>
