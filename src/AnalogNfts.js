@@ -144,7 +144,7 @@ const analogNfts = [
     id: "3",
     name: "Stonehenge",
   },
-  /*{
+  {
     image1: analogimg4,
     image2: analogimg4a,
     image3: analogimg4b,
@@ -159,7 +159,7 @@ const analogNfts = [
     image4: analogimg5c,
     id: "5",
     name: "Beijing National Stadium",
-  },
+  } /*
   {
     image1: analogimg6,
     image2: analogimg6a,
@@ -359,6 +359,6 @@ const analogNfts = [
     image4: analogimg30c,
     id: "30",
     name: "Les Invalides",
-  },*/
+  },*/,
 ];
 export default analogNfts;

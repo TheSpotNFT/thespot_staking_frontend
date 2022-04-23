@@ -6,13 +6,13 @@ function Card(props) {
   const contractProcessor = useWeb3ExecuteFunction();
   const [variation, setVariation] = useState(props.image1);
   const { account, isAuthenticated } = useMoralis();
-  const analogContract = "0xF59daa1A7b8e47F3072e14a601fBD9E5959d5618";
+  const analogContract = "0xB65a7eC3FA73691AD7623DBCb09772709cCe83dd";
   const [checkMyNFTs, setCheckMyNFTs] = useState(false);
   const [walletNFTs, setWalletNFTs] = useState([]);
   const [apiLoaded, setApiLoaded] = useState(false);
   const userAddress = account;
 
-  function getNFTs() {
+  /*function getNFTs() {
     const options = {
       chain: "avalanche testnet",
       address: userAddress,
@@ -27,7 +27,7 @@ function Card(props) {
   useEffect(() => {
     getNFTs();
   }, [checkMyNFTs, account]);
-
+*/
   function changeVariation1() {
     setVariation(props.image1);
   }

@@ -42,7 +42,6 @@ function App() {
         <Route path="/" exact element={<NftCollection />} />
         <Route path="/analogtesting123" exact element={<AnalogCollection />} />
         <Route path="/traitdashboard" exact element={<TraitDashboard />} />
-        <Route path="/map" exact element={<MapBoard />} />
       </Routes>
       <Footer />
     </>
@@ -50,3 +49,4 @@ function App() {
 }
 
 export default App;
+//<Route path="/map" exact element={<MapBoard />} />

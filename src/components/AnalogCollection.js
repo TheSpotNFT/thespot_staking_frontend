@@ -20,7 +20,7 @@ const renderCard = (analogNfts, index) => {
 
 const NftCollection = () => {
   const { account, isAuthenticated } = useMoralis();
-  const analogContract = "0xB65a7eC3FA73691AD7623DBCb09772709cCe83dd";
+  const analogContract = "0x24bDFB8A82c43d599edBEBb18C8E872F10E889BC";
   const [checkMyNFTs, setCheckMyNFTs] = useState(false);
   const [walletNFTs, setWalletNFTs] = useState([]);
   const [apiLoaded, setApiLoaded] = useState(false);
