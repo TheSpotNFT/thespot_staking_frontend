@@ -11,6 +11,7 @@ function Card(props) {
   const [walletNFTs, setWalletNFTs] = useState([]);
   const [apiLoaded, setApiLoaded] = useState(false);
   const userAddress = account;
+  const [isLoading, setIsLoading] = useState([]);
 
   /*function getNFTs() {
     const options = {
