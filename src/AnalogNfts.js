@@ -20,7 +20,7 @@ import analogimg5b from ".//images/analog/5-b.png";
 import analogimg5c from ".//images/analog/5-c.png";
 import analogimg6 from ".//images/analog/6.png";
 import analogimg6a from ".//images/analog/6-a.png";
-import analogimg6b from ".//images/analog/6-a.png";
+import analogimg6b from ".//images/analog/6-b.png";
 import analogimg6c from ".//images/analog/6-c.png";
 import analogimg7 from ".//images/analog/7.png";
 import analogimg7a from ".//images/analog/7-a.png";
