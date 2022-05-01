@@ -6,7 +6,7 @@ function Card(props) {
   const contractProcessor = useWeb3ExecuteFunction();
   const [variation, setVariation] = useState(props.image1);
   const { account, isAuthenticated } = useMoralis();
-  const analogContract = "0xB65a7eC3FA73691AD7623DBCb09772709cCe83dd";
+  const analogContract = "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69";
   const [checkMyNFTs, setCheckMyNFTs] = useState(false);
   const [walletNFTs, setWalletNFTs] = useState([]);
   const [apiLoaded, setApiLoaded] = useState(false);
@@ -43,7 +43,7 @@ function Card(props) {
 
   async function commitVariation1() {
     let options = {
-      contractAddress: "0xB65a7eC3FA73691AD7623DBCb09772709cCe83dd",
+      contractAddress: "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69",
       functionName: "changeVariation",
       abi: [
         {
@@ -71,7 +71,7 @@ function Card(props) {
 
   async function commitVariation2() {
     let options = {
-      contractAddress: "0xB65a7eC3FA73691AD7623DBCb09772709cCe83dd",
+      contractAddress: "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69",
       functionName: "changeVariation",
       abi: [
         {
@@ -98,7 +98,7 @@ function Card(props) {
   }
   async function commitVariation3() {
     let options = {
-      contractAddress: "0xB65a7eC3FA73691AD7623DBCb09772709cCe83dd",
+      contractAddress: "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69",
       functionName: "changeVariation",
       abi: [
         {
@@ -125,7 +125,7 @@ function Card(props) {
   }
   async function commitVariation4() {
     let options = {
-      contractAddress: "0xB65a7eC3FA73691AD7623DBCb09772709cCe83dd",
+      contractAddress: "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69",
       functionName: "changeVariation",
       abi: [
         {
