@@ -72,7 +72,7 @@ function Card(props) {
       },
       onSuccess: (tx) => {
         tx.wait(5)
-          .then(alert("Variaiton Successful"))
+          .then(alert("Variation Successful"))
           .then(setIsLoading(false))
           .then(console.log(tx));
       },
@@ -110,7 +110,7 @@ function Card(props) {
       },
       onSuccess: (tx) => {
         tx.wait(5)
-          .then(alert("Variaiton Successful"))
+          .then(alert("Variation Successful"))
           .then(setIsLoading(false))
           .then(console.log(tx));
       },
@@ -147,7 +147,7 @@ function Card(props) {
       },
       onSuccess: (tx) => {
         tx.wait(5)
-          .then(alert("Variaiton Successful"))
+          .then(alert("Variation Successful"))
           .then(setIsLoading(false))
           .then(console.log(tx));
       },
@@ -184,7 +184,7 @@ function Card(props) {
       },
       onSuccess: (tx) => {
         tx.wait(5)
-          .then(alert("Variaiton Successful"))
+          .then(alert("Variation Successful"))
           .then(setIsLoading(false))
           .then(console.log(tx));
       },
