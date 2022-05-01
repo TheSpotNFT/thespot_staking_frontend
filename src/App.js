@@ -40,7 +40,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" exact element={<NftCollection />} />
-        <Route path="/analogtesting123" exact element={<AnalogCollection />} />
+        <Route path="/analog" exact element={<AnalogCollection />} />
         <Route path="/traitdashboard" exact element={<TraitDashboard />} />
       </Routes>
       <Footer />
