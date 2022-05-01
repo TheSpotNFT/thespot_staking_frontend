@@ -46,7 +46,23 @@ const NftCollection = () => {
 
   return (
     <div>
-      <div className="bg-slate-900 py-4 px-8">
+    // insert
+      <div className="px-10 py-1 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
+        {analogNfts
+          .filter((renderCard) => {
+            if (filterButton == 1) {
+              return renderCard;
+            } else return renderCard.id.walletNFTs;
+          })
+          .map(renderCard)}
+      </div>
+    </div>
+  );
+};
+
+export default NftCollection;
+/*
+<div className="bg-slate-900 py-4 px-8">
         <button
           className="m-2 rounded-lg px-2 py-2 border-2 border-gray-200 text-gray-200
      hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base"
@@ -78,17 +94,4 @@ const NftCollection = () => {
           | Cost of variation: 1 Avax
         </div>
       </div>
-      <div className="px-10 py-1 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
-        {analogNfts
-          .filter((renderCard) => {
-            if (filterButton == 1) {
-              return renderCard;
-            } else return renderCard.id.walletNFTs;
-          })
-          .map(renderCard)}
-      </div>
-    </div>
-  );
-};
-
-export default NftCollection;
+      */
