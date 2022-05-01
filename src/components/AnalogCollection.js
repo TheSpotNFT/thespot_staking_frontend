@@ -46,7 +46,6 @@ const NftCollection = () => {
 
   return (
     <div>
-    // insert
       <div className="px-10 py-1 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
         {analogNfts
           .filter((renderCard) => {
