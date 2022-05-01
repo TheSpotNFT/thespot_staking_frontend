@@ -66,6 +66,16 @@ function Card(props) {
 
     await contractProcessor.fetch({
       params: options,
+      onError: (err) => {
+        setIsLoading(false);
+        alert(JSON.stringify(err.data.message));
+      },
+      onSuccess: (tx) => {
+        tx.wait(5)
+          .then(alert("Variaiton Successful"))
+          .then(setIsLoading(false))
+          .then(console.log(tx));
+      },
     });
   }
 
@@ -94,6 +104,16 @@ function Card(props) {
 
     await contractProcessor.fetch({
       params: options,
+      onError: (err) => {
+        setIsLoading(false);
+        alert(JSON.stringify(err.data.message));
+      },
+      onSuccess: (tx) => {
+        tx.wait(5)
+          .then(alert("Variaiton Successful"))
+          .then(setIsLoading(false))
+          .then(console.log(tx));
+      },
     });
   }
   async function commitVariation3() {
@@ -121,6 +141,16 @@ function Card(props) {
 
     await contractProcessor.fetch({
       params: options,
+      onError: (err) => {
+        setIsLoading(false);
+        alert(JSON.stringify(err.data.message));
+      },
+      onSuccess: (tx) => {
+        tx.wait(5)
+          .then(alert("Variaiton Successful"))
+          .then(setIsLoading(false))
+          .then(console.log(tx));
+      },
     });
   }
   async function commitVariation4() {
@@ -148,6 +178,16 @@ function Card(props) {
 
     await contractProcessor.fetch({
       params: options,
+      onError: (err) => {
+        setIsLoading(false);
+        alert(JSON.stringify(err.data.message));
+      },
+      onSuccess: (tx) => {
+        tx.wait(5)
+          .then(alert("Variaiton Successful"))
+          .then(setIsLoading(false))
+          .then(console.log(tx));
+      },
     });
   }
   return (
