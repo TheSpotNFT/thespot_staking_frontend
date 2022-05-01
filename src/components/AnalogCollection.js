@@ -20,7 +20,7 @@ const renderCard = (analogNfts, index) => {
 
 const NftCollection = () => {
   const { account, isAuthenticated } = useMoralis();
-  const analogContract = "0xB65a7eC3FA73691AD7623DBCb09772709cCe83dd";
+  const analogContract = "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69";
   const [checkMyNFTs, setCheckMyNFTs] = useState(false);
   const [walletNFTs, setWalletNFTs] = useState([]);
   const [apiLoaded, setApiLoaded] = useState(false);
@@ -29,7 +29,7 @@ const NftCollection = () => {
 
   function getNFTs() {
     const options = {
-      chain: "avalanche testnet",
+      chain: "avalanche",
       address: userAddress,
       token_address: analogContract,
     };
