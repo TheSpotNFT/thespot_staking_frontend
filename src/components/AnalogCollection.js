@@ -26,6 +26,23 @@ const NftCollection = () => {
   const [apiLoaded, setApiLoaded] = useState(false);
   const userAddress = account;
   const [filterButton, setFilterButton] = useState(1);
+  const onClickUrl = (url) => {
+    return () => openInNewTab(url);
+  };
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+
+  let Links = [
+    { name: "Home", link: "/" },
+    { name: "Analog", link: "/analog" },
+    { name: "Goatd", link: "https://thespot.wtf" },
+    { name: "Twitter", link: "https://twitter.com/TheSpotnft" },
+    { name: "Discord", link: "https://discord.com/invite/4wvC6xTFyB" },
+    { name: "AnalogCampfire", link: "https://discord.com/invite/4wvC6xTFyB" },
+    { name: "AnalogNFTrade", link: "https://discord.com/invite/4wvC6xTFyB" },
+  ];
 
   function getNFTs() {
     const options = {
@@ -45,8 +62,36 @@ const NftCollection = () => {
   }, [checkMyNFTs, account]);
 
   return (
-    <div>
-      <div className="px-10 py-1 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
+    <div className="px-10 py-4 gap-10 font-mono text-spot-yellow bg-slate-900">
+      Analog is a dNFT that you may change to a specific variation if you own a
+      Spot NFT and the 1/1 piece. Below you can browse all the variations of the
+      pieces and commit a variation once you own the piece. Get a Spot NFT at
+      <href
+        style={{ cursor: "pointer" }}
+        onClick={onClickUrl("https://thespot.art")}
+      >
+        {" "}
+        thespot.art
+      </href>{" "}
+      and your Analog piece on{" "}
+      <href
+        style={{ cursor: "pointer" }}
+        onClick={onClickUrl(
+          "https://campfire.exchange/collections/0xbe18cf471925d683c272aafe9d1aafda99612b69"
+        )}
+      >
+        Campfire.exchange
+      </href>{" "}
+      or{" "}
+      <href
+        style={{ cursor: "pointer" }}
+        onClick={onClickUrl(
+          "https://nftrade.com/assets/avalanche/0xbe18cf471925d683c272aafe9d1aafda99612b69"
+        )}
+      >
+        NFTrade.com
+      </href>
+      <div className="py-6 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
         {analogNfts
           .filter((renderCard) => {
             if (filterButton == 1) {
