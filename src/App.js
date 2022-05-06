@@ -10,6 +10,7 @@ import AnalogCollection from "./components/AnalogCollection";
 import { Routes, Route } from "react-router-dom";
 import TraitDashboard from "./components/TraitDashboard";
 import MapBoard from "./components/Map";
+import Staking from "./components/Staking";
 
 function App() {
   const {
@@ -42,6 +43,7 @@ function App() {
         <Route path="/" exact element={<NftCollection />} />
         <Route path="/analog" exact element={<AnalogCollection />} />
         <Route path="/traitdashboard" exact element={<TraitDashboard />} />
+        <Route path="/staking" exact element={<Staking />} />
       </Routes>
       <Footer />
     </>

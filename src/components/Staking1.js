@@ -4,15 +4,15 @@ import {
   useWeb3ExecuteFunction,
   useMoralisWeb3Api,
 } from "react-moralis";
-
+//OLD VERSION
 function Card(props) {
   const { Moralis } = useMoralis();
   console.log("component rendering");
   const { account, isAuthenticated } = useMoralis();
   const userAddress = account;
   const chain = "avalanche";
-  const contract = props.contract;
-  const spotContract = "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8";
+  const contract = "0x6d5087B3082f73D42a32D85e38BC95dcceDe39Bb";
+  const spotContract = "0x0c6945e825fc3c80f0a1ea1d3e24d6854f7460d8";
   const [spotNftCount, setSpotNftCount] = useState([]);
   const [nftContractCount, setNftContractCount] = useState([]);
 
@@ -21,6 +21,7 @@ function Card(props) {
     const countNFTs = await Moralis.Web3API.account.getNFTsForContract(options);
     const nftCount = countNFTs.result.length;
     setNftContractCount(nftCount);
+    console.log(nftCount);
   }
 
   async function getSpotNfts() {
@@ -33,7 +34,6 @@ function Card(props) {
     const spotCount = spotNFTs.result.length;
     setSpotNftCount(spotCount);
   }
-
   //In progress
   /*async function stakeApe() {
     let options = {
