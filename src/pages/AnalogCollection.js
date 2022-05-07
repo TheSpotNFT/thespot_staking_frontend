@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import Card from "./AnalogCards";
+import Card from "../components/AnalogCards";
 import analogNfts from "../AnalogNfts";
 import { useMoralis } from "react-moralis";
 import Moralis from "moralis";
@@ -35,11 +35,6 @@ const NftCollection = () => {
   };
 
   let Links = [
-    { name: "Home", link: "/" },
-    { name: "Analog", link: "/analog" },
-    { name: "Goatd", link: "https://thespot.wtf" },
-    { name: "Twitter", link: "https://twitter.com/TheSpotnft" },
-    { name: "Discord", link: "https://discord.com/invite/4wvC6xTFyB" },
     { name: "AnalogCampfire", link: "https://discord.com/invite/4wvC6xTFyB" },
     { name: "AnalogNFTrade", link: "https://discord.com/invite/4wvC6xTFyB" },
   ];
@@ -94,7 +89,7 @@ const NftCollection = () => {
       <div className="py-6 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
         {analogNfts
           .filter((renderCard) => {
-            if (filterButton == 1) {
+            if (filterButton === 1) {
               return renderCard;
             } else return renderCard.id.walletNFTs;
           })
@@ -105,37 +100,3 @@ const NftCollection = () => {
 };
 
 export default NftCollection;
-/*
-<div className="bg-slate-900 py-4 px-8">
-        <button
-          className="m-2 rounded-lg px-2 py-2 border-2 border-gray-200 text-gray-200
-     hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base"
-          onClick={() => {
-            setCheckMyNFTs(!checkMyNFTs);
-          }}
-        >
-          Check for Owned NFTs
-        </button>
-        <button
-          className="m-2 rounded-lg px-2 py-2 border-2 border-gray-200 text-gray-200
-     hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base"
-          onClick={() => {
-            if (filterButton == 0) {
-              setFilterButton(1);
-            } else setFilterButton(0);
-          }}
-        >
-          Filter Results
-        </button>
-        <div className="font-mono text-white list-none flex pb-0 pt-3 text-sm">
-          <div className="text-spot-yellow font-bold pr-3 text-xl px-2">* </div>
-          Analog NFTs in your wallet:{" "}
-          {(apiLoaded, checkMyNFTs && walletNFTs.length + " ")}{" "}
-          {
-            (apiLoaded,
-            checkMyNFTs && "IDs: " + walletNFTs.map((NFT) => " " + NFT))
-          }{" "}
-          | Cost of variation: 1 Avax
-        </div>
-      </div>
-      */

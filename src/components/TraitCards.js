@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
-import TraitContractABI from "../TraitContractABI.json";
+import TraitContractABI from "../ABI/TraitContractABI.json";
 
 function Card(props) {
   const { Moralis } = useMoralis();

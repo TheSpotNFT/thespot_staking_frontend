@@ -5,12 +5,11 @@ import { Navbar } from "./components/Navbar";
 import Authenticate from "./components/Authenticate";
 import { useChain } from "react-moralis";
 import Footer from "./components/Footer";
-import NftCollection from "./components/NftCollection";
-import AnalogCollection from "./components/AnalogCollection";
+import Main from "./components/Main";
+import AnalogCollection from "./pages/AnalogCollection";
 import { Routes, Route } from "react-router-dom";
 import TraitDashboard from "./components/TraitDashboard";
-import MapBoard from "./components/Map";
-import Staking from "./components/Staking";
+import Staking from "./pages/Staking";
 
 function App() {
   const {
@@ -40,9 +39,8 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" exact element={<NftCollection />} />
+        <Route path="/" exact element={<Main />} />
         <Route path="/analog" exact element={<AnalogCollection />} />
-        <Route path="/traitdashboard" exact element={<TraitDashboard />} />
         <Route path="/staking" exact element={<Staking />} />
       </Routes>
       <Footer />

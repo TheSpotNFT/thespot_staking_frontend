@@ -1,6 +1,6 @@
 import React from "react";
 import collection from "../StakingCollections";
-import Card from "./StakingCards";
+import Card from "../components/StakingCards";
 
 const renderCard = (collection, index) => {
   return (

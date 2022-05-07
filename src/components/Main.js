@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Card from "./Staking1";
-import collection from "../StakingCollections";
 import thespot from "../images/thespotmaster.png";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import goatdmain from "../images/goatdmain.png";
@@ -175,22 +173,10 @@ const NftCollection = () => {
   }
 
   //call getNumberMinted to pull value from contract
+
   useEffect(() => {
     getNumberMinted();
   }, []);
-  //render staking cards
-  /*const renderCard = (collection, index) => {
-    return (
-      <Card
-        key={collection.id}
-        nftName={collection.name}
-        image={collection.image}
-        hoverimage={collection.hoverimage}
-        id={collection.id}
-        contract={collection.contract}
-      />
-    );
-  };*/
 
   function alertClick() {
     alert("Analog: Launching Soon");
