@@ -4,6 +4,7 @@ import {
   useWeb3ExecuteFunction,
   useMoralisWeb3Api,
 } from "react-moralis";
+
 //Production
 function Card(props) {
   console.log("component rendering");
@@ -16,6 +17,7 @@ function Card(props) {
   //testnet address const stakingContract = "0xAf8c4E9c77df06245F3718977f67a60CA7EAfF3D";
   const spotContract = "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8";
   const stakingContract = "0xfe5C0c66986Be8Fb16A5186Fd047eb035468db74"; //mainnet
+  const artDropContract = "0xc3b9834567e6469074f6e385236c0991D238CE61"; //mainnet
   const [spotNftCount, setSpotNftCount] = useState([]);
   const [nftContractCount, setNftContractCount] = useState([]);
   const contractProcessor = useWeb3ExecuteFunction();
@@ -30,6 +32,7 @@ function Card(props) {
   //const userStaking = "0";
   const [updateTimeButton, setUpdateTimeButton] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
+  const [NFTsRemaining, setNFTsRemaining] = useState([]);
 
   async function getNfts() {
     const options = {
@@ -160,6 +163,33 @@ function Card(props) {
     setUserClaimed(hasClaimed);
     console.log("id", props.id, "Claimed", hasClaimed);
     console.log("component rendering4");
+  }
+
+  async function getNFTsRemaining() {
+    const options = {
+      chain: chain,
+      address: "0xc3b9834567e6469074f6e385236c0991D238CE61",
+      function_name: "balanceOf",
+      abi: [
+        {
+          inputs: [
+            { internalType: "address", name: "account", type: "address" },
+            { internalType: "uint256", name: "id", type: "uint256" },
+          ],
+          name: "balanceOf",
+          outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      params: {
+        account: "0xfe5C0c66986Be8Fb16A5186Fd047eb035468db74",
+        id: "0",
+      },
+    };
+    const NFTsLeft = await Moralis.Web3API.native.runContractFunction(options);
+    setNFTsRemaining(NFTsLeft);
+    console.log(NFTsRemaining);
   }
 
   async function stake() {
@@ -322,6 +352,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
     claimVisible();
     stakeVisible();
     updateTimeVisible();
+    getNFTsRemaining();
     // getUserClaimed();
 
     // getSupply();
@@ -340,6 +371,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
               Number of {props.nftName} in Wallet: {nftContractCount}
             </h5>
             <h5>Number of Spots in Wallet: {spotNftCount}</h5>
+            <h5>Number of NFTs left to Claim {NFTsRemaining}</h5>
             <h5>Time Remaining until Claimable: {displayTime}</h5>
 
             <div className="flex flex-col space-y-4 py-4">
