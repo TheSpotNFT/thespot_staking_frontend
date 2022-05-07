@@ -12,12 +12,10 @@ function Card(props) {
   const { account, isAuthenticated } = useMoralis();
   const userAddress = account;
   const chain = "avalanche";
-  const contract = props.contract;
   //mainnet address const spotContract = "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8";
   //testnet address const stakingContract = "0xAf8c4E9c77df06245F3718977f67a60CA7EAfF3D";
-  const spotContract = "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8";
+  const spotContract = "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8"; //mainnet
   const stakingContract = "0xfe5C0c66986Be8Fb16A5186Fd047eb035468db74"; //mainnet
-  const artDropContract = "0xc3b9834567e6469074f6e385236c0991D238CE61"; //mainnet
   const [spotNftCount, setSpotNftCount] = useState([]);
   const [nftContractCount, setNftContractCount] = useState([]);
   const contractProcessor = useWeb3ExecuteFunction();
@@ -43,7 +41,6 @@ function Card(props) {
     const countNFTs = await Moralis.Web3API.account.getNFTsForContract(options);
     const nftCount = countNFTs.result.length;
     setNftContractCount(nftCount);
-    console.log("Get NFT Count (apes)");
   }
 
   async function getSpotNfts() {
@@ -55,7 +52,6 @@ function Card(props) {
     const spotNFTs = await Moralis.Web3API.account.getNFTsForContract(options);
     const spotCount = spotNFTs.result.length;
     setSpotNftCount(spotCount);
-    console.log("Get Spot NFT Count");
   }
 
   //timefetch
@@ -119,9 +115,8 @@ function Card(props) {
       return setDisplayTime("Start Staking or Claim!");
     }
   }
-  console.log("Get Time Left");
 
-  async function getUserClaimed() {
+  /*async function getUserClaimed() {
     const options = {
       chain: chain,
       address: contract,
@@ -164,11 +159,11 @@ function Card(props) {
     console.log("id", props.id, "Claimed", hasClaimed);
     console.log("component rendering4");
   }
-
+*/
   async function getNFTsRemaining() {
     const options = {
       chain: chain,
-      address: "0xc3b9834567e6469074f6e385236c0991D238CE61",
+      address: props.rewardContract,
       function_name: "balanceOf",
       abi: [
         {
@@ -183,13 +178,12 @@ function Card(props) {
         },
       ],
       params: {
-        account: "0xfe5C0c66986Be8Fb16A5186Fd047eb035468db74",
-        id: "0",
+        account: stakingContract,
+        id: props.stakingTokenId,
       },
     };
     const NFTsLeft = await Moralis.Web3API.native.runContractFunction(options);
     setNFTsRemaining(NFTsLeft);
-    console.log(NFTsRemaining);
   }
 
   async function stake() {
@@ -236,7 +230,6 @@ function Card(props) {
       },
     });
   }
-  console.log("component rendering5");
 
   async function claim() {
     let options = {
