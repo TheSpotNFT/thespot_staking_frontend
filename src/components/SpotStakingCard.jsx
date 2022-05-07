@@ -6,7 +6,7 @@ import {
 } from "react-moralis";
 
 //Production
-function Card(props) {
+function SpotCard(props) {
   console.log("component rendering");
   const { Moralis } = useMoralis();
   const { account, isAuthenticated } = useMoralis();
@@ -32,7 +32,7 @@ function Card(props) {
   const [isLoading, setIsLoading] = useState([]);
   const [NFTsRemaining, setNFTsRemaining] = useState([]);
 
-  /*async function getNfts() {
+  async function getNfts() {
     const options = {
       address: account,
       chain: chain,
@@ -41,10 +41,9 @@ function Card(props) {
     const countNFTs = await Moralis.Web3API.account.getNFTsForContract(options);
     const nftCount = countNFTs.result.length;
     setNftContractCount(nftCount);
-    console.log("get spots");
   }
 
-   async function getSpotNfts() {
+  async function getSpotNfts() {
     const options = {
       address: account,
       chain: chain,
@@ -53,8 +52,7 @@ function Card(props) {
     const spotNFTs = await Moralis.Web3API.account.getNFTsForContract(options);
     const spotCount = spotNFTs.result.length;
     setSpotNftCount(spotCount);
-    console.log("get other nft");
-  }*/
+  }
 
   //timefetch
   async function getTimeLeft() {
@@ -342,8 +340,8 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
   }
 
   useEffect(() => {
-    //getNfts();
-    //getSpotNfts();
+    getNfts();
+    getSpotNfts();
     claimVisible();
     stakeVisible();
     updateTimeVisible();
@@ -362,12 +360,12 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
             <h3>Stake Your {props.nftName}</h3>
           </div>
           <div className="text-slate-50 text-base">
-            {/*} <h5>
+            <h5>
               Number of {props.nftName} in Wallet: {nftContractCount}
             </h5>
-            <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
+            <h5>Number of Spots in Wallet: {spotNftCount}</h5>
             <h5>
-              Number of {props.rewardName} left to Claim: {NFTsRemaining}
+              Number of {props.rewardName} left to Claim {NFTsRemaining}
             </h5>
             <h5>Time Remaining until Claimable: {displayTime}</h5>
 
@@ -403,4 +401,4 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
   );
 }
 
-export default Card;
+export default SpotCard;
