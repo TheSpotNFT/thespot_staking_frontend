@@ -3,6 +3,7 @@ import apeChainHover from "./images/apechainhover.png";
 import blobArtDrop from "./images/blobartdrop.png";
 import tbcBat from "./images/tbcartdrop.png";
 import image11 from "./images/11.png";
+import random from "./images/random.png";
 
 const collection = [
   {
@@ -49,6 +50,17 @@ const collection = [
     stakingTokenId: "11",
     rewardName: "11000101",
     stakingTime: "24 hours",
+  },
+  {
+    image: random,
+    id: "4",
+    name: "Spot NFT",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "1",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "107",
+    rewardName: "????",
+    stakingTime: "12 hours",
   },
 ];
 export default collection;

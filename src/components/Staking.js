@@ -1,10 +1,7 @@
 import React from "react";
 import collection from "../StakingCollections";
 import Card from "./StakingCards";
-import SpotCard from "./SpotStakingCard";
-import spotStakingCollection from "../SpotStaking";
 
-//render staking cards
 const renderCard = (collection, index) => {
   return (
     <Card
@@ -23,21 +20,6 @@ const renderCard = (collection, index) => {
   );
 };
 
-/*const renderSpotCard = (spotStakingCollection, index) => {
-  return (
-    <SpotCard
-      key={spotStakingCollection.id}
-      nftName={spotStakingCollection.name}
-      image={spotStakingCollection.image}
-      id={spotStakingCollection.id}
-      contract={spotStakingCollection.contract}
-      contractIndex={spotStakingCollection.contractIndex}
-      stakingTokenId={spotStakingCollection.stakingTokenId}
-      rewardContract={spotStakingCollection.rewardContract}
-    />
-  );
-};
-*/
 function StakingCards() {
   return (
     <div className="px-10 py-4 gap-10 font-mono text-spot-yellow bg-slate-900">

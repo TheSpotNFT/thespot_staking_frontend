@@ -7,28 +7,9 @@ function Card(props) {
   const [variation, setVariation] = useState(props.image1);
   const { account, isAuthenticated } = useMoralis();
   const analogContract = "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69";
-  const [checkMyNFTs, setCheckMyNFTs] = useState(false);
-  const [walletNFTs, setWalletNFTs] = useState([]);
-  const [apiLoaded, setApiLoaded] = useState(false);
   const userAddress = account;
   const [isLoading, setIsLoading] = useState([]);
 
-  /*function getNFTs() {
-    const options = {
-      chain: "avalanche testnet",
-      address: userAddress,
-      token_address: analogContract,
-    };
-    Moralis.Web3API.account.getNFTsForContract(options).then((data) => {
-      const result = data.result;
-      setWalletNFTs(result.map((nft) => nft.token_id));
-      setApiLoaded(true);
-    });
-  }
-  useEffect(() => {
-    getNFTs();
-  }, [checkMyNFTs, account]);
-*/
   function changeVariation1() {
     setVariation(props.image1);
   }
