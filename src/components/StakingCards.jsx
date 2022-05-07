@@ -369,6 +369,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
             <h5>
               Number of {props.rewardName} left to Claim: {NFTsRemaining}
             </h5>
+            <h5>Staking Time until Reward: {props.stakingTime}</h5>
             <h5>Time Remaining until Claimable: {displayTime}</h5>
 
             <div className="flex flex-col space-y-4 py-4">

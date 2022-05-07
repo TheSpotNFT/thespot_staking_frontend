@@ -15,6 +15,7 @@ const collection = [
     rewardContract: "0xc3b9834567e6469074f6e385236c0991D238CE61",
     stakingTokenId: "0",
     rewardName: "Avax Apes OG Chains",
+    stakingTime: "7 days",
   },
   {
     image: blobArtDrop,
@@ -25,6 +26,7 @@ const collection = [
     rewardContract: "0xc3b9834567e6469074f6e385236c0991D238CE61",
     stakingTokenId: "1",
     rewardName: "Blob Art Drops",
+    stakingTime: "7 days",
   },
   {
     image: tbcBat,
@@ -35,6 +37,7 @@ const collection = [
     rewardContract: "0xc3b9834567e6469074f6e385236c0991D238CE61",
     stakingTokenId: "2",
     rewardName: "Tiny Bones Bats",
+    stakingTime: "7 days",
   },
   {
     image: image11,
@@ -45,6 +48,7 @@ const collection = [
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
     stakingTokenId: "11",
     rewardName: "11000101",
+    stakingTime: "24 hours",
   },
 ];
 export default collection;
