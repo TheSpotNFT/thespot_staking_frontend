@@ -56,11 +56,11 @@ const collection = [
     id: "4",
     name: "Spot NFT",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
-    contractIndex: "1",
+    contractIndex: "2",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
-    stakingTokenId: "107",
+    stakingTokenId: "321",
     rewardName: "????",
-    stakingTime: "12 hours",
+    stakingTime: "30 mins",
   },
 ];
 export default collection;
