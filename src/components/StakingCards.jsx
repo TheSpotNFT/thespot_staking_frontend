@@ -347,7 +347,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
     claimVisible();
     stakeVisible();
     updateTimeVisible();
-    getNFTsRemaining();
+    //getNFTsRemaining();
     // getUserClaimed();
 
     // getSupply();
@@ -373,6 +373,13 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
             <h5>Time Remaining until Claimable: {displayTime}</h5>
 
             <div className="flex flex-col space-y-4 py-4">
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                onClick={getNFTsRemaining}
+              >
+                Check Number Remaining
+              </button>
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
 hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
