@@ -183,7 +183,7 @@ const NftCollection = () => {
   }
 
   return (
-    <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 xl:grid-cols-4 gap-10 font-mono text-spot-yellow bg-slate-900">
+    <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 xl:grid-cols-4 xxl:grid-cols-6 gap-10 font-mono text-spot-yellow bg-slate-900">
       <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
         <img className="w-full" src={thespot} alt=""></img>
         <div className="px-6 py-4">

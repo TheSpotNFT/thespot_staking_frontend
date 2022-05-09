@@ -86,7 +86,7 @@ const NftCollection = () => {
       >
         NFTrade.com
       </href>
-      <div className="py-6 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 font-mono text-spot-yellow bg-slate-900">
+      <div className="py-6 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xxl:grid-cols-6 gap-10 font-mono text-spot-yellow bg-slate-900">
         {analogNfts
           .filter((renderCard) => {
             if (filterButton === 1) {
