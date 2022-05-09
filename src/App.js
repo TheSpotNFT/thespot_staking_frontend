@@ -36,7 +36,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="bg-slate-700">
       <Navbar />
       <Routes>
         <Route path="/" exact element={<Main />} />
@@ -44,7 +44,7 @@ function App() {
         <Route path="/staking" exact element={<Staking />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 
