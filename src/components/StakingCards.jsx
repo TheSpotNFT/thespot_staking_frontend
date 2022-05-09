@@ -308,11 +308,9 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
               Number of {props.nftName} in Wallet: {nftContractCount}
             </h5>
             <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
-            <h5>
-              Number of {props.rewardName} left to Claim: {NFTsRemaining}
-            </h5>
-            <h5>Staking Time until Reward: {props.stakingTime}</h5>
-            <h5>Time Remaining until Claimable: {displayTime}</h5>
+            <h5>Left to Claim: {NFTsRemaining}</h5>
+            <h5>Total Staking Time: {props.stakingTime}</h5>
+            <h5>Your Time Remaining: {displayTime}</h5>
 
             <div className="flex flex-col space-y-4 py-4">
               <button
@@ -328,7 +326,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
 hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
                 onClick={getTimeLeft}
               >
-                Update Time Left
+                Update Time Remaining
               </button>
 
               <button

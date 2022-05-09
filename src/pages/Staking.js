@@ -28,7 +28,7 @@ function StakingCards() {
       stake as many at the same time as you would like. We will always be adding
       staking pairs and rewards to keep yours eyes on our discord, twitter and
       this page! Staking times vary for each reward.
-      <div className="py-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 font-mono text-spot-yellow bg-slate-900">
+      <div className="py-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-8 gap-10 font-mono text-spot-yellow bg-slate-900">
         {collection.map(renderCard)}
       </div>
     </div>
