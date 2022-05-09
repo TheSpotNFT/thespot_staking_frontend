@@ -31,6 +31,7 @@ function Card(props) {
   const [updateTimeButton, setUpdateTimeButton] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
   const [NFTsRemaining, setNFTsRemaining] = useState([]);
+  const [hide, setHide] = useState([]);
 
   /*async function getNfts() {
     const options = {
@@ -279,89 +280,30 @@ function Card(props) {
     console.log("Claiming");
   }
 
-  function claimVisible() {
-    if (userClaimed === 1) {
-      return setClaimButton(
-        <button
-          className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-font-mono text-l"
-        >
-          Claimed
-        </button>
-      );
-    } else if (timeLeftSecs !== 0) return setClaimButton();
-    else
-      return setClaimButton(
-        <button
-          className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-          onClick={claim}
-        >
-          Claim
-        </button>
-      );
+  function showInfo() {
+    if (hide === false) {
+      setHide(true);
+    } else setHide(false);
+    getNFTsRemaining();
   }
-
-  function stakeVisible() {
-    if (userClaimed === 1) {
-      return setStakeButton();
-    } else if (timeLeftSecs > 0) {
-      return setStakeButton(
-        <button
-          className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-font-mono text-l"
-        >
-          Staking
-        </button>
-      );
-    } else
-      return setStakeButton(
-        <button
-          className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-          onClick={stake}
-        >
-          Stake
-        </button>
-      );
-  }
-
-  function updateTimeVisible() {
-    if (userClaimed === 1) {
-      return setUpdateTimeButton();
-    } else
-      return setUpdateTimeButton(
-        <button
-          className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-          onClick={getTimeLeft}
-        >
-          Update Time Left
-        </button>
-      );
-  }
-
-  useEffect(() => {
-    //getNfts();
-    //getSpotNfts();
-    claimVisible();
-    stakeVisible();
-    updateTimeVisible();
-    //getNFTsRemaining();
-    // getUserClaimed();
-
-    // getSupply();
-  }, []);
 
   return (
     <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
       <img className="w-full" src={props.image} alt={props.nftName}></img>
       {
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">
-            <h3>Stake Your {props.nftName}</h3>
+          <div className="font-bold text-xl mb-2"></div>
+
+          <div className="flex flex-col space-y-4 py-4">
+            <button
+              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-xl"
+              onClick={showInfo}
+            >
+              Stake Your {props.nftName}
+            </button>
           </div>
-          <div className="text-slate-50 text-base">
+          <div className={hide ? "hidden" : "text-slate-50 text-base"}>
             {/*} <h5>
               Number of {props.nftName} in Wallet: {nftContractCount}
             </h5>
@@ -376,24 +318,17 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
 hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                onClick={getNFTsRemaining}
+                onClick={stake}
               >
-                Check Number Remaining
+                Stake
               </button>
+
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
 hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
                 onClick={getTimeLeft}
               >
                 Update Time Left
-              </button>
-
-              <button
-                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                onClick={stake}
-              >
-                Stake
               </button>
 
               <button

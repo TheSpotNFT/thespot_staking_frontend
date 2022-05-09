@@ -26,7 +26,7 @@ const collection = [
     image: apeChain,
     hoverimage: apeChainHover,
     id: "0",
-    name: "Avax Apes - Spot NFT",
+    name: "Avax Apes - Spot",
     contract: "0x6d5087B3082f73D42a32D85e38BC95dcceDe39Bb",
     contractIndex: "0",
     rewardContract: "0xc3b9834567e6469074f6e385236c0991D238CE61",
@@ -37,7 +37,7 @@ const collection = [
   {
     image: blobArtDrop,
     id: "1",
-    name: "Blobs - Spot NFT",
+    name: "Blobs - Spot",
     contract: "0xC0EEf2BaC6469Bd1c89796E712349A1DF2dc1298",
     contractIndex: "0",
     rewardContract: "0xc3b9834567e6469074f6e385236c0991D238CE61",
@@ -48,7 +48,7 @@ const collection = [
   {
     image: tbcBat,
     id: "2",
-    name: "Tiny Bones - Spot NFT",
+    name: "Tiny Bones - Spot",
     contract: "0x4A8E6A9B93e55AF71882f3aFAA10141715ce5Fd2",
     contractIndex: "1",
     rewardContract: "0xc3b9834567e6469074f6e385236c0991D238CE61",
@@ -70,7 +70,7 @@ const collection = [
   {
     image: random,
     id: "4",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "2",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -81,7 +81,7 @@ const collection = [
   {
     image: image126,
     id: "5",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "3",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -92,7 +92,7 @@ const collection = [
   {
     image: image135,
     id: "6",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "4",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -103,7 +103,7 @@ const collection = [
   {
     image: image207,
     id: "7",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "5",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -114,7 +114,7 @@ const collection = [
   {
     image: image212,
     id: "8",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "6",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -125,7 +125,7 @@ const collection = [
   {
     image: image219,
     id: "9",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "7",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -136,7 +136,7 @@ const collection = [
   {
     image: image307,
     id: "10",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "8",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -147,7 +147,7 @@ const collection = [
   {
     image: image324,
     id: "11",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "9",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -158,7 +158,7 @@ const collection = [
   {
     image: image333,
     id: "12",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "10",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -169,7 +169,7 @@ const collection = [
   {
     image: image416,
     id: "13",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "11",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -180,7 +180,7 @@ const collection = [
   {
     image: image429,
     id: "14",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "12",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -191,7 +191,7 @@ const collection = [
   {
     image: image425,
     id: "15",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "13",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -202,7 +202,7 @@ const collection = [
   {
     image: image612,
     id: "16",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "14",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -213,7 +213,7 @@ const collection = [
   {
     image: image613,
     id: "17",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "15",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -224,7 +224,7 @@ const collection = [
   {
     image: image621,
     id: "18",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "16",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -235,7 +235,7 @@ const collection = [
   {
     image: image624,
     id: "19",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "17",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
@@ -246,7 +246,7 @@ const collection = [
   {
     image: image629,
     id: "20",
-    name: "Spot NFT",
+    name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
     contractIndex: "18",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
