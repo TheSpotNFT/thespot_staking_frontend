@@ -122,7 +122,7 @@ function Card(props) {
   /*async function getUserClaimed() {
     const options = {
       chain: chain,
-      address: contract,
+      address: "0xfe5C0c66986Be8Fb16A5186Fd047eb035468db74",
       function_name: "userToIndexClaimed",
       abi: [
         {
@@ -151,7 +151,7 @@ function Card(props) {
         },
       ],
       params: {
-        address: "0x84b126C2e11689FD8A51c20e7d5beD6616F60558",
+        address: props.contract,
         _contractIndex: props.contractIndex,
       },
     };
@@ -159,7 +159,7 @@ function Card(props) {
       options
     );
     setUserClaimed(hasClaimed);
-    console.log("id", props.id, "Claimed", hasClaimed);
+    console.log("contract index", props.contractIndex, "Claimed", hasClaimed);
     console.log("component rendering4");
   }
 */
@@ -285,6 +285,7 @@ function Card(props) {
       setHide(true);
     } else setHide(false);
     getNFTsRemaining();
+    //getUserClaimed();
   }
 
   return (

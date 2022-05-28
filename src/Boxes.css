@@ -1,0 +1,9 @@
+.boxes{
+    margin: 20px;
+    margin-top: 150px;
+    background-color: slategray;
+    overflow: hidden;
+    height: 200px;
+    max-height: 35vh;
+    box-shadow: 0px 12px 18px -6px rgba(0,0,0,0.3);
+}

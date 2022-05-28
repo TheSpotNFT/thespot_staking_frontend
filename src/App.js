@@ -11,6 +11,7 @@ import { Routes, Route } from "react-router-dom";
 import TraitDashboard from "./components/TraitDashboard";
 import Staking from "./pages/Staking";
 
+
 function App() {
   const {
     isWeb3Enabled,
