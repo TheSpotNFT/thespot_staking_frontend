@@ -46,6 +46,7 @@ const collection = [
     stakingTokenId: "0",
     rewardName: "Avax Apes OG Chains",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800"
   },
   {
     image: blobArtDrop,
@@ -58,6 +59,7 @@ const collection = [
     stakingTokenId: "1",
     rewardName: "Blob Art Drops",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800"
   },
   {
     image: tbcBat,
@@ -70,6 +72,7 @@ const collection = [
     stakingTokenId: "2",
     rewardName: "Tiny Bones Bats",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800"
   },
   /*{
     image: image11,
@@ -94,6 +97,7 @@ const collection = [
     stakingTokenId: "321",
     rewardName: "????",
     stakingTime: "30 mins",
+    stakingTimeSecs: "1800"
   },
   {
     image: image126,
@@ -106,6 +110,7 @@ const collection = [
     stakingTokenId: "126",
     rewardName: "Goatd Mania Body",
     stakingTime: "48 hrs",
+    stakingTimeSecs: "172800"
   },
   {
     image: image135,
@@ -118,6 +123,7 @@ const collection = [
     stakingTokenId: "135",
     rewardName: "Itsa Mee Body",
     stakingTime: "48 hrs",
+    stakingTimeSecs: "172800"
   },
   {
     image: image207,
@@ -130,6 +136,7 @@ const collection = [
     stakingTokenId: "207",
     rewardName: "Grey Head",
     stakingTime: "24 hrs",
+    stakingTimeSecs: "86400"
   },
   {
     image: image212,
@@ -142,6 +149,7 @@ const collection = [
     stakingTokenId: "212",
     rewardName: "White Bearded Head",
     stakingTime: "24 hrs",
+    stakingTimeSecs: "86400"
   },
   {
     image: image219,
@@ -154,6 +162,7 @@ const collection = [
     stakingTokenId: "219",
     rewardName: "Android Head",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
   {
     image: image307,
@@ -166,6 +175,7 @@ const collection = [
     stakingTokenId: "307",
     rewardName: "Cold Chillin Eyes",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
   {
     image: image324,
@@ -178,6 +188,7 @@ const collection = [
     stakingTokenId: "324",
     rewardName: "Goat Sinister Eyes",
     stakingTime: "3 days",
+    stakingTimeSecs: "259200",
   },
   {
     image: image333,
@@ -190,6 +201,7 @@ const collection = [
     stakingTokenId: "333",
     rewardName: "Ruby Eyes",
     stakingTime: "3 days",
+    stakingTimeSecs: "259200",
   },
   {
     image: image416,
@@ -202,6 +214,7 @@ const collection = [
     stakingTokenId: "416",
     rewardName: "Goatd Mania Mouth",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
   {
     image: image429,
@@ -214,6 +227,7 @@ const collection = [
     stakingTokenId: "429",
     rewardName: "Shut It Mouth",
     stakingTime: "48 hrs",
+    stakingTimeSecs: "172800",
   },
   {
     image: image425,
@@ -226,6 +240,7 @@ const collection = [
     stakingTokenId: "425",
     rewardName: "Neutral Mouth",
     stakingTime: "24 hrs",
+    stakingTimeSecs: "86400",
   },
   {
     image: image612,
@@ -238,6 +253,7 @@ const collection = [
     stakingTokenId: "612",
     rewardName: "Tattoo",
     stakingTime: "48 hrs",
+    stakingTimeSecs: "172800",
   },
   {
     image: image613,
@@ -250,6 +266,7 @@ const collection = [
     stakingTokenId: "613",
     rewardName: "Nightmare Headwear",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
   {
     image: image621,
@@ -262,6 +279,7 @@ const collection = [
     stakingTokenId: "621",
     rewardName: "Halo Headwear",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
   {
     image: image624,
@@ -274,6 +292,7 @@ const collection = [
     stakingTokenId: "624",
     rewardName: "Mask Headwear",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
   {
     image: image629,
@@ -286,6 +305,7 @@ const collection = [
     stakingTokenId: "629",
     rewardName: "Itsa Mee Headwear",
     stakingTime: "24 hrs",
+    stakingTimeSecs: "86400",
   },
   {
     image: image143,
@@ -298,6 +318,7 @@ const collection = [
     stakingTokenId: "143",
     rewardName: "Pins",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
   {
     image: image127,
@@ -309,7 +330,8 @@ const collection = [
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
     stakingTokenId: "127",
     rewardName: "Iron Goat",
-    stakingTime: "2 days",
+    stakingTime: "48 hrs",
+    stakingTimeSecs: "172800",
   },
   {
     image: image209,
@@ -322,6 +344,7 @@ const collection = [
     stakingTokenId: "209",
     rewardName: "Brown Head",
     stakingTime: "24 hours",
+    stakingTimeSecs: "86400",
   },
   {
     image: image332,
@@ -334,6 +357,7 @@ const collection = [
     stakingTokenId: "332",
     rewardName: "Robogoat Eyes",
     stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
   {
     image: image339,
@@ -346,6 +370,7 @@ const collection = [
     stakingTokenId: "339",
     rewardName: "Infinity Eyes",
     stakingTime: "3 days",
+    stakingTimeSecs: "259200",
   },
   {
     image: image431,
@@ -358,6 +383,7 @@ const collection = [
     stakingTokenId: "431",
     rewardName: "Infinity Mouth",
     stakingTime: "24 hrs",
+    stakingTimeSecs: "86400",
   },
   {
     image: image423,
@@ -370,6 +396,7 @@ const collection = [
     stakingTokenId: "423",
     rewardName: "Baller Mouth",
     stakingTime: "3 days",
+    stakingTimeSecs: "259200",
   },
   {
     image: image620,
@@ -382,6 +409,7 @@ const collection = [
     stakingTokenId: "620",
     rewardName: "Fighter Headwear",
     stakingTime: "48 hours",
+    stakingTimeSecs: "172800",
   },
   {
     image: image623,
@@ -394,6 +422,7 @@ const collection = [
     stakingTokenId: "623",
     rewardName: "Goatd Mania Headwear",
     stakingTime: "48 hours",
+    stakingTimeSecs: "172800",
   },
   {
     image: image625,
@@ -406,6 +435,7 @@ const collection = [
     stakingTokenId: "625",
     rewardName: "HaHaHa Headwear",
     stakingTime: "48 hours",
+    stakingTimeSecs: "172800",
   },
   {
     image: image637,
@@ -418,6 +448,7 @@ const collection = [
     stakingTokenId: "637",
     rewardName: "Cold Chillin Headwear",
     stakingTime: "3 days",
+    stakingTimeSecs: "259200",
   },
   {
     image: image643,
@@ -430,6 +461,7 @@ const collection = [
     stakingTokenId: "643",
     rewardName: "Suited Up Headwear",
     stakingTime: "5 days",
+    stakingTimeSecs: "432000",
   },
 ];
 export default collection;

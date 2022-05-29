@@ -17,6 +17,7 @@ const renderCard = (collection, index) => {
       rewardContract={collection.rewardContract}
       rewardName={collection.rewardName}
       stakingTime={collection.stakingTime}
+      stakingTimeSecs={collection.stakingTimeSecs}
     />
   );
 };
