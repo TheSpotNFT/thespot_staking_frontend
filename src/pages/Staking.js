@@ -12,6 +12,7 @@ const renderCard = (collection, index) => {
       id={collection.id}
       contract={collection.contract}
       contractIndex={collection.contractIndex}
+      masterIndex={collection.masterIndex}
       stakingTokenId={collection.stakingTokenId}
       rewardContract={collection.rewardContract}
       rewardName={collection.rewardName}

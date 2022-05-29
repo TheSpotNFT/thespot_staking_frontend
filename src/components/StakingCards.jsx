@@ -32,6 +32,7 @@ function Card(props) {
   const [isLoading, setIsLoading] = useState([]);
   const [NFTsRemaining, setNFTsRemaining] = useState([]);
   const [hide, setHide] = useState([]);
+  const [display, setDisplay] = useState([]);
 
   /*async function getNfts() {
     const options = {
@@ -119,7 +120,7 @@ function Card(props) {
     }
   }
 
-  /*async function getUserClaimed() {
+  async function getUserClaimed() {
     const options = {
       chain: chain,
       address: "0xfe5C0c66986Be8Fb16A5186Fd047eb035468db74",
@@ -151,18 +152,73 @@ function Card(props) {
         },
       ],
       params: {
-        address: props.contract,
-        _contractIndex: props.contractIndex,
+        address: account,
+        _contractIndex: props.masterIndex,
       },
     };
     const hasClaimed = await Moralis.Web3API.native.runContractFunction(
       options
     );
     setUserClaimed(hasClaimed);
-    console.log("contract index", props.contractIndex, "Claimed", hasClaimed);
+    console.log("contract index", props.masterIndex, "Claimed", hasClaimed);
     console.log("component rendering4");
+
+    if (hasClaimed === "0") {
+      return setDisplay(
+        <div>
+          {/*} <h5>
+              Number of {props.nftName} in Wallet: {nftContractCount}
+            </h5>
+            <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
+
+
+          <div className="flex flex-col space-y-4 py-4">
+            <button
+              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+              onClick={stake}
+            >
+              Stake
+            </button>
+
+            <button
+              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+              onClick={getTimeLeft}
+            >
+              Update Time Remaining
+            </button>
+
+            <button
+              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+              onClick={claim}
+            >
+              Claim
+            </button>
+
+          </div>
+        </div>
+      )/*setStakeButton("Stake"),
+        setClaimButton("Claim");*/
+    } else {
+      return setDisplay(<div className="flex flex-col space-y-4 py-4">
+        <button
+          className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+
+        >
+          Claimed
+        </button>
+      </div>)
+    }
+
+
   }
-*/
+
+
+
+
   async function getNFTsRemaining() {
     const options = {
       chain: chain,
@@ -283,10 +339,25 @@ function Card(props) {
   function showInfo() {
     if (hide === false) {
       setHide(true);
+      getUserClaimed();
+
     } else setHide(false);
     getNFTsRemaining();
-    //getUserClaimed();
+    getUserClaimed();
+
   }
+
+  /*  function stakingDisplay() {
+      if (userClaimed === "1") {
+        setUserClaimedBool(true);
+        console.log("contract index", props.masterIndex, "Claimed", userClaimedBool);
+        console.log("component rendering5");
+      } else setUserClaimedBool(false);
+      console.log("contract index", props.masterIndex, "Claimed", userClaimedBool);
+      console.log("component rendering5");
+  
+    }
+  */
 
   return (
     <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
@@ -305,43 +376,14 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
             </button>
           </div>
           <div className={hide ? "hidden" : "text-slate-50 text-base"}>
-            {/*} <h5>
-              Number of {props.nftName} in Wallet: {nftContractCount}
-            </h5>
-            <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
             <h5>Left to Claim: {NFTsRemaining}</h5>
             <h5>Total Staking Time: {props.stakingTime}</h5>
             <h5>Your Time Remaining: {displayTime}</h5>
-
-            <div className="flex flex-col space-y-4 py-4">
-              <button
-                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                onClick={stake}
-              >
-                Stake
-              </button>
-
-              <button
-                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                onClick={getTimeLeft}
-              >
-                Update Time Remaining
-              </button>
-
-              <button
-                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                onClick={claim}
-              >
-                Claim
-              </button>
-            </div>
+            {display}
           </div>
         </div>
       }
-    </div>
+    </div >
   );
 }
 
