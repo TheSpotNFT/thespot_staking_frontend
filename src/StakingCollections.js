@@ -91,10 +91,10 @@ const collection = [
     id: "4",
     name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
-    contractIndex: "2",
-    masterIndex: "6",
+    contractIndex: "31",
+    masterIndex: "35",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
-    stakingTokenId: "321",
+    stakingTokenId: "107",
     rewardName: "????",
     stakingTime: "30 mins",
     stakingTimeSecs: "1800"
