@@ -32,6 +32,11 @@ import image623 from "./images/623.png";
 import image625 from "./images/625.png";
 import image637 from "./images/637.png";
 import image643 from "./images/643.png";
+import image206 from "./images/206.png";
+import image215 from "./images/215.png";
+import image418 from "./images/418.png";
+import image419 from "./images/419.png";
+import image430 from "./images/430.png";
 
 const collection = [
   {
@@ -462,6 +467,71 @@ const collection = [
     rewardName: "Suited Up Headwear",
     stakingTime: "5 days",
     stakingTimeSecs: "432000",
+  },
+  {
+    image: image418,
+    id: "33",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "32",
+    masterIndex: "36",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "418",
+    rewardName: "Demigod Mouth",
+    stakingTime: "3 days",
+    stakingTimeSecs: "259200",
+  },
+  {
+    image: image419,
+    id: "34",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "33",
+    masterIndex: "37",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "419",
+    rewardName: "HaHaHa Mouth",
+    stakingTime: "7 days",
+    stakingTimeSecs: "604800",
+  },
+  {
+    image: image430,
+    id: "35",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "34",
+    masterIndex: "38",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "430",
+    rewardName: "Farmer Mouth",
+    stakingTime: "24 Hours",
+    stakingTimeSecs: "86400",
+  },
+  {
+    image: image206,
+    id: "36",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "35",
+    masterIndex: "39",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "206",
+    rewardName: "Bow Head",
+    stakingTime: "3 days",
+    stakingTimeSecs: "259200",
+  },
+  {
+    image: image215,
+    id: "37",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "36",
+    masterIndex: "40",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "215",
+    rewardName: "Pins Head",
+    stakingTime: "7 days",
+    stakingTimeSecs: "604800",
   },
 ];
 export default collection;
