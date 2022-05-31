@@ -116,7 +116,7 @@ function Card(props) {
     if (h > 0 || m > 0 || s > 0) {
       return setDisplayTime(`${d}d:${h}h:${m}m:${s}s`);
     } else {
-      return setDisplayTime("Start Staking or Claim!");
+      return setDisplayTime("Start Staking!");
     }
   }
 
@@ -205,11 +205,11 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
 
           <div className="flex flex-col space-y-4 py-4">
             <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow hover:bg-spot-yellow hover:text-black duration-300 hover:border-white 
  font-mono text-l"
-
+              onClick={stake}
             >
-              Staking
+              Stake
             </button>
 
             <button
@@ -278,7 +278,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
         return setDisplay(<div className="flex flex-col space-y-4 py-4">
           <button
             className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+ font-mono text-l"
 
           >
             Claimed
@@ -412,13 +412,15 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
   function showInfo() {
     if (hide === false) {
       setHide(true);
-      getUserClaimed();
+
+
 
 
     } else setHide(false);
+    getTimeLeft();
     getNFTsRemaining();
     getUserClaimed();
-    getTimeLeft();
+
   }
 
   /*  function stakingDisplay() {
