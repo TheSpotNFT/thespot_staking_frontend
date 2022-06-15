@@ -1,18 +1,18 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
-//import Authenticate from "./Authenticate";
+import AuthenticateButton from "./AuthenticateButton";
 import { useChain } from "react-moralis";
 
 function LogoutButton() {
-  const { logout, isAuthenticating, account } = useMoralis();
+  const { logout, isAuthenticating, account, isAuthenticated } = useMoralis();
   const { switchNetwork, chainId } = useChain();
 
-  if (account === null) {
+  if (!isAuthenticated || account === null) {
     return (
       <div className="text-right md:flex align-middle py-0">
-        <div className="align-middle py-2">
-          <h1 className="text-slate-600 text-right font-mono px-10 py-0">
-            <b>Disconnected All Accounts!</b>
+        <div className="align-middle py-3">
+          <h1 className="text-slate-200 text-right font-mono px-10 py-0">
+          <AuthenticateButton />
           </h1>
         </div>
       </div>

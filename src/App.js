@@ -10,6 +10,7 @@ import AnalogCollection from "./pages/AnalogCollection";
 import { Routes, Route } from "react-router-dom";
 import TraitDashboard from "./components/TraitDashboard";
 import Staking from "./pages/Staking";
+import Evolve from "./pages/Evolve";
 
 
 function App() {
@@ -31,11 +32,11 @@ function App() {
     //(chainId !== '0xa86a')&&switchNetwork("0xa86a") MAINNET
     //(chainId !== '0xa869')&&switchNetwork("0xa869") FUJI
   }, [isAuthenticated, isWeb3Enabled, chain]);
-
+/*
   if (!isAuthenticated || account === null) {
     return <Authenticate />;
   }
-
+*/
   return (
     <div className="bg-slate-700">
       <Navbar />
@@ -43,6 +44,7 @@ function App() {
         <Route path="/" exact element={<Main />} />
         <Route path="/analog" exact element={<AnalogCollection />} />
         <Route path="/staking" exact element={<Staking />} />
+        <Route path="/evolve" exact element={<Evolve />} />
       </Routes>
       <Footer />
     </div>
