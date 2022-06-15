@@ -2,41 +2,56 @@ import apeChain from "./images/apechain.png";
 import apeChainHover from "./images/apechainhover.png";
 import blobArtDrop from "./images/blobartdrop.png";
 import tbcBat from "./images/tbcartdrop.png";
-import image11 from "./images/11.png";
-import random from "./images/random.png";
-import image126 from "./images/126.png";
-import image135 from "./images/135.png";
-import image207 from "./images/207.png";
-import image212 from "./images/212.png";
-import image219 from "./images/219.png";
-import image307 from "./images/307.png";
-import image324 from "./images/324.png";
-import image333 from "./images/333.png";
-import image416 from "./images/416.png";
-import image429 from "./images/429.png";
-import image425 from "./images/425.png";
-import image612 from "./images/612.png";
-import image613 from "./images/613.png";
-import image621 from "./images/621.png";
-import image624 from "./images/624.png";
-import image629 from "./images/629.png";
-import image143 from "./images/143.png";
-import image127 from "./images/127.png";
-import image209 from "./images/209.png";
-import image332 from "./images/332.png";
-import image339 from "./images/339.png";
-import image431 from "./images/431.png";
-import image423 from "./images/423.png";
-import image620 from "./images/620.png";
-import image623 from "./images/623.png";
-import image625 from "./images/625.png";
-import image637 from "./images/637.png";
-import image643 from "./images/643.png";
-import image206 from "./images/206.png";
-import image215 from "./images/215.png";
-import image418 from "./images/418.png";
-import image419 from "./images/419.png";
-import image430 from "./images/430.png";
+import image11 from "./images/traitcards/11.png";
+import random from "./images/traitcards/random.png";
+import image126 from "./images/traitcards/126.png";
+import image135 from "./images/traitcards/135.png";
+import image207 from "./images/traitcards/207.png";
+import image212 from "./images/traitcards/212.png";
+import image219 from "./images/traitcards/219.png";
+import image307 from "./images/traitcards/307.png";
+import image333 from "./images/traitcards/333.png";
+import image416 from "./images/traitcards/416.png";
+import image429 from "./images/traitcards/429.png";
+import image425 from "./images/traitcards/425.png";
+import image612 from "./images/traitcards/612.png";
+import image613 from "./images/traitcards/613.png";
+import image621 from "./images/traitcards/621.png";
+import image624 from "./images/traitcards/624.png";
+import image629 from "./images/traitcards/629.png";
+import image143 from "./images/traitcards/143.png";
+import image127 from "./images/traitcards/127.png";
+import image209 from "./images/traitcards/209.png";
+import image332 from "./images/traitcards/332.png";
+import image339 from "./images/traitcards/339.png";
+import image431 from "./images/traitcards/431.png";
+import image423 from "./images/traitcards/423.png";
+import image620 from "./images/traitcards/620.png";
+import image623 from "./images/traitcards/623.png";
+import image625 from "./images/traitcards/625.png";
+import image637 from "./images/traitcards/637.png";
+import image643 from "./images/traitcards/643.png";
+import image206 from "./images/traitcards/206.png";
+import image215 from "./images/traitcards/215.png";
+import image418 from "./images/traitcards/418.png";
+import image419 from "./images/traitcards/419.png";
+import image430 from "./images/traitcards/430.png"; 
+import image12 from "./images/traitcards/12.png";
+import image113 from "./images/traitcards/113.png";
+import image115 from "./images/traitcards/115.png";
+import image161 from "./images/traitcards/161.png";
+import image204 from "./images/traitcards/204.png";
+import image205 from "./images/traitcards/205.png";
+import image314 from "./images/traitcards/314.png";
+import image320 from "./images/traitcards/320.png";
+import image324 from "./images/traitcards/324.png";
+import image410 from "./images/traitcards/410.png";
+import image414 from "./images/traitcards/414.png";
+import image607 from "./images/traitcards/607.png";
+import image631 from "./images/traitcards/631.png";
+import image638 from "./images/traitcards/638.png";
+import image648 from "./images/traitcards/648.png";
+
 
 const collection = [
   {
@@ -96,10 +111,10 @@ const collection = [
     id: "4",
     name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
-    contractIndex: "31",
-    masterIndex: "35",
+    contractIndex: "37",
+    masterIndex: "41",
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
-    stakingTokenId: "107",
+    stakingTokenId: "12",
     rewardName: "????",
     stakingTime: "30 mins",
     stakingTimeSecs: "1800"
@@ -183,7 +198,7 @@ const collection = [
     stakingTimeSecs: "604800",
   },
   {
-    image: image324,
+    image: image12,
     id: "11",
     name: "Spot",
     contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
@@ -530,6 +545,188 @@ const collection = [
     rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
     stakingTokenId: "215",
     rewardName: "Pins Head",
+    stakingTime: "7 days",
+    stakingTimeSecs: "604800",
+  },
+  {
+    image: image113,
+    id: "38",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "38",
+    masterIndex: "42",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "113",
+    rewardName: "Bat Goat Body",
+    stakingTime: "3 days",
+    stakingTimeSecs: "259200",
+  },
+  {
+    image: image115,
+    id: "39",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "39",
+    masterIndex: "43",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "115",
+    rewardName: "Bow Body",
+    stakingTime: "3 days",
+    stakingTimeSecs: "259200",
+  },
+  {
+    image: image161,
+    id: "40",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "40",
+    masterIndex: "44",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "161",
+    rewardName: "Baller Body",
+    stakingTime: "3 days",
+    stakingTimeSecs: "259200",
+  },
+  {
+    image: image204,
+    id: "41",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "41",
+    masterIndex: "45",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "204",
+    rewardName: "Nightmare Head",
+    stakingTime: "48 hours",
+    stakingTimeSecs: "172800",
+  },
+  {
+    image: image205,
+    id: "42",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "42",
+    masterIndex: "46",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "205",
+    rewardName: "Zombie Head",
+    stakingTime: "48 hours",
+    stakingTimeSecs: "172800",
+  },
+  {
+    image: image314,
+    id: "43",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "43",
+    masterIndex: "47",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "314",
+    rewardName: "Bow Eyes",
+    stakingTime: "3 days",
+    stakingTimeSecs: "259200",
+  },
+  {
+    image: image320,
+    id: "44",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "44",
+    masterIndex: "48",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "320",
+    rewardName: "Bow Body",
+    stakingTime: "3 days",
+    stakingTimeSecs: "259200",
+  },
+  {
+    image: image324,
+    id: "45",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "45",
+    masterIndex: "49",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "324",
+    rewardName: "Goat Sinister Eyes",
+    stakingTime: "5 days",
+    stakingTimeSecs: "432000",
+  },
+  {
+    image: image410,
+    id: "46",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "46",
+    masterIndex: "50",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "410",
+    rewardName: "Blunt Mouth",
+    stakingTime: "24 hours",
+    stakingTimeSecs: "86400",
+  },
+  {
+    image: image414,
+    id: "47",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "47",
+    masterIndex: "51",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "414",
+    rewardName: "Cigar Mouth",
+    stakingTime: "24 hours",
+    stakingTimeSecs: "86400",
+  },
+  {
+    image: image607,
+    id: "48",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "48",
+    masterIndex: "52",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "607",
+    rewardName: "Goat Man Headwear",
+    stakingTime: "24 hours",
+    stakingTimeSecs: "86400",
+  },
+  {
+    image: image631,
+    id: "49",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "49",
+    masterIndex: "53",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "631",
+    rewardName: "MyKill Headwear",
+    stakingTime: "7 days",
+    stakingTimeSecs: "604800",
+  },
+  {
+    image: image638,
+    id: "50",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "50",
+    masterIndex: "54",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "638",
+    rewardName: "Headphones Headwear",
+    stakingTime: "24 hours",
+    stakingTimeSecs: "86400",
+  },
+  {
+    image: image648,
+    id: "46",
+    name: "Spot",
+    contract: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
+    contractIndex: "51",
+    masterIndex: "55",
+    rewardContract: "0x9521807ADF320D1CDF87AFDf875Bf438d1D92d87",
+    stakingTokenId: "648",
+    rewardName: "Victor Von Doom Headwear",
     stakingTime: "7 days",
     stakingTimeSecs: "604800",
   },
