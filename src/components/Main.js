@@ -8,6 +8,7 @@ import evolve from "../images/evolve/1/1.png";
 
 const NftCollection = () => {
   const { Moralis } = useMoralis();
+  const { authenticate } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
   const [spotsMinted, setSpotsMinted] = useState([]);
   const onClickUrl = (url) => {
