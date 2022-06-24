@@ -176,7 +176,7 @@ const NftCollection = () => {
 
   //call getNumberMinted to pull value from contract
 
-  useEffect(() => {
+ useEffect(() => {
     getNumberMinted();
   }, []);
 
@@ -234,8 +234,15 @@ const NftCollection = () => {
             <div className="font-bold text-l py-4 flex justify-center">
               <h3>^ How many Spots? ^</h3>
             </div>
-            <div className="font-bold text-l py-6">
-              <h3>{spotsMinted}/610 Minted</h3>
+            <div className="font-bold text-l py-2 flex justify-center"><div className="py-4 px-4"><h3>{spotsMinted}/610 Minted</h3></div>
+            <button
+                className="align-middle rounded-lg sm:px-4 md:px-4 lg:px-2 xl:px-4 px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
+                onClick={getNumberMinted}
+              >
+                update number minted
+              </button>
+              
             </div>
           </div>
         </div>

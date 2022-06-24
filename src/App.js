@@ -29,7 +29,7 @@ function App() {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
       enableWeb3({ provider: connectorId });
     }
-    //(chainId !== '0xa86a')&&switchNetwork("0xa86a") MAINNET
+    //(chainId !== '0xa86a')&&switchNetwork("0xa86a") //MAINNET
     //(chainId !== '0xa869')&&switchNetwork("0xa869") FUJI
   }, [isAuthenticated, isWeb3Enabled, chain]);
 /*
