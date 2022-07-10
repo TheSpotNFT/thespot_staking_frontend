@@ -13,6 +13,7 @@ const renderCard = (analogNfts, index) => {
       image2={analogNfts.image2}
       image3={analogNfts.image3}
       image4={analogNfts.image4}
+      variations={analogNfts.variations}
       id={analogNfts.id}
     />
   );

@@ -118,6 +118,28 @@ import analogimg30 from ".//images/analog/30.png";
 import analogimg30a from ".//images/analog/30-a.png";
 import analogimg30b from ".//images/analog/30-b.png";
 import analogimg30c from ".//images/analog/30-c.png";
+import analogimg31 from ".//images/analog/31.png";
+import analogimg31a from ".//images/analog/31-1.png";
+import analogimg32 from ".//images/analog/32.png";
+import analogimg32a from ".//images/analog/32-1.png";
+import analogimg33 from ".//images/analog/33.png";
+import analogimg33a from ".//images/analog/33-1.png";
+import analogimg34 from ".//images/analog/34.png";
+import analogimg34a from ".//images/analog/34-1.png";
+import analogimg35 from ".//images/analog/35.png";
+import analogimg35a from ".//images/analog/35-1.png";
+import analogimg36 from ".//images/analog/36.png";
+import analogimg36a from ".//images/analog/36-1.png";
+import analogimg37 from ".//images/analog/37.png";
+import analogimg37a from ".//images/analog/37-1.png";
+import analogimg38 from ".//images/analog/38.png";
+import analogimg38a from ".//images/analog/38-1.png";
+import analogimg39 from ".//images/analog/39.png";
+import analogimg39a from ".//images/analog/39-1.png";
+import analogimg40 from ".//images/analog/40.png";
+import analogimg40a from ".//images/analog/40-1.png";
+import analogimg41 from ".//images/analog/41.png";
+import analogimg41a from ".//images/analog/41-1.png";
 
 const analogNfts = [
   {
@@ -125,6 +147,7 @@ const analogNfts = [
     image2: analogimg1a,
     image3: analogimg1b,
     image4: analogimg1c,
+    variations: "4",
     id: "1",
     name: "The Gherkin",
   },
@@ -133,6 +156,7 @@ const analogNfts = [
     image2: analogimg2a,
     image3: analogimg2b,
     image4: analogimg2c,
+    variations: "4",
     id: "2",
     name: "Colosseum",
   },
@@ -141,6 +165,7 @@ const analogNfts = [
     image2: analogimg3a,
     image3: analogimg3b,
     image4: analogimg3c,
+    variations: "4",
     id: "3",
     name: "Stonehenge",
   },
@@ -149,6 +174,7 @@ const analogNfts = [
     image2: analogimg4a,
     image3: analogimg4b,
     image4: analogimg4c,
+    variations: "4",
     id: "4",
     name: "The Great Pyramids",
   },
@@ -157,6 +183,7 @@ const analogNfts = [
     image2: analogimg5a,
     image3: analogimg5b,
     image4: analogimg5c,
+    variations: "4",
     id: "5",
     name: "Beijing National Stadium",
   },
@@ -165,6 +192,7 @@ const analogNfts = [
     image2: analogimg6a,
     image3: analogimg6b,
     image4: analogimg6c,
+    variations: "4",
     id: "6",
     name: "Sydney Opera House",
   },
@@ -173,6 +201,7 @@ const analogNfts = [
     image2: analogimg7a,
     image3: analogimg7b,
     image4: analogimg7c,
+    variations: "4",
     id: "7",
     name: "Petronas Towers",
   },
@@ -181,6 +210,7 @@ const analogNfts = [
     image2: analogimg8a,
     image3: analogimg8b,
     image4: analogimg8c,
+    variations: "4",
     id: "8",
     name: "The Eiffel Tower",
   },
@@ -189,6 +219,7 @@ const analogNfts = [
     image2: analogimg9a,
     image3: analogimg9b,
     image4: analogimg9c,
+    variations: "4",
     id: "9",
     name: "Burj Khalifa",
   },
@@ -197,6 +228,7 @@ const analogNfts = [
     image2: analogimg10a,
     image3: analogimg10b,
     image4: analogimg10c,
+    variations: "4",
     id: "10",
     name: "Big Ben",
   },
@@ -205,6 +237,7 @@ const analogNfts = [
     image2: analogimg11a,
     image3: analogimg11b,
     image4: analogimg11c,
+    variations: "4",
     id: "11",
     name: "Taj Mahal",
   },
@@ -213,6 +246,7 @@ const analogNfts = [
     image2: analogimg12a,
     image3: analogimg12b,
     image4: analogimg12c,
+    variations: "4",
     id: "12",
     name: "Forbidden City",
   },
@@ -221,6 +255,7 @@ const analogNfts = [
     image2: analogimg13a,
     image3: analogimg13b,
     image4: analogimg13c,
+    variations: "4",
     id: "13",
     name: "Saint Basil's Cathedral",
   },
@@ -229,6 +264,7 @@ const analogNfts = [
     image2: analogimg14a,
     image3: analogimg14b,
     image4: analogimg14c,
+    variations: "4",
     id: "14",
     name: "Chrysler Building",
   },
@@ -237,6 +273,7 @@ const analogNfts = [
     image2: analogimg15a,
     image3: analogimg15b,
     image4: analogimg15c,
+    variations: "4",
     id: "15",
     name: "One World Trade Center",
   },
@@ -245,6 +282,7 @@ const analogNfts = [
     image2: analogimg16a,
     image3: analogimg16b,
     image4: analogimg16c,
+    variations: "4",
     id: "16",
     name: "Empire State Building",
   },
@@ -253,6 +291,7 @@ const analogNfts = [
     image2: analogimg17a,
     image3: analogimg17b,
     image4: analogimg17c,
+    variations: "4",
     id: "17",
     name: "Dong Fang Ming Zhu",
   },
@@ -261,6 +300,7 @@ const analogNfts = [
     image2: analogimg18a,
     image3: analogimg18b,
     image4: analogimg18c,
+    variations: "4",
     id: "18",
     name: "BC Parliament Buildings",
   },
@@ -269,6 +309,7 @@ const analogNfts = [
     image2: analogimg19a,
     image3: analogimg19b,
     image4: analogimg19c,
+    variations: "4",
     id: "19",
     name: "Chataeu Laurier",
   },
@@ -277,6 +318,7 @@ const analogNfts = [
     image2: analogimg20a,
     image3: analogimg20b,
     image4: analogimg20c,
+    variations: "4",
     id: "20",
     name: "National Gallery of Canada",
   },
@@ -285,6 +327,7 @@ const analogNfts = [
     image2: analogimg21a,
     image3: analogimg21b,
     image4: analogimg21c,
+    variations: "4",
     id: "21",
     name: "Notre Dame Cathedral",
   },
@@ -293,6 +336,7 @@ const analogNfts = [
     image2: analogimg22a,
     image3: analogimg22b,
     image4: analogimg22c,
+    variations: "4",
     id: "22",
     name: "The Palace of Pena",
   },
@@ -301,6 +345,7 @@ const analogNfts = [
     image2: analogimg23a,
     image3: analogimg23b,
     image4: analogimg23c,
+    variations: "4",
     id: "23",
     name: "The Neuschwanstein Castle",
   },
@@ -309,6 +354,7 @@ const analogNfts = [
     image2: analogimg24a,
     image3: analogimg24b,
     image4: analogimg24c,
+    variations: "4",
     id: "24",
     name: "The Eltz Castle ",
   },
@@ -317,6 +363,7 @@ const analogNfts = [
     image2: analogimg25a,
     image3: analogimg25b,
     image4: analogimg25c,
+    variations: "4",
     id: "25",
     name: "Culzean Castle",
   },
@@ -325,6 +372,7 @@ const analogNfts = [
     image2: analogimg26a,
     image3: analogimg26b,
     image4: analogimg26c,
+    variations: "4",
     id: "26",
     name: "Frederiksborg Castle",
   },
@@ -333,6 +381,7 @@ const analogNfts = [
     image2: analogimg27a,
     image3: analogimg27b,
     image4: analogimg27c,
+    variations: "4",
     id: "27",
     name: "Bellagio ",
   },
@@ -341,6 +390,7 @@ const analogNfts = [
     image2: analogimg28a,
     image3: analogimg28b,
     image4: analogimg28c,
+    variations: "4",
     id: "28",
     name: "Perth Bell Tower",
   },
@@ -349,6 +399,7 @@ const analogNfts = [
     image2: analogimg29a,
     image3: analogimg29b,
     image4: analogimg29c,
+    variations: "4",
     id: "29",
     name: "The Beehive",
   },
@@ -357,8 +408,86 @@ const analogNfts = [
     image2: analogimg30a,
     image3: analogimg30b,
     image4: analogimg30c,
+    variations: "4",
     id: "30",
     name: "Les Invalides",
+  },
+  {
+    image1: analogimg31,
+    image2: analogimg31a,
+    variations: "2",
+    id: "31",
+    name: "Lucas",
+  },
+  {
+    image1: analogimg32,
+    image2: analogimg32a,
+    variations: "2",
+    id: "32",
+    name: "Mids",
+  },
+  {
+    image1: analogimg33,
+    image2: analogimg33a,
+    variations: "2",
+    id: "33",
+    name: "Alafair",
+  },
+  {
+    image1: analogimg34,
+    image2: analogimg34a,
+    variations: "2",
+    id: "34",
+    name: "Noemia",
+  },
+  {
+    image1: analogimg35,
+    image2: analogimg35a,
+    variations: "2",
+    id: "35",
+    name: "Tarabai",
+  },
+  {
+    image1: analogimg36,
+    image2: analogimg36a,
+    variations: "2",
+    id: "36",
+    name: "Zarida",
+  },
+  {
+    image1: analogimg37,
+    image2: analogimg37a,
+    variations: "2",
+    id: "37",
+    name: "Solulo",
+  },
+  {
+    image1: analogimg38,
+    image2: analogimg38a,
+    variations: "2",
+    id: "38",
+    name: "Pinene",
+  },
+  {
+    image1: analogimg39,
+    image2: analogimg39a,
+    variations: "2",
+    id: "39",
+    name: "Kaya",
+  },
+  {
+    image1: analogimg40,
+    image2: analogimg40a,
+    variations: "2",
+    id: "40",
+    name: "Chidro",
+  },
+  {
+    image1: analogimg41,
+    image2: analogimg41a,
+    variations: "2",
+    id: "41",
+    name: "Poco",
   },
 ];
 export default analogNfts;

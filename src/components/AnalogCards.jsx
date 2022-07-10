@@ -9,6 +9,14 @@ function Card(props) {
   const analogContract = "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69";
   const userAddress = account;
   const [isLoading, setIsLoading] = useState([]);
+  const [variation2, setVariation2] = useState([]);
+
+function showVariation(){
+  if (props.variations === "2") {
+    setVariation2(false);
+    } else setVariation2(true);
+}
+console.log(variation2);
 
   function changeVariation1() {
     setVariation(props.image1);
@@ -202,6 +210,7 @@ function Card(props) {
             >
               2
             </button>
+            <div className={props.variations === "2" ? "hidden" : "flex grid gap-4"}>
             <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
@@ -209,7 +218,8 @@ function Card(props) {
               onClick={commitVariation3}
             >
               3
-            </button>
+            </button></div>
+            <div className={props.variations === "2" ? "hidden" : "flex grid gap-4"}>
             <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
@@ -217,7 +227,7 @@ function Card(props) {
               onClick={commitVariation4}
             >
               4
-            </button>
+            </button></div>
           </div>
           <div className="flex justify-center">
             <h5>Click number of variaton to commit change to NFT</h5>
