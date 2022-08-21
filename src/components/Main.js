@@ -5,6 +5,7 @@ import goatdmain from "../images/goatdmain.png";
 import analog from "../images/analogtitle.png";
 import apechain from "../images/apechain.png";
 import evolve from "../images/evolve/1/1.png";
+import cemetery from "../images/Cemetery.PNG"
 
 const NftCollection = () => {
   const { Moralis } = useMoralis();
@@ -183,6 +184,10 @@ const NftCollection = () => {
   function alertClick() {
     alert("The Evolution is Coming Soon...");
   }
+  function alertClick1() {
+    alert("The Cemetery is Coming Soon...");
+  }
+
 
   return (
     <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 xl:grid-cols-4 xxl:grid-cols-6 gap-10 font-mono text-spot-yellow bg-slate-900">
@@ -301,6 +306,25 @@ const NftCollection = () => {
                 onClick={onClickUrl("/staking")}
               >
                 Enter Staking
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
+        <img className="w-full" src={cemetery} alt=""></img>
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2 flex justify-center">
+            <h1>The Cemetery</h1>
+          </div>
+          <div className="text-slate-50 text-base">
+            <div className="flex flex-col space-y-4 py-4">
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                onClick={alertClick1}
+              >
+                Enter The Cemetery
               </button>
             </div>
           </div>
