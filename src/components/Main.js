@@ -192,6 +192,18 @@ const NftCollection = () => {
 
 
   return (
+    <div>
+      <div className="pt-8 px-9 bg-slate-900">
+      <div className="w-full py-4 px-2 flex justify-center text-spot-yellow rounded overflow-hidden shadow-lg bg-slate-900">
+      <button
+                className="align-middle text-xl rounded-lg px-4 py-4 w-full border-4 border-spot-yellow text-spot-yellow 
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                onClick={onClickUrl("/learning")}
+              >
+                Learn More ---> The Educatooooor
+              </button>
+      </div>
+</div>
     <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 xl:grid-cols-4 xxl:grid-cols-6 gap-10 font-mono text-spot-yellow bg-slate-900">
       <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
         <img className="w-full" src={thespot} alt=""></img>
@@ -370,6 +382,8 @@ const NftCollection = () => {
           </div>
         </div>
       </div>
+    </div>
+
     </div>
   );
 };

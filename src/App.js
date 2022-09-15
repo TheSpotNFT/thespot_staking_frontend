@@ -11,6 +11,8 @@ import { Routes, Route } from "react-router-dom";
 import TraitDashboard from "./components/TraitDashboard";
 import Staking from "./pages/Staking";
 import Evolve from "./pages/Evolve";
+import Team from "./pages/team";
+import Learning from "./pages/learning";
 
 
 function App() {
@@ -45,6 +47,8 @@ function App() {
         <Route path="/analog" exact element={<AnalogCollection />} />
         <Route path="/staking" exact element={<Staking />} />
         <Route path="/evolve" exact element={<Evolve />} />
+        <Route path="/team" exact element={<Team />}/>
+        <Route path="/learning" exact element={<Learning />}/>
       </Routes>
       <Footer />
     </div>
