@@ -46,142 +46,7 @@ const NftCollection = () => {
     setSpotsMinted(nftsMinted);
   }
 
-  //Minting: cleanup. try to use one function with inputs from buttons changing number of mints and value vs multiple functions
-  async function mint1Nft() {
-    let options = {
-      contractAddress: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
-      functionName: "mintSPOT",
-      abi: [
-        {
-          inputs: [
-            { internalType: "uint256", name: "tokenAmount", type: "uint256" },
-          ],
-          name: "mintSPOT",
-          outputs: [{ internalType: "bool", name: "", type: "bool" }],
-          stateMutability: "payable",
-          type: "function",
-        },
-      ],
-      msgValue: Moralis.Units.ETH(0.69),
-      params: {
-        tokenAmount: 1,
-      },
-    };
 
-    await contractProcessor.fetch({
-      params: options,
-    });
-  }
-
-  async function mint2Nft() {
-    let options = {
-      contractAddress: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
-      functionName: "mintSPOT",
-      abi: [
-        {
-          inputs: [
-            { internalType: "uint256", name: "tokenAmount", type: "uint256" },
-          ],
-          name: "mintSPOT",
-          outputs: [{ internalType: "bool", name: "", type: "bool" }],
-          stateMutability: "payable",
-          type: "function",
-        },
-      ],
-      msgValue: Moralis.Units.ETH(1.38),
-      params: {
-        tokenAmount: 2,
-      },
-    };
-
-    await contractProcessor.fetch({
-      params: options,
-    });
-  }
-
-  async function mint3Nft() {
-    let options = {
-      contractAddress: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
-      functionName: "mintSPOT",
-      abi: [
-        {
-          inputs: [
-            { internalType: "uint256", name: "tokenAmount", type: "uint256" },
-          ],
-          name: "mintSPOT",
-          outputs: [{ internalType: "bool", name: "", type: "bool" }],
-          stateMutability: "payable",
-          type: "function",
-        },
-      ],
-      msgValue: Moralis.Units.ETH(2.07),
-      params: {
-        tokenAmount: 3,
-      },
-    };
-
-    await contractProcessor.fetch({
-      params: options,
-    });
-  }
-
-  async function mint4Nft() {
-    let options = {
-      contractAddress: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
-      functionName: "mintSPOT",
-      abi: [
-        {
-          inputs: [
-            { internalType: "uint256", name: "tokenAmount", type: "uint256" },
-          ],
-          name: "mintSPOT",
-          outputs: [{ internalType: "bool", name: "", type: "bool" }],
-          stateMutability: "payable",
-          type: "function",
-        },
-      ],
-      msgValue: Moralis.Units.ETH(2.76),
-      params: {
-        tokenAmount: 4,
-      },
-    };
-
-    await contractProcessor.fetch({
-      params: options,
-    });
-  }
-
-  async function mint5Nft() {
-    let options = {
-      contractAddress: "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8",
-      functionName: "mintSPOT",
-      abi: [
-        {
-          inputs: [
-            { internalType: "uint256", name: "tokenAmount", type: "uint256" },
-          ],
-          name: "mintSPOT",
-          outputs: [{ internalType: "bool", name: "", type: "bool" }],
-          stateMutability: "payable",
-          type: "function",
-        },
-      ],
-      msgValue: Moralis.Units.ETH(3.45),
-      params: {
-        tokenAmount: 5,
-      },
-    };
-
-    await contractProcessor.fetch({
-      params: options,
-    });
-  }
-
-  //call getNumberMinted to pull value from contract
-
- useEffect(() => {
-    getNumberMinted();
-  }, []);
 
   function alertClick() {
     alert("The Evolution is Coming Soon...");
@@ -209,59 +74,19 @@ const NftCollection = () => {
         <img className="w-full" src={thespot} alt=""></img>
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2 flex justify-center">
-            <h1>MINTING IS LIVE! (0.69 avax)</h1>
+            <h1>MINTING COMPLETE</h1>
           </div>
 
           <div className="text-slate-50 text-base">
-            <div className="flex flex-col grid gap-4 grid-cols-5 px-4 py-4 place-contents-center">
+            <div className="flex flex-col grid gap-4 grid-cols-1 px-4 py-4 place-contents-center">
               <button
                 className="align-middle rounded-lg sm:px-4 md:px-4 lg:px-2 xl:px-4 px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-                onClick={mint1Nft}
+                onClick={onClickUrl("https://campfire.exchange/collections/0x0c6945e825fc3c80f0a1ea1d3e24d6854f7460d8")}
               >
-                1
+                Buy on Secondary
               </button>
-              <button
-                className="align-middle rounded-lg sm:px-4 md:px-4 lg:px-2 xl:px-4 px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-                onClick={mint2Nft}
-              >
-                2
-              </button>
-              <button
-                className="align-middle rounded-lg sm:px-4 md:px-4 lg:px-2 xl:px-4 px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-                onClick={mint3Nft}
-              >
-                3
-              </button>
-              <button
-                className="align-middle rounded-lg sm:px-4 md:px-4 lg:px-2 xl:px-4 px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-                onClick={mint4Nft}
-              >
-                4
-              </button>
-              <button
-                className="align-middle rounded-lg sm:px-4 md:px-4 lg:px-2 xl:px-4 px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-                onClick={mint5Nft}
-              >
-                5
-              </button>
-            </div>
-            <div className="font-bold text-l py-4 flex justify-center">
-              <h3>^ How many Spots? ^</h3>
-            </div>
-            <div className="font-bold text-l py-2 flex justify-center"><div className="py-4 px-4"><h3>{spotsMinted}/610 Minted</h3></div>
-            <button
-                className="align-middle rounded-lg sm:px-4 md:px-4 lg:px-2 xl:px-4 px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-                onClick={getNumberMinted}
-              >
-                update number minted
-              </button>
-              
+          
             </div>
           </div>
         </div>
