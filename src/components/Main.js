@@ -5,8 +5,9 @@ import goatdmain from "../images/goatdmain.png";
 import analog from "../images/analogtitle.png";
 import apechain from "../images/apechain.png";
 import evolve from "../images/evolve/1/1.png";
-import cemetery from "../images/Cemetery.PNG"
-import unnamednft from "../images/logounnamed.png"
+import cemetery from "../images/Cemetery.PNG";
+import unnamednft from "../images/logounnamed.png";
+import fragments from "../images/question.png";
 
 
 const NftCollection = () => {
@@ -14,6 +15,7 @@ const NftCollection = () => {
   const { authenticate } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
   const [spotsMinted, setSpotsMinted] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   const onClickUrl = (url) => {
     return () => openInNewTab(url);
   };
@@ -21,6 +23,8 @@ const NftCollection = () => {
     const newWindow = window.open(url, "_blank", "noopener,noreferrer");
     if (newWindow) newWindow.opener = null;
   };
+
+
 
   async function getNumberMinted() {
     const ABI = [
@@ -46,8 +50,6 @@ const NftCollection = () => {
     setSpotsMinted(nftsMinted);
   }
 
-
-
   function alertClick() {
     alert("The Evolution is Coming Soon...");
   }
@@ -65,7 +67,7 @@ const NftCollection = () => {
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
                 onClick={onClickUrl("/learning")}
               >
-                Learn More ---> The Educatooooor
+                Learn More --- The Educatooooor
               </button>
       </div>
 </div>
@@ -91,6 +93,9 @@ const NftCollection = () => {
           </div>
         </div>
       </div>
+
+      
+
 
       <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
         <img className="w-full" src={goatdmain} alt=""></img>
@@ -189,6 +194,26 @@ const NftCollection = () => {
           </div>
         </div>
       </div>
+     {/* <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
+        <img className="w-full" src={fragments} alt=""></img>
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2 flex justify-center">
+            <h1>Fragments</h1>
+          </div>
+          <div className="text-slate-50 text-base">
+            <div className="flex flex-col space-y-4 py-4">
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+      hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                onClick={onClickUrl("/expand")}
+              >
+                Enter Fragments
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> 
+      */}
       <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
         <img className="w-full" src={evolve} alt=""></img>
         <div className="px-6 py-4">

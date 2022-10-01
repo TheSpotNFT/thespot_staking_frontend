@@ -13,6 +13,8 @@ import Staking from "./pages/Staking";
 import Evolve from "./pages/Evolve";
 import Team from "./pages/team";
 import Learning from "./pages/learning";
+import Expand from "./pages/Expand";
+import Blender from "./pages/Blender";
 
 
 function App() {
@@ -49,6 +51,8 @@ function App() {
         <Route path="/evolve" exact element={<Evolve />} />
         <Route path="/team" exact element={<Team />}/>
         <Route path="/learning" exact element={<Learning />}/>
+        <Route path="/expand" exact element={<Expand />}/>
+        <Route path="/blender" exact element={<Blender />}/>
       </Routes>
       <Footer />
     </div>
