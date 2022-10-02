@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import Card from '../components/ExpandCards';
+import Card from '../components/BlenderCards';
 import traits from '../traits';
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import Moralis from 'moralis';
 import Authenticate from '../components/Authenticate';
 import expandAbi from '../ABI/expandAbi.json';
 import Mint from '../components/Mint';
+import '../App.css';
+
 
 export const Blender = () => {
     const { account, isAuthenticated } = useMoralis();
@@ -14,6 +16,56 @@ export const Blender = () => {
     const spotNFTContract = '0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8';
     const [filter, setFilter] = useState('');
     const [showButton, setShowButton] = useState(false);
+    const [image, setImage] = useState();
+//For Text
+    const [textinput, setTextinput] = useState('Name');
+    const [xInput, setXInput] = useState('127');
+    const [yInput, setYInput] = useState('185');
+    const [fontSize, setFontSize] = useState('30');
+    const [font, setFont] = useState('Fantasy');
+    const [fontStyle, setFontStyle] = useState('normal');
+    const textinputUser = (event) => {
+        setTextinput(event.target.value);
+    }
+    const userXInput = (event) => {
+        setXInput(event.target.value);
+    }
+    const userYInput = (event) => {
+        setYInput(event.target.value);
+    }
+    const userFontSize = (event) => {
+        setFontSize(event.target.value);
+    }
+
+    const textFontOptions = [
+        { value: "Arial", label: "Arial" },
+        { value: "Comic Sans MS", label: "Comic Sans MS" },
+        { value: "Courier New", label: "Courier New" },
+        { value: "Times New Roman", label: "Times New Roman" },
+        { value: "Fantasy", label: "Fantasy" },
+        { value: "Sans-serif", label: "Sans-serif" },
+        { value: "Serif", label: "Serif" },
+        { value: "Cambria", label: "Cambria" },
+        
+
+    ];
+
+    const textFontStyleOptions = [
+        { value: "normal", label: "Normal" },
+        { value: "bold", label: "Bold" },
+
+
+    ];
+
+    const handleChange = selectedOption => {
+        console.log('handleChange', selectedOption.value);
+        setFont(selectedOption.value);
+    };
+
+    const handleChangeStyle = selectedOption => {
+        console.log('handleChange', selectedOption.value);
+        setFontStyle(selectedOption.value);
+    };
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -44,6 +96,7 @@ export const Blender = () => {
     const [unnamedID, setUnnamedID] = useState();
 
 
+
     {/* For Image retrieval */ }
     const [canvasImage, setCanvasImage] = useState({
         Background: '',
@@ -72,8 +125,8 @@ export const Blender = () => {
 
 
     //Set an array of save UnnamedNFT traits which are unburnable and available to all.
-    const start = 3001;
-    const end = 3099;
+    const start = 1;
+    const end = 2;
     const branding = [...Array(end - start + 1).keys()].map(x => x + start);
 
     {/* For retrieval of traits */ }
@@ -138,9 +191,14 @@ export const Blender = () => {
                     nftName={trait.nftName}
                     traitType={trait.traitType}
                     traitName={trait.traitName}
-                    image={trait.image}
+                    image1={trait.image1}
+                    image2={trait.image2}
+                    image3={trait.image3}
+                    image4={trait.image4}
+                    image5={trait.image5}
                     id={trait.id}
-                    brand={trait.brand}
+                    image={image}
+             
                 /></div>
         )
     }
@@ -189,6 +247,8 @@ export const Blender = () => {
             const ctx = canvas.current.getContext("2d")
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0, width, height);
+            ctx.font = `${fontStyle} ${fontSize}px Pixelated`;
+            ctx.fillText(textinput, xInput, yInput);
         }
 
         const imgHidden = new Image();
@@ -197,42 +257,27 @@ export const Blender = () => {
             const ctxHidden = hiddenCanvas.current.getContext("2d")
             ctxHidden.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
             ctxHidden.drawImage(imgHidden, 0, 0, 512, 512);
+            ctxHidden.font = `${fontStyle} ${fontSize}px ${font}`;
+            ctxHidden.fillText(textinput, xInput, yInput);
         }
 
-    }
+    
 
-    function drawImage1(layer) {
-        const img = new Image();
-        //img.setAttribute('crossOrigin', '*');
-        img.src = layer
-        img.onload = () => {
-            const ctx = canvas.current.getContext("2d")
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 60, 125, 120, 120);
         }
+       
 
-        const imgHidden = new Image();
-        imgHidden.src = layer
-        imgHidden.onload = () => {
-            const ctxHidden = hiddenCanvas.current.getContext("2d")
-            ctxHidden.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
-            ctxHidden.drawImage(imgHidden, 0, 0, 512, 512);
-        }
-
-    }
-
-
-
+    
 
     useEffect(() => {
         drawImage(canvasImage.Background);
         drawImage(canvasImage.Bubble);
-        drawImage1(canvasImage.Letter);
-
-
+        drawImage(canvasImage.Letter);
 
     }
+
         , [canvasImage, canvas, windowWidth, windowHeight])
+
+
     const [savedImage, setSavedImage] = useState('empty image') //Saving image for sending to IPFS. This part isn't active yet!
     function saveImage() {
         const result = (new Promise((resolve, reject) => {
@@ -266,7 +311,7 @@ export const Blender = () => {
             <div className='container flex-auto mx-auto w-full'>
 
                 {/* Canvas Row*/}
-                <div className="lg:sticky top-20 grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-4 mt-1 ml-6 sm:p-5 bg-slate-900 lg:pb-3">
+                <div className="lg:sticky top-20 grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-3 sm:grid-cols-3 gap-4 mt-1 ml-6 sm:p-5 bg-slate-900 lg:pb-3">
                     {/* canvas div */}
 
                     <div className="p-1 mb-10 sm:mb-10" ref={div} style={{ height: "23rem", width: "23rem" }}>
@@ -303,7 +348,17 @@ export const Blender = () => {
                         <div className="text-spot-yellow flex pl-2">Brand: <div className='text-white flex px-2'>{chosenBrand.Branding}</div></div>
                         {/* End of Indiv Stats */}
                         {/* Buttons */}
+                        <div className='font-mono text-white list-none flex pb-3'>
+                            <div className='text-spot-yellow'>Name: </div>
+                            {textinput}
+                        </div>
+                        <div className='col-span-2 text-white'>Tomb Name: </div><div><input type="text"
+                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-24" placeholder="Engrave"
+                                value={textinput}
+                                onChange={textinputUser.bind(this)}
+                            /></div>
                         <div className="pt-1 pb-1 pr-2 pl-1 flex">
+                          
 
                             <Mint
                                 chosenTrait={chosenTrait}
@@ -336,7 +391,8 @@ export const Blender = () => {
                         {/*  <div className='font-mono text-white list-none flex pb-0 pt-3 text-sm'>
                             <div className='text-spot-yellow font-bold pr-3 text-xl'>* </div>
                             Traits in your wallet:  {apiLoaded, checkMyTraits && walletTraits.length + ' nos.'} {apiLoaded, checkMyTraits && 'IDs: ' + walletTraits.map(trait => ' ' + trait)}
-                        </div>*/}
+                        </div>*/}<div className="text-white">Position</div>
+                        
                         <div className='font-mono text-white list-none flex text-sm pl-2'>
                             You must approve your unnamedNFT to be burnt before minting
                             <div className='text-[red] pr-3 text-xl'>* </div>

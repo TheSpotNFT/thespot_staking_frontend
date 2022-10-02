@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'Pixelated';
+  src: url('http://fonts.cdnfonts.com/css/common-pixel')
+}
