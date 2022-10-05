@@ -15,6 +15,7 @@ import Team from "./pages/team";
 import Learning from "./pages/learning";
 import Expand from "./pages/Expand";
 import Blender from "./pages/Blender";
+import Bizness from "./pages/Bizness";
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/learning" exact element={<Learning />}/>
         <Route path="/expand" exact element={<Expand />}/>
         <Route path="/blender" exact element={<Blender />}/>
+        <Route path="/bizness" exact element={<Bizness/>}/>
       </Routes>
       <Footer />
     </div>
