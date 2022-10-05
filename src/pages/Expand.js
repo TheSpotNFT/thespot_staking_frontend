@@ -20,7 +20,7 @@ function ExpandCards() {
   const {account, isAuthenticated} = useMoralis();
   const userAddress = account
   const fragContract = "0xa8f2A53A508d9510efE6b059c9e68D7d9855c60c";  //fuji
-  const [ownedCards, setOwnedCards] = useState(true)    
+  const [ownedCards, setOwnedCards] = useState(false)    
   const [isApproved, setIsApproved] = useState(false);
   const contractProcessor = useWeb3ExecuteFunction();
   const expandContract = "0xD1Cb30EE40804915307D8D842C0c205b3a557B87";  //fuji
