@@ -14,10 +14,57 @@ export const Bizness = () => {
     const spotTraitsContract = "0x6BDAd2A83a8e70F459786a96a0a9159574685c0e";
     const spotNFTContract = '0x9455aa2aF62B529E49fBFE9D10d67990C0140AFC';
 
+    //sliders
+    const [value, setValue] = useState(0);
+
+    const getBackgroundSize = () => {
+        return { backgroundSize: `${(xInput * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize1 = () => {
+        return { backgroundSize: `${(yInput * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize2 = () => {
+        return { backgroundSize: `${(xInputText * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize3 = () => {
+        return { backgroundSize: `${(yInputText * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize4 = () => {
+        return { backgroundSize: `${(xProject * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize5 = () => {
+        return { backgroundSize: `${(yProject * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize6 = () => {
+        return { backgroundSize: `${(xWallet * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize7 = () => {
+        return { backgroundSize: `${(yWallet * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize8 = () => {
+        return { backgroundSize: `${(xDomain * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize9 = () => {
+        return { backgroundSize: `${(yDomain * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize10 = () => {
+        return { backgroundSize: `${(xDiscord * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize11 = () => {
+        return { backgroundSize: `${(yDiscord * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize12 = () => {
+        return { backgroundSize: `${(xTwitter * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize13 = () => {
+        return { backgroundSize: `${(yTwitter * 100) / 500}% 100%` }
+    }
+
+
     const [filter, setFilter] = useState('');
 
     const [textinput, setTextinput] = useState('Name');
-    const [xInput, setXInput] = useState('170');
+    const [xInput, setXInput] = useState('175');
     const [yInput, setYInput] = useState('120');
     const [fontSize, setFontSize] = useState('30');
     const [font, setFont] = useState('');
@@ -28,9 +75,9 @@ export const Bizness = () => {
     const textinputUser = (event) => {
         setTextinput(event.target.value);
     }
-    const userXInput = (event) => {
+    /*const userXInput = (event) => {
         setXInput(event.target.value);
-    }
+    }*/
     const userYInput = (event) => {
         setYInput(event.target.value);
     }
@@ -38,24 +85,6 @@ export const Bizness = () => {
         setFontSize(event.target.value);
     }
 
-    const textFontOptions = [
-        { value: "Arial", label: "Arial" },
-        { value: "Comic Sans MS", label: "Comic Sans MS" },
-        { value: "Courier New", label: "Courier New" },
-        { value: "Times New Roman", label: "Times New Roman" },
-        { value: "Fantasy", label: "Fantasy" },
-        { value: "Sans-serif", label: "Sans-serif" },
-        { value: "Serif", label: "Serif" },
-        { value: "Cambria", label: "Cambria" },
-
-    ];
-
-    const textFontStyleOptions = [
-        { value: "normal", label: "Normal" },
-        { value: "bold", label: "Bold" },
-
-
-    ];
 
     const handleChange = selectedOption => {
         console.log('handleChange', selectedOption.value);
@@ -89,24 +118,6 @@ export const Bizness = () => {
         setFontSizeText(event.target.value);
     }
 
-    const textFontOptionsText = [
-        { value: "Arial", label: "Arial" },
-        { value: "Comic Sans MS", label: "Comic Sans MS" },
-        { value: "Courier New", label: "Courier New" },
-        { value: "Times New Roman", label: "Times New Roman" },
-        { value: "Fantasy", label: "Fantasy" },
-        { value: "Sans-serif", label: "Sans-serif" },
-        { value: "Serif", label: "Serif" },
-        { value: "Cambria", label: "Cambria" },
-
-    ];
-
-    const textFontStyleOptionsText = [
-        { value: "normal", label: "Normal" },
-        { value: "bold", label: "Bold" },
-
-
-    ];
 
     const [projectinput, setProjectinput] = useState('Project');
     const [xProject, setXProject] = useState('350');
@@ -414,7 +425,7 @@ export const Bizness = () => {
 
 
     }
-        , [canvasImage, canvas, windowWidth, windowHeight, font])
+        , [canvasImage, canvas, windowWidth, windowHeight, font, fontSize, fontSizeText, fontDomainSize, fontDiscordSize, fontProjectSize, fontTwitterSize, fontWalletSize, textinput, textinputText, projectinput, walletinput, domainInput, discordInput, textTwitter, xInput, yInput, xInputText, yInputText, xProject, yProject, xWallet, yWallet, xDomain, yDomain, xDiscord, yDiscord, xTwitter, yTwitter])
     const [savedImage, setSavedImage] = useState('empty image') //Saving image for sending to IPFS. This part isn't active yet!
     function saveImage() {
         const result = (new Promise((resolve, reject) => {
@@ -427,7 +438,6 @@ export const Bizness = () => {
 
         return result;
     }
-
 
 
 
@@ -476,23 +486,23 @@ export const Bizness = () => {
 
 
                         <div className='font-mono text-white list-none flex pb-3'>
-                            <div className='text-spot-yellow'>Name: </div>
+                            <div className='text-spot-yellow pr-2'>Name: </div>
                             {textinput}
                         </div>
                         <div className='font-mono text-white list-none flex pb-3'>
-                            <div className='text-spot-yellow'>Colour: </div>
+                            <div className='text-spot-yellow pr-2'>Colour: </div>
                             Bone
                         </div>
                         <div className='font-mono text-white list-none flex pb-3'>
-                            <div className='text-spot-yellow'>Texture: </div>
+                            <div className='text-spot-yellow pr-2'>Texture: </div>
                             None
                         </div>
                         <div className='font-mono text-white list-none flex pb-3'>
-                            <div className='text-spot-yellow'>Extras: </div>
+                            <div className='text-spot-yellow pr-2'>Extras: </div>
                             Letterpress
                         </div>
                         <div className='font-mono text-white list-none flex pb-3'>
-                            <div className='text-spot-yellow'>Font: </div>
+                            <div className='text-spot-yellow pr-2'>Font: </div>
                             {font}
                         </div>
                         {/* End of Indiv Stats */}
@@ -558,17 +568,9 @@ export const Bizness = () => {
                                 onChange={textinputUser.bind(this)}
                             /></div>
 
-                            <div className='col-span-2 text-white px-2'>X: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="x plot"
-                                value={xInput}
-                                onChange={userXInput.bind(this)}
-                            /></div>
+                            <div className='col-span-2 text-white px-2'>X: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={xInput} onChange={(e) => setXInput(e.target.valueAsNumber)} style={getBackgroundSize()} /></div></div>
 
-                            <div className='col-span-1 text-white px-2'>Y: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="y plot"
-                                value={yInput}
-                                onChange={userYInput.bind(this)}
-                            /></div>
+                            <div className='col-span-1 text-white px-2'>Y: </div><div className="pt-1 slideContainer"><input type="range" min={0} max={500} id="slider" class="slider" value={yInput} onChange={(e) => setYInput(e.target.valueAsNumber)} style={getBackgroundSize1()} /></div>
 
                             <div className='col-span-1 text-white px-2'>Font Size: </div><div><input type="text"
                                 className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="Font size"
@@ -595,17 +597,9 @@ export const Bizness = () => {
                                 onChange={textinputUserText.bind(this)}
                             /></div>
 
-                            <div className='col-span-2 text-white px-2'>X: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="x plot"
-                                value={xInputText}
-                                onChange={userXInputText.bind(this)}
-                            /></div>
+                            <div className='col-span-2 text-white px-2'>X: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={xInputText} onChange={(e) => setXInputText(e.target.valueAsNumber)} style={getBackgroundSize2()} /></div></div>
 
-                            <div className='col-span-1 text-white px-2'>Y: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="y plot"
-                                value={yInputText}
-                                onChange={userYInputText.bind(this)}
-                            /></div>
+                            <div className='col-span-1 text-white px-2'>Y: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={yInputText} onChange={(e) => setYInputText(e.target.valueAsNumber)} style={getBackgroundSize3()} /></div></div>
 
                             <div className='col-span-1 text-white px-2'>Font Size: </div><div><input type="text"
                                 className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="Font size"
@@ -623,17 +617,9 @@ export const Bizness = () => {
                                 onChange={userSetProjectInput.bind(this)}
                             /></div>
 
-                            <div className='col-span-2 text-white px-2'>X: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="x plot"
-                                value={xProject}
-                                onChange={userSetXProject.bind(this)}
-                            /></div>
+                            <div className='col-span-2 text-white px-2'>X: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={xProject} onChange={(e) => setXProject(e.target.valueAsNumber)} style={getBackgroundSize4()} /></div></div>
 
-                            <div className='col-span-1 text-white px-2'>Y: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="y plot"
-                                value={yProject}
-                                onChange={userSetYProject.bind(this)}
-                            /></div>
+                            <div className='col-span-1 text-white px-2'>Y: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={yProject} onChange={(e) => setYProject(e.target.valueAsNumber)} style={getBackgroundSize5()} /></div></div>
 
                             <div className='col-span-1 text-white px-2'>Font Size: </div><div><input type="text"
                                 className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="Font size"
@@ -652,17 +638,9 @@ export const Bizness = () => {
                                 onChange={userSetWalletInput.bind(this)}
                             /></div>
 
-                            <div className='col-span-2 text-white px-2'>X: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="x plot"
-                                value={xWallet}
-                                onChange={userSetXWallet.bind(this)}
-                            /></div>
+                            <div className='col-span-2 text-white px-2'>X: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={xWallet} onChange={(e) => setXWallet(e.target.valueAsNumber)} style={getBackgroundSize6()} /></div></div>
 
-                            <div className='col-span-1 text-white px-2'>Y: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="y plot"
-                                value={yWallet}
-                                onChange={userSetYWallet.bind(this)}
-                            /></div>
+                            <div className='col-span-1 text-white px-2'>Y: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={yWallet} onChange={(e) => setYWallet(e.target.valueAsNumber)} style={getBackgroundSize7()} /></div></div>
 
                             <div className='col-span-1 text-white px-2'>Font Size: </div><div><input type="text"
                                 className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="Font size"
@@ -681,17 +659,9 @@ export const Bizness = () => {
                                 onChange={userSetDomainInput.bind(this)}
                             /></div>
 
-                            <div className='col-span-2 text-white px-2'>X: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="x plot"
-                                value={xDomain}
-                                onChange={userSetXDomain.bind(this)}
-                            /></div>
+                            <div className='col-span-2 text-white px-2'>X: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={xDomain} onChange={(e) => setXDomain(e.target.valueAsNumber)} style={getBackgroundSize8()} /></div></div>
 
-                            <div className='col-span-1 text-white px-2'>Y: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="y plot"
-                                value={yDomain}
-                                onChange={userSetYDomain.bind(this)}
-                            /></div>
+                            <div className='col-span-1 text-white px-2'>Y: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={yDomain} onChange={(e) => setYDomain(e.target.valueAsNumber)} style={getBackgroundSize9()} /></div></div>
 
                             <div className='col-span-1 text-white px-2'>Font Size: </div><div><input type="text"
                                 className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="Font size"
@@ -710,17 +680,9 @@ export const Bizness = () => {
                                 onChange={userSetDiscordInput.bind(this)}
                             /></div>
 
-                            <div className='col-span-2 text-white px-2'>X: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="x plot"
-                                value={xDiscord}
-                                onChange={userSetXDiscord.bind(this)}
-                            /></div>
+                            <div className='col-span-2 text-white px-2'>X: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={xDiscord} onChange={(e) => setXDiscord(e.target.valueAsNumber)} style={getBackgroundSize10()} /></div></div>
 
-                            <div className='col-span-1 text-white px-2'>Y: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="y plot"
-                                value={yDiscord}
-                                onChange={userSetYDiscord.bind(this)}
-                            /></div>
+                            <div className='col-span-1 text-white px-2'>Y: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={yDiscord} onChange={(e) => setYDiscord(e.target.valueAsNumber)} style={getBackgroundSize11()} /></div></div>
 
                             <div className='col-span-1 text-white px-2'>Font Size: </div><div><input type="text"
                                 className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="Font size"
@@ -739,23 +701,16 @@ export const Bizness = () => {
                                 onChange={userSetTwitterInput.bind(this)}
                             /></div>
 
-                            <div className='col-span-2 text-white px-2'>X: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="x plot"
-                                value={xTwitter}
-                                onChange={userSetXTwitter.bind(this)}
-                            /></div>
+                            <div className='col-span-2 text-white px-2'>X: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={xTwitter} onChange={(e) => setXTwitter(e.target.valueAsNumber)} style={getBackgroundSize12()} /></div></div>
 
-                            <div className='col-span-1 text-white px-2'>Y: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="y plot"
-                                value={yTwitter}
-                                onChange={userSetYTwitter.bind(this)}
-                            /></div>
+                            <div className='col-span-1 text-white px-2'>Y: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={yTwitter} onChange={(e) => setYTwitter(e.target.valueAsNumber)} style={getBackgroundSize13()} /></div></div>
 
                             <div className='col-span-1 text-white px-2'>Font Size: </div><div><input type="text"
                                 className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="Font size"
                                 value={fontTwitterSize}
                                 onChange={userFontTwitterSize.bind(this)}
-                            /></div></div>
+
+                            /> </div></div>
 
                     </div>
 
