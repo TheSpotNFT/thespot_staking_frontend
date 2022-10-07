@@ -4,8 +4,9 @@ import { useWeb3ExecuteFunction, useMoralisCloudFunction, useMoralis } from "rea
 import Moralis from 'moralis';
 import fragAbi from '../ABI/fragAbi.json';
 import expandAbi from '../ABI/expandAbi.json';
+import biznessAbi from '../ABI/biznessAbi.json';
 
-function Mint(props) {
+function PrintCard(props) {
   const { account, isAuthenticated } = useMoralis();
   const [isLoading, setIsLoading] = useState(false)
   const contractProcessor = useWeb3ExecuteFunction();
@@ -21,31 +22,8 @@ function Mint(props) {
     return props.saveImage()
   }
 
-  async function isApprovedForAll() {
-    const approvedForAll = {
-      chain: "0xa869",
-      address: fragContract,
-      function_name: "isApprovedForAll",
-      abi: fragAbi,
-      params: {
-        owner: userAddress,
-        operator: expandContract, //expand fuji
-      },
-    };
-    const areYouApproved = await Moralis.Web3API.native.runContractFunction(
-      approvedForAll
-    );
-    setIsApproved(areYouApproved);
 
-
-  }
-  useEffect(() => {
-    isApprovedForAll();
-  }, []);
-
-  // console.log(isApproved, userAddress)
-
-  async function mintMyNFT() {
+  async function printMyCard() {
 
     setIsLoading(true)
     const base64 = await getImage()
@@ -101,16 +79,17 @@ function Mint(props) {
     await metaDataFile.saveIPFS();
     const metaDataUrl = await metaDataFile.ipfs();
     console.log(metaDataUrl)
-    console.log(props.unnamedID)
+
     await Moralis.enableWeb3();
     const sendOptions = {
-      contractAddress: "0xB043aaEb4337EA4BbB20C2ec5D846b00a0825ba5", //unnamedbranding mainnet
-      functionName: "mint",
-      abi: expandAbi,
-      msgValue: Moralis.Units.ETH(0.2),
+      contractAddress: "0x11C49B8d2F8C92598Fe0bea8fCb9f1B3f045A723", //bizness testnet
+      functionName: "printCard",
+      chain: 0xa869,
+      abi: biznessAbi,
+      msgValue: Moralis.Units.ETH(0),
       params: {
-        unnamedId: props.unnamedID,
-        uri: metaDataUrl,
+        _tokenID: props.unnamedID,
+        newTokenUri: metaDataUrl,
       },
     };
     const transaction = await contractProcessor.fetch({
@@ -121,7 +100,7 @@ function Mint(props) {
       },
       onSuccess: (tx) => {
         tx.wait(5)
-          .then(alert("Minted Successfully! View your NFT on Campfire, Kalao or Joepegs!"))
+          .then(alert("Printing Successfully! View your NFT on Campfire, Kalao or Joepegs!"))
           .then(setIsLoading(false))
           .then(console.log(tx));
       },
@@ -129,24 +108,7 @@ function Mint(props) {
 
   }
 
-  async function setApproval() {
-    await Moralis.enableWeb3();
-    const options = {
-      contractAddress: fragContract, //frag fuji
-      functionName: "setApprovalForAll",
-      abi: fragAbi,
-      params: {
-        operator: expandContract, //expand fuji
-        approved: "1",
-      },
-    };
-    await contractProcessor.fetch({
-      params: options,
-    });
-    const transaction = await Moralis.executeFunction(options);
-    await transaction.wait()
-    isApprovedForAll();
-  }
+
 
 
   if (isLoading) {
@@ -163,10 +125,10 @@ function Mint(props) {
   } else
     return (
 
-      <div className="flex pb-2">
-        <div className={isApproved ? "flex" : "flex"}>
-          <button className="m-1 rounded-lg px-3.5 py-2 border-2 border-gray-200 text-gray-200
-     hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base" /*onClick={mintMyNFT}*/>Print</button>
+      <div className="flex pb-2 w-full pr-2">
+        <div className={isApproved ? "flex w-full" : "flex w-full"}>
+          <button className="m-1 w-full rounded-lg px-3.5 py-2 border-2 border-gray-200 text-gray-200
+     hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base" onClick={printMyCard}>Print</button>
         </div>
 
 
@@ -179,7 +141,7 @@ function Mint(props) {
     )
 }
 
-export default Mint;
+export default PrintCard;
 
 
 {/*

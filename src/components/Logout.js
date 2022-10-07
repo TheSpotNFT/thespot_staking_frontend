@@ -23,7 +23,7 @@ function LogoutButton() {
       <div className="align-middle py-2">
         <h1 className="text-slate-600 text-right font-mono px-10 py-0">
           <b>Wallet:</b>{" "}
-          {chainId === "0xa86a" ? (
+          {chainId === "0xa869" ? (
             account.substring(0, 5) + "..." + account.slice(-4)
           ) : (
             <button

@@ -4,18 +4,17 @@ import traits from '../biznesscards';
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import Moralis from 'moralis';
 import Authenticate from '../pages/authenicate';
-import Mint from '../components/MintBizCard';
+import PrintCard from '../components/MintBizCard';
 import biznessMetadata from '../biznessMetadata';
 import '../canvas.css';
 
 export const Bizness = () => {
     const { account, isAuthenticated } = useMoralis();
     const userAddress = account
-    const spotTraitsContract = "0x6BDAd2A83a8e70F459786a96a0a9159574685c0e";
-    const spotNFTContract = '0x9455aa2aF62B529E49fBFE9D10d67990C0140AFC';
+    const biznessContract = "0x11C49B8d2F8C92598Fe0bea8fCb9f1B3f045A723";
+
 
     //sliders
-    const [value, setValue] = useState(0);
 
     const getBackgroundSize = () => {
         return { backgroundSize: `${(xInput * 100) / 500}% 100%` }
@@ -156,7 +155,7 @@ export const Bizness = () => {
         setYWallet(event.target.value);
     }
     const userSetWalletFontSize = (event) => {
-        setFontWallet(event.target.value);
+        setWalletFontSize(event.target.value);
     }
 
     const [domainInput, setDomainInput] = useState('Domain');
@@ -264,7 +263,7 @@ export const Bizness = () => {
 
 
     function getTraits() {
-        const options = { chain: "0xa86a", address: userAddress, token_address: spotTraitsContract };
+        const options = { chain: "0xa86a", address: userAddress, token_address: biznessContract };
         Moralis.Web3API.account.getNFTsForContract(options).then((data) => {
             const result = data.result
             setWalletTraits(result.map(nft => nft.token_id))
@@ -306,7 +305,9 @@ export const Bizness = () => {
         return (
 
             <div key={trait.edition} onClick={() => {
-                updateCanvasTraits(trait)
+
+                updateCanvasTraits(trait);
+
             }}> <Card
                     nftName={trait.nftName}
                     traitType={trait.traitType}
@@ -360,7 +361,7 @@ export const Bizness = () => {
         img.onload = () => {
             const ctx = canvas.current.getContext("2d")
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, 419, 226);
+            ctx.drawImage(img, 0, 0, 450, 450);
 
             ctx.font = `${fontStyle} ${fontSize}px ${font}`;
             ctx.fillText(textinput, xInput, yInput);
@@ -389,7 +390,7 @@ export const Bizness = () => {
         imgHidden.onload = () => {
             const ctxHidden = hiddenCanvas.current.getContext("2d")
             ctxHidden.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
-            ctxHidden.drawImage(imgHidden, 0, 0, 419, 226);
+            ctxHidden.drawImage(imgHidden, 0, 0, 450, 450);
 
             ctxHidden.font = `${fontStyle} ${fontSize}px ${font}`;
             ctxHidden.fillText(textinput, xInput, yInput);
@@ -461,7 +462,7 @@ export const Bizness = () => {
                 <div className="lg:sticky top-20 grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-4 mt-1 ml-6 bg-slate-900 lg:pb-3 pl-2">
                     {/* canvas div */}
 
-                    <div className="p-1 mb-20 pt-8" ref={div} style={{ height: "226px", width: "419px" }}>
+                    <div className="p-1 mb-20 pt-8" ref={div} style={{ height: "450px", width: "450px" }}>
                         <canvas
                             ref={canvas}
                             width={width}
@@ -471,8 +472,8 @@ export const Bizness = () => {
                         <div className="text-center md:pl-10"><h1 className='font-mono text-lg text-yellow-400 pt-1'>Printer</h1></div>
                         <canvas
                             ref={hiddenCanvas}
-                            width='419px'
-                            height='226px'
+                            width='450px'
+                            height='450px'
                             className='hidden' />
                     </div>
                     {/* canvas div ends */}
@@ -507,9 +508,9 @@ export const Bizness = () => {
                         </div>
                         {/* End of Indiv Stats */}
                         {/* Buttons */}
-                        <div className="pt-1 pb-1 pl-1 flex">
+                        <div className="pt-1 pb-1 pl-1 flex w-full">
 
-                            <Mint
+                            <PrintCard
                                 chosenTrait={chosenTrait}
                                 walletTraits={walletTraits}
                                 saveImage={saveImage}
@@ -548,11 +549,7 @@ export const Bizness = () => {
                                 setOwnedCards(!ownedCards)
                             }}>{!ownedCards ? 'My BizCards' : 'View All BizCards'}</button></div>
 
-                        <div className='flex'>
-                            <button className="w-full m-2 rounded-lg px-4 py-2 border-2 border-gray-200 text-gray-200
-    hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base" onClick={updateCanvasTraits}>Refresh Text</button>
 
-                        </div>
 
                         {/*<div className='font-mono text-white list-none flex pb-3 text-sm'><span className={traitsAvailability === '0' ? "text-green-300" : "text-[#fa2121]"}>
                             {traitsAvailability === '0' && currentDNA.length >= 14 ? 'Trait Combo is Unique!' : null}

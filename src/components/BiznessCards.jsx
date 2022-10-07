@@ -56,21 +56,7 @@ function Card(props) {
           <h5>ID: {props.id}</h5>
 
 
-          <div className="flex grid gap-2 py-2 pt-5 place-contents-center">
 
-            <Mint
-
-              userAddress={userAddress}
-              quantity={quantityInput}
-              id={props.id}
-
-            // branding={branding}
-            // traitsAvailability={traitsAvailability}
-            />
-
-
-
-          </div>
 
         </div>
       </div>
