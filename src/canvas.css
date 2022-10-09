@@ -23,6 +23,12 @@
     src: url('./fonts/Helvetica.ttf');
 }
 
+
+@font-face {
+    font-family: 'Pixeled';
+    src: url('./fonts/Pixeled.ttf');
+}
+
 .slideContainer {
     width: 200px;
 

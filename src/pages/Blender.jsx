@@ -5,8 +5,8 @@ import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import Moralis from 'moralis';
 import Authenticate from '../components/Authenticate';
 import expandAbi from '../ABI/expandAbi.json';
-import Mint from '../components/Mint';
-import '../App.css';
+import Mint from '../components/MintBlender';
+import '../canvas.css';
 
 
 export const Blender = () => {
@@ -17,13 +17,25 @@ export const Blender = () => {
     const [filter, setFilter] = useState('');
     const [showButton, setShowButton] = useState(false);
     const [image, setImage] = useState();
-//For Text
+    //For Text
     const [textinput, setTextinput] = useState('Name');
     const [xInput, setXInput] = useState('127');
     const [yInput, setYInput] = useState('185');
     const [fontSize, setFontSize] = useState('30');
-    const [font, setFont] = useState('Fantasy');
+    const [font, setFont] = useState('Pixeled');
     const [fontStyle, setFontStyle] = useState('normal');
+
+    const a = 1;
+    const b = 2;
+
+
+    const getBackgroundSize = () => {
+        return { backgroundSize: `${(xInput * 100) / 500}% 100%` }
+    }
+    const getBackgroundSize1 = () => {
+        return { backgroundSize: `${(yInput * 100) / 500}% 100%` }
+    }
+
     const textinputUser = (event) => {
         setTextinput(event.target.value);
     }
@@ -46,7 +58,7 @@ export const Blender = () => {
         { value: "Sans-serif", label: "Sans-serif" },
         { value: "Serif", label: "Serif" },
         { value: "Cambria", label: "Cambria" },
-        
+
 
     ];
 
@@ -84,16 +96,8 @@ export const Blender = () => {
         });
     };
     //For Metadata
-    const [unnamedBackGround, setUnnamedBackGround] = useState();
-    const [unnamedEyes, setUnnamedEyes] = useState();
-    const [unnamedMouth, setUnnamedMouth] = useState();
-    const [unnamedHat, setUnnamedHat] = useState();
-    const [unnamedSkin, setUnnamedSkin] = useState();
-    const [unnamedNose, setUnnamedNose] = useState();
-    const [unnamedSpecial, setUnnamedSpecial] = useState();
-    const [unnamedLines, setUnnamedLines] = useState();
-    const [unnamedBrand, setUnnamedBrand] = useState();
-    const [unnamedID, setUnnamedID] = useState();
+    const [unnamedBackGround, setUnnamedBackGround] = useState("1");
+
 
 
 
@@ -101,7 +105,7 @@ export const Blender = () => {
     const [canvasImage, setCanvasImage] = useState({
         Background: '',
         UnnamedNFT: '',
-        Branding: '',
+
     });
     {/* For Traits retrieval */ }
     const [chosenTrait, setChosenTrait] = useState({
@@ -196,9 +200,10 @@ export const Blender = () => {
                     image3={trait.image3}
                     image4={trait.image4}
                     image5={trait.image5}
+                    name={textinput}
                     id={trait.id}
                     image={image}
-             
+
                 /></div>
         )
     }
@@ -247,7 +252,7 @@ export const Blender = () => {
             const ctx = canvas.current.getContext("2d")
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0, width, height);
-            ctx.font = `${fontStyle} ${fontSize}px Pixelated`;
+            ctx.font = `${fontStyle} ${fontSize}px Pixeled`;
             ctx.fillText(textinput, xInput, yInput);
         }
 
@@ -257,16 +262,16 @@ export const Blender = () => {
             const ctxHidden = hiddenCanvas.current.getContext("2d")
             ctxHidden.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
             ctxHidden.drawImage(imgHidden, 0, 0, 512, 512);
-            ctxHidden.font = `${fontStyle} ${fontSize}px ${font}`;
+            ctxHidden.font = `${fontStyle} ${fontSize}px Pixeled`;
             ctxHidden.fillText(textinput, xInput, yInput);
         }
 
-    
 
-        }
-       
 
-    
+    }
+
+
+
 
     useEffect(() => {
         drawImage(canvasImage.Background);
@@ -275,7 +280,7 @@ export const Blender = () => {
 
     }
 
-        , [canvasImage, canvas, windowWidth, windowHeight])
+        , [canvasImage, canvas, windowWidth, windowHeight, textinput, xInput, yInput, fontSize])
 
 
     const [savedImage, setSavedImage] = useState('empty image') //Saving image for sending to IPFS. This part isn't active yet!
@@ -292,6 +297,8 @@ export const Blender = () => {
     }
 
 
+    //convert string to array
+
 
 
     // Add feature: Filter owned trait cards
@@ -300,6 +307,18 @@ export const Blender = () => {
 
     //filtering
 
+    var letterarray = textinput.split('');
+
+    console.log(letterarray[0]);
+    console.log(letterarray[1]);
+    console.log(letterarray[2]);
+    console.log(letterarray[3]);
+    console.log(letterarray[4]);
+    console.log(letterarray[5]);
+    console.log(letterarray[6]);
+    console.log(letterarray[7]);
+    console.log(letterarray[8]);
+    console.log(letterarray.length)
 
     if (!isAuthenticated) {
         return (
@@ -321,7 +340,7 @@ export const Blender = () => {
                             height={height}
                             className='mt-1 border-1 border-4 border-slate-500 text-center content-center p-5'
                         />
-                        <div className="text-center md: pl-10"><h1 className='font-mono text-lg text-yellow-400 pt-1'>Branding</h1></div>
+                        <div className="text-center md: pl-10"><h1 className='font-mono text-lg text-yellow-400 pt-1'>Blender</h1></div>
                         <canvas
                             ref={hiddenCanvas}
                             width='512px'
@@ -330,49 +349,48 @@ export const Blender = () => {
                     </div>
                     {/* canvas div ends */}
                     {/* Stats div*/}
-                    <div className='grow border-dashed border-4 border-slate-500 p-3 pl-5 m-1 text-left col-span-1 w-80 md:mt-10 lg:mt-2 mt-10 sm:mt-10 text-sm' style={{ height: "26rem", width: "23rem" }}>
+                    <div className='grow border-dashed border-4 border-slate-500 p-3 pl-5 m-1 text-left col-span-1 w-80 md:mt-10 lg:mt-2 mt-10 sm:mt-10 text-sm' style={{ height: "24rem", width: "24rem" }}>
                         {/* Individual Stats */}
                         <div className='font-mono text-white list-none flex'>
-                            <div className={`text-${(walletTraits.includes(`${chosenTrait.UnnamedNFTID}`)) ? "spot-yellow" : "[red]"} font-bold pr-3 pl-2`}>UnnamedNFT: </div>
+                            <div className={`text-${(walletTraits.includes(`${chosenTrait.UnnamedNFTID}`)) ? "spot-yellow" : "[red]"} font-bold pr-3 pl-2`}>Blended: </div>
                             {chosenTrait.UnnamedNFTID}
                         </div>
 
                         <div className="text-spot-yellow flex pl-2">BackGround: <div className='text-white flex px-2'>{unnamedBackGround}</div></div>
-                        <div className="text-spot-yellow flex pl-2">Eyes: <div className='text-white flex px-2'>{unnamedEyes}</div></div>
-                        <div className="text-spot-yellow flex pl-2">Mouth: <div className='text-white flex px-2'>{unnamedMouth}</div></div>
-                        <div className="text-spot-yellow flex pl-2">Hat: <div className='text-white flex px-2'>{unnamedHat}</div></div>
-                        <div className="text-spot-yellow flex pl-2">Skin: <div className='text-white flex px-2'>{unnamedSkin}</div></div>
-                        <div className="text-spot-yellow flex pl-2">Nose: <div className='text-white flex px-2'>{unnamedNose}</div></div>
-                        <div className="text-spot-yellow flex pl-2">Special: <div className='text-white flex px-2'>{unnamedSpecial}</div></div>
-                        <div className="text-spot-yellow flex pl-2">Lines: <div className='text-white flex px-2'>{unnamedLines}</div></div>
-                        <div className="text-spot-yellow flex pl-2">Brand: <div className='text-white flex px-2'>{chosenBrand.Branding}</div></div>
+
                         {/* End of Indiv Stats */}
                         {/* Buttons */}
-                        <div className='font-mono text-white list-none flex pb-3'>
-                            <div className='text-spot-yellow'>Name: </div>
+                        <div className='font-mono text-white list-none flex pb-3 pl-2'>
+                            <div className='text-spot-yellow pr-2'>Spot: </div>
                             {textinput}
                         </div>
-                        <div className='col-span-2 text-white'>Tomb Name: </div><div><input type="text"
-                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-24" placeholder="Engrave"
-                                value={textinput}
-                                onChange={textinputUser.bind(this)}
-                            /></div>
+                        <div className='font-mono text-white list-none flex pb-3 pl-2'>
+                            You must own the expanded letter nft to use it in your spot
+                        </div>
+                        <div className='font-mono text-white list-none flex pb-3 pl-2'>
+                            <div className={`text-${(letterarray.length === 9) ? "spot-yellow" : "[red]"} text-spot-yellow pr-2`}>Length: </div>
+                            {letterarray.length}
+                        </div>
+                        <div className='font-mono text-white list-none flex pb-3 pl-2'>
+                            * Length must = 9 (add spaces to the end)
+                        </div>
+
+
+
                         <div className="pt-1 pb-1 pr-2 pl-1 flex">
-                          
+
 
                             <Mint
                                 chosenTrait={chosenTrait}
                                 walletTraits={walletTraits}
-                                unnamedBackGround={unnamedBackGround}
-                                unnamedBrand={unnamedBrand}
-                                unnamedEyes={unnamedEyes}
-                                unnamedMouth={unnamedMouth}
-                                unnamedHat={unnamedHat}
-                                unnamedSkin={unnamedSkin}
-                                unnamedNose={unnamedNose}
-                                unnamedSpecial={unnamedSpecial}
-                                unnamedLines={unnamedLines}
-                                unnamedID={unnamedID}
+                                background={chosenTrait.UnnamedNFTID} //placeholder
+                                letter1={letterarray[0]}
+                                letter2={letterarray[1]}
+                                letter3={letterarray[2]}
+                                letter4={letterarray[3]}
+                                letter5={letterarray[4]}
+                                letter6={letterarray[5]}
+                                name={textinput}
                                 saveImage={saveImage}
                                 userAddress={userAddress}
                                 canvas={chosenTrait}
@@ -391,17 +409,16 @@ export const Blender = () => {
                         {/*  <div className='font-mono text-white list-none flex pb-0 pt-3 text-sm'>
                             <div className='text-spot-yellow font-bold pr-3 text-xl'>* </div>
                             Traits in your wallet:  {apiLoaded, checkMyTraits && walletTraits.length + ' nos.'} {apiLoaded, checkMyTraits && 'IDs: ' + walletTraits.map(trait => ' ' + trait)}
-                        </div>*/}<div className="text-white">Position</div>
-                        
-                        <div className='font-mono text-white list-none flex text-sm pl-2'>
-                            You must approve your unnamedNFT to be burnt before minting
-                            <div className='text-[red] pr-3 text-xl'>* </div>
-                            UnnamedNFT not in your wallet.
+                        </div>*/}
+
+                        <div className='font-mono text-white list-none flex text-sm pl-2 py-2'>
+                            You must approve your expansions to be burnt before minting
+
                         </div>
                         <div className="flex pr-2 pl-2 pt-2"> <button className="w-full rounded-lg px-1 py-1 border-2 border-gray-200 text-gray-200
     hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base" onClick={() => {
                                 setOwnedCards(!ownedCards)
-                            }}>{!ownedCards ? 'My UnnamedNFTs' : 'View All UnnamedNFTs'}</button></div>
+                            }}>{!ownedCards ? 'My Expanded NFTs' : 'View All Expanded NFTs'}</button></div>
                         {/*<div className='font-mono text-white list-none flex pb-3 text-sm'><span className={traitsAvailability === '0' ? "text-green-300" : "text-[#fa2121]"}>
                             {traitsAvailability === '0' && currentDNA.length >= 14 ? 'Trait Combo is Unique!' : null}
                             {traitsAvailability === '1' && currentDNA.length >= 14 ? "Trait Combo's Been Minted!" : null}</span>
@@ -423,7 +440,23 @@ export const Blender = () => {
                     </div>*/}{/* SearchBox Ends */}
 
 
+                    <div className="pt-12 pl-2 pb-4">
+                        <div className="flex">
+                            <div className='col-span-2 text-white pr-5'>Name: </div><div><input type="text"
+                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-24" placeholder="Spot"
+                                value={textinput}
+                                onChange={textinputUser.bind(this)}
+                            /></div>
 
+                            <div className='col-span-2 text-white px-2'>X: </div><div class="slideContainer"><div className="pt-1"><input type="range" min={0} max={500} id="slider" class="slider" value={xInput} onChange={(e) => setXInput(e.target.valueAsNumber)} style={getBackgroundSize()} /></div></div>
+
+                            <div className='col-span-1 text-white px-2'>Y: </div><div className="pt-1 slideContainer"><input type="range" min={0} max={500} id="slider" class="slider" value={yInput} onChange={(e) => setYInput(e.target.valueAsNumber)} style={getBackgroundSize1()} /></div>
+
+                            <div className='col-span-1 text-white px-2'>Font Size: </div><div><input type="text"
+                                className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-12" placeholder="Font size"
+                                value={fontSize}
+                                onChange={userFontSize.bind(this)}
+                            /></div></div></div>
 
                 </div>{/* Canvas Row Div Ends*/}
                 <div className='overflow-y-auto'>
