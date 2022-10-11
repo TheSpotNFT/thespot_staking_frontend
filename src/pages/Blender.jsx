@@ -18,15 +18,15 @@ export const Blender = () => {
     const [showButton, setShowButton] = useState(false);
     const [image, setImage] = useState();
     //For Text
-    const [textinput, setTextinput] = useState('Name');
+    const [textinput, setTextinput] = useState('');
     const [xInput, setXInput] = useState('127');
     const [yInput, setYInput] = useState('185');
     const [fontSize, setFontSize] = useState('30');
+    const [xInputX3, setXInputX3] = useState('');
+    const [yInputX3, setYInputX3] = useState('');
+    const [fontSizeX3, setFontSizeX3] = useState('');
     const [font, setFont] = useState('Pixeled');
     const [fontStyle, setFontStyle] = useState('normal');
-
-    const a = 1;
-    const b = 2;
 
 
     const getBackgroundSize = () => {
@@ -39,45 +39,11 @@ export const Blender = () => {
     const textinputUser = (event) => {
         setTextinput(event.target.value);
     }
-    const userXInput = (event) => {
-        setXInput(event.target.value);
-    }
-    const userYInput = (event) => {
-        setYInput(event.target.value);
-    }
+ 
     const userFontSize = (event) => {
         setFontSize(event.target.value);
     }
 
-    const textFontOptions = [
-        { value: "Arial", label: "Arial" },
-        { value: "Comic Sans MS", label: "Comic Sans MS" },
-        { value: "Courier New", label: "Courier New" },
-        { value: "Times New Roman", label: "Times New Roman" },
-        { value: "Fantasy", label: "Fantasy" },
-        { value: "Sans-serif", label: "Sans-serif" },
-        { value: "Serif", label: "Serif" },
-        { value: "Cambria", label: "Cambria" },
-
-
-    ];
-
-    const textFontStyleOptions = [
-        { value: "normal", label: "Normal" },
-        { value: "bold", label: "Bold" },
-
-
-    ];
-
-    const handleChange = selectedOption => {
-        console.log('handleChange', selectedOption.value);
-        setFont(selectedOption.value);
-    };
-
-    const handleChangeStyle = selectedOption => {
-        console.log('handleChange', selectedOption.value);
-        setFontStyle(selectedOption.value);
-    };
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -160,6 +126,12 @@ export const Blender = () => {
          updateTraitMetaData();
      }, [chosenTrait])*/
 
+
+     function valueX3() {
+        setFontSizeX3(fontSize*2);
+        setXInputX3(xInput*2);
+        setYInputX3(yInput*2);
+     }
 
     async function updateCanvasTraits(trait) {
         setCanvasImage(prevImage => ({ ...prevImage, [trait.traitType]: trait.image }))
@@ -251,7 +223,7 @@ export const Blender = () => {
         img.onload = () => {
             const ctx = canvas.current.getContext("2d")
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, width, height);
+            ctx.drawImage(img, 0, 0, 450, 450);
             ctx.font = `${fontStyle} ${fontSize}px Pixeled`;
             ctx.fillText(textinput, xInput, yInput);
         }
@@ -261,9 +233,9 @@ export const Blender = () => {
         imgHidden.onload = () => {
             const ctxHidden = hiddenCanvas.current.getContext("2d")
             ctxHidden.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
-            ctxHidden.drawImage(imgHidden, 0, 0, 512, 512);
-            ctxHidden.font = `${fontStyle} ${fontSize}px Pixeled`;
-            ctxHidden.fillText(textinput, xInput, yInput);
+            ctxHidden.drawImage(imgHidden, 0, 0, 900, 900);
+            ctxHidden.font = `${fontStyle} ${fontSizeX3}px Pixeled`;
+            ctxHidden.fillText(textinput, xInputX3, yInputX3);
         }
 
 
@@ -274,13 +246,15 @@ export const Blender = () => {
 
 
     useEffect(() => {
+        valueX3();
         drawImage(canvasImage.Background);
         drawImage(canvasImage.Bubble);
         drawImage(canvasImage.Letter);
+       
 
     }
 
-        , [canvasImage, canvas, windowWidth, windowHeight, textinput, xInput, yInput, fontSize])
+        , [canvasImage, canvas, windowWidth, windowHeight, textinput, xInput, yInput, fontSize, userFontSize,font])
 
 
     const [savedImage, setSavedImage] = useState('empty image') //Saving image for sending to IPFS. This part isn't active yet!
@@ -330,21 +304,21 @@ export const Blender = () => {
             <div className='container flex-auto mx-auto w-full'>
 
                 {/* Canvas Row*/}
-                <div className="lg:sticky top-20 grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-3 sm:grid-cols-3 gap-4 mt-1 ml-6 sm:p-5 bg-slate-900 lg:pb-3">
+                <div className="lg:sticky top-20 grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-4 mt-1 ml-6 sm:p-5 bg-slate-900 lg:pb-3">
                     {/* canvas div */}
 
-                    <div className="p-1 mb-10 sm:mb-10" ref={div} style={{ height: "23rem", width: "23rem" }}>
+                    <div className="p-1 mb-10 sm:mb-10" ref={div} style={{ height: "32rem", width: "450px" }}>
                         <canvas
                             ref={canvas}
-                            width={width}
-                            height={height}
+                            width='450px'
+                            height='450px'
                             className='mt-1 border-1 border-4 border-slate-500 text-center content-center p-5'
                         />
                         <div className="text-center md: pl-10"><h1 className='font-mono text-lg text-yellow-400 pt-1'>Blender</h1></div>
                         <canvas
                             ref={hiddenCanvas}
-                            width='512px'
-                            height='512px'
+                            width='900px'
+                            height='900px'
                             className='hidden' />
                     </div>
                     {/* canvas div ends */}
@@ -440,7 +414,7 @@ export const Blender = () => {
                     </div>*/}{/* SearchBox Ends */}
 
 
-                    <div className="pt-12 pl-2 pb-4">
+                    <div className="pt-4 pl-4 pb-4 pr-4">
                         <div className="flex">
                             <div className='col-span-2 text-white pr-5'>Name: </div><div><input type="text"
                                 className="border-2 border-slate-600 bg-slate-400 text-left font-mono placeholder-slate-600 pl-2 w-24" placeholder="Spot"
