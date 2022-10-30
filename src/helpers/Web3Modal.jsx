@@ -2,7 +2,7 @@ import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import WalletConnect from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
 
-const providerOptions = {
+/*const providerOptions = {
   walletconnect: {
     package: WalletConnect, // required
     options: {
@@ -17,9 +17,9 @@ const providerOptions = {
     },
   },
 };
-
+*/
 export const web3ModalSetup = () =>
   new Web3Modal({
     cacheProvider: true,
-    providerOptions: providerOptions,
+    //providerOptions: providerOptions,
   });
