@@ -94,7 +94,13 @@ function App() {
             setWeb3Provider={setWeb3Provider}
             logoutOfWeb3Modal={logoutOfWeb3Modal}/>
       <Routes>
-        <Route path="/" exact element={<Main />} />
+        <Route path="/" exact element={<Main 
+        account={account}
+        web3Modal={web3Modal}
+        loadWeb3Modal={loadWeb3Modal}
+        web3Provider={web3Provider}
+        setWeb3Provider={setWeb3Provider}
+        logoutOfWeb3Modal={logoutOfWeb3Modal}/>} />
         <Route path="/analog" exact element={<AnalogCollection 
             account={account}
             web3Modal={web3Modal}
