@@ -3,7 +3,14 @@ import spotlogo from "../images/thespot.png";
 import LogoutButton from "./Logout";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-export const Navbar = () => {
+export const Navbar = ({
+  account,
+  web3Modal,
+  loadWeb3Modal,
+  web3Provider,
+  setWeb3Provider,
+  logoutOfWeb3Modal,
+}) => {
   let Links = [
     { name: "Home", link: "/" },
     { name: "Analog", link: "/analog" },
@@ -52,7 +59,13 @@ export const Navbar = () => {
           >
             <GiHamburgerMenu name={open ? "close" : "menu"} />
           </div>
-          <LogoutButton />
+          <LogoutButton 
+            account={account}
+            web3Modal={web3Modal}
+            loadWeb3Modal={loadWeb3Modal}
+            web3Provider={web3Provider}
+            setWeb3Provider={setWeb3Provider}
+            logoutOfWeb3Modal={logoutOfWeb3Modal}/>
         </div>
       </div>
     </nav>

@@ -25,7 +25,7 @@ function Card(props) {
 
 
     <div className="w-full rounded overflow-hidden shadow-lg bg-slate-700 hover: hover:scale-105 hover:bg-slate-500 duration-300">
-      <img className="w-full" src={props.image1} alt={props.nftName}></img>
+      <img className="w-full" src={props.image} alt={props.nftName}></img>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">
           <h3>NFT Name: {props.nftName}</h3>

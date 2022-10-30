@@ -10,8 +10,10 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <MoralisProvider
-        serverUrl="https://hj9hjla7la12.usemoralis.com:2053/server"
-        appId="f7r18HAbBn0gGcC1lyVBniHLEqoeRROxKfd5UepV"
+      serverUrl="https://spot-moralis.herokuapp.com/server" //test local
+      appId="001"  //test local
+        //serverUrl="https://hj9hjla7la12.usemoralis.com:2053/server" //mainnet
+        //appId="f7r18HAbBn0gGcC1lyVBniHLEqoeRROxKfd5UepV" //mainnet
       >
         <App />
       </MoralisProvider>

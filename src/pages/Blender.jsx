@@ -39,7 +39,7 @@ export const Blender = () => {
     const textinputUser = (event) => {
         setTextinput(event.target.value);
     }
- 
+
     const userFontSize = (event) => {
         setFontSize(event.target.value);
     }
@@ -69,29 +69,17 @@ export const Blender = () => {
 
     {/* For Image retrieval */ }
     const [canvasImage, setCanvasImage] = useState({
-        Background: '',
-        UnnamedNFT: '',
+        Background: 'Purple',
+        Text: '',
 
     });
     {/* For Traits retrieval */ }
     const [chosenTrait, setChosenTrait] = useState({
-        Background: '',
-        UnnamedNFT: '',
-        UnnamedNFTID: '1',
-        Eyes: '',
-        Mouth: '',
-        Hat: '',
-        Skin: '',
-        Nose: '',
-        Special: '',
-        Lines: '',
+        Background: 'Purple',
+        Text: '',
 
     })
 
-    const [chosenBrand, setChosenBrand] = useState({
-        Branding: '',
-        BrandingID: ''
-    })
 
 
     //Set an array of save UnnamedNFT traits which are unburnable and available to all.
@@ -127,16 +115,16 @@ export const Blender = () => {
      }, [chosenTrait])*/
 
 
-     function valueX3() {
-        setFontSizeX3(fontSize*2);
-        setXInputX3(xInput*2);
-        setYInputX3(yInput*2);
-     }
+    function valueX3() {
+        setFontSizeX3(fontSize * 2);
+        setXInputX3(xInput * 2);
+        setYInputX3(yInput * 2);
+    }
 
     async function updateCanvasTraits(trait) {
         setCanvasImage(prevImage => ({ ...prevImage, [trait.traitType]: trait.image }))
         setChosenTrait(prevTrait => ({ ...prevTrait, [trait.traitType]: trait.traitName, [trait.traitType + 'ID']: trait.id }))
-        setChosenBrand(prevBrand => ({ ...prevBrand, [trait.traitType]: trait.brand }))
+
 
 
     }
@@ -167,14 +155,11 @@ export const Blender = () => {
                     nftName={trait.nftName}
                     traitType={trait.traitType}
                     traitName={trait.traitName}
-                    image1={trait.image1}
-                    image2={trait.image2}
-                    image3={trait.image3}
-                    image4={trait.image4}
-                    image5={trait.image5}
+                    image={trait.image}
                     name={textinput}
                     id={trait.id}
-                    image={image}
+
+
 
                 /></div>
         )
@@ -250,11 +235,11 @@ export const Blender = () => {
         drawImage(canvasImage.Background);
         drawImage(canvasImage.Bubble);
         drawImage(canvasImage.Letter);
-       
+
 
     }
 
-        , [canvasImage, canvas, windowWidth, windowHeight, textinput, xInput, yInput, fontSize, userFontSize,font])
+        , [canvasImage, canvas, windowWidth, windowHeight, textinput, xInput, yInput, fontSize, userFontSize, font])
 
 
     const [savedImage, setSavedImage] = useState('empty image') //Saving image for sending to IPFS. This part isn't active yet!
@@ -326,11 +311,11 @@ export const Blender = () => {
                     <div className='grow border-dashed border-4 border-slate-500 p-3 pl-5 m-1 text-left col-span-1 w-80 md:mt-10 lg:mt-2 mt-10 sm:mt-10 text-sm' style={{ height: "24rem", width: "24rem" }}>
                         {/* Individual Stats */}
                         <div className='font-mono text-white list-none flex'>
-                            <div className={`text-${(walletTraits.includes(`${chosenTrait.UnnamedNFTID}`)) ? "spot-yellow" : "[red]"} font-bold pr-3 pl-2`}>Blended: </div>
-                            {chosenTrait.UnnamedNFTID}
+                            <div className={'pl-2 pb-4 text-spot-yellow'}>Blended </div>
+
                         </div>
 
-                        <div className="text-spot-yellow flex pl-2">BackGround: <div className='text-white flex px-2'>{unnamedBackGround}</div></div>
+                        <div className="text-spot-yellow flex pl-2">BackGround: <div className='text-white flex px-2'>{chosenTrait.nftName}</div></div>
 
                         {/* End of Indiv Stats */}
                         {/* Buttons */}

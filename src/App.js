@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { Navbar } from "./components/Navbar";
@@ -16,39 +16,103 @@ import Learning from "./pages/learning";
 import Expand from "./pages/Expand";
 import Blender from "./pages/Blender";
 import Bizness from "./pages/Bizness";
-
+import { web3ModalSetup } from "./helpers/Web3Modal";
+import { ethers } from "ethers";
 
 function App() {
-  const {
-    isWeb3Enabled,
-    isWeb3EnableLoading,
-    enableWeb3,
-    isAuthenticated,
-    account,
-  } = useMoralis();
+  //adds for auth
+  const [account, setAccount] = useState("");
+  const [txProcessing, setTxProcessing] = useState(false);
+  const [web3Provider, setWeb3Provider] = useState(null);
+  const web3Modal = web3ModalSetup();
+  
   const Web3Api = useMoralisWeb3Api();
-  const { switchNetwork, chainId, chain } = useChain();
+
+  const logoutOfWeb3Modal = async () => {
+    await web3Modal.clearCachedProvider();
+    if (
+      web3Provider &&
+      web3Provider.provider &&
+      typeof web3Provider.provider.disconnect == "function"
+    ) {
+      await web3Provider.provider.disconnect();
+    }
+    setTimeout(() => {
+      window.location.reload();
+    }, 1);
+  };
+
+  const loadWeb3Modal = useCallback(async () => {
+    const provider = await web3Modal.connect();
+    setWeb3Provider(new ethers.providers.Web3Provider(provider));
+
+    provider.on("chainChanged", (chainId) => {
+      console.log(`Chain changed to -- ${chainId}`);
+      setWeb3Provider(new ethers.providers.Web3Provider(provider));
+      setTimeout(() => {
+        window.location.reload();
+      }, 1);
+    });
+
+    provider.on("accountsChanged", () => {
+      console.log(`Account changed`);
+      setWeb3Provider(new ethers.providers.Web3Provider(provider));
+    });
+
+    // Subscribe to session disconnection
+    provider.on("disconnect", (code, reason) => {
+      console.log("Disconnecting...");
+      console.log(code, reason);
+      logoutOfWeb3Modal();
+    });
+    // eslint-disable-next-line
+  }, [setWeb3Provider]);
 
   useEffect(() => {
-    const connectorId = window.localStorage.getItem("connectorId");
-    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
-      enableWeb3({ provider: connectorId });
+    if (web3Modal && web3Modal.cachedProvider) {
+      loadWeb3Modal();
     }
-    //(chainId !== '0xa86a')&&switchNetwork("0xa86a") //MAINNET
-    //(chainId !== '0xa869')&&switchNetwork("0xa869") FUJI
-  }, [isAuthenticated, isWeb3Enabled, chain]);
-/*
-  if (!isAuthenticated || account === null) {
-    return <Authenticate />;
-  }
-*/
+  }, [loadWeb3Modal]);
+
+  useEffect(() => {
+    const getAddress = async () => {
+      if (web3Provider && web3Provider.getSigner()) {
+        const newAddress = await web3Provider.getSigner().getAddress();
+        setAccount(newAddress);
+      }
+    };
+    getAddress();
+  }, [web3Provider]);
+
+
   return (
     <div className="bg-slate-700">
-      <Navbar />
+      <Navbar account={account}
+            web3Modal={web3Modal}
+            loadWeb3Modal={loadWeb3Modal}
+            web3Provider={web3Provider}
+            setWeb3Provider={setWeb3Provider}
+            logoutOfWeb3Modal={logoutOfWeb3Modal}/>
       <Routes>
         <Route path="/" exact element={<Main />} />
-        <Route path="/analog" exact element={<AnalogCollection />} />
-        <Route path="/staking" exact element={<Staking />} />
+        <Route path="/analog" exact element={<AnalogCollection 
+            account={account}
+            web3Modal={web3Modal}
+            loadWeb3Modal={loadWeb3Modal}
+            web3Provider={web3Provider}
+            setWeb3Provider={setWeb3Provider}
+            logoutOfWeb3Modal={logoutOfWeb3Modal}
+            txProcessing={txProcessing}
+            setTxProcessing={setTxProcessing}/>} />
+        <Route path="/staking" exact element={<Staking 
+            account={account}
+            web3Modal={web3Modal}
+            loadWeb3Modal={loadWeb3Modal}
+            web3Provider={web3Provider}
+            setWeb3Provider={setWeb3Provider}
+            logoutOfWeb3Modal={logoutOfWeb3Modal}
+            txProcessing={txProcessing}
+            setTxProcessing={setTxProcessing}/>} />
         <Route path="/evolve" exact element={<Evolve />} />
         <Route path="/team" exact element={<Team />}/>
         <Route path="/learning" exact element={<Learning />}/>

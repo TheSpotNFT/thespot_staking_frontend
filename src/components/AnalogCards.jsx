@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
+import axios from "axios";
+import { ethers, Contract } from "ethers";
+import { ANALOG_ABI, ANALOG_ADDRESS } from '../ABI/analogAbi';
 
-function Card(props) {
+function Card(
+  props,
+  account,
+  txProcessing,
+  setTxProcessing,
+  web3Provider,) {
   const { Moralis } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
   const [variation, setVariation] = useState(props.image1);
   const [variationSelection, setVariationSelection] = useState("1");
-  const { account, isAuthenticated } = useMoralis();
   const analogContract = "0xBe18CF471925d683c272AAFe9d1aaFDA99612B69";
   const userAddress = account;
   const [isLoading, setIsLoading] = useState([]);
   const [variation2, setVariation2] = useState([]);
 
-function showVariation(){
-  if (props.variations === "2") {
-    setVariation2(false);
+  function showVariation() {
+    if (props.variations === "2") {
+      setVariation2(false);
     } else setVariation2(true);
-}
-console.log(variation2);
+  }
+  console.log(variation2);
 
   function changeVariation1() {
     setVariation(props.image1);
@@ -34,6 +41,36 @@ console.log(variation2);
   function changeVariation4() {
     setVariation(props.image4);
     setVariationSelection("4");
+  }
+
+  async function commitVar() {
+    //setTxProcessing(true);
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        if (ANALOG_ABI && ANALOG_ADDRESS && signer) {
+          const contract = new Contract(ANALOG_ADDRESS, ANALOG_ABI, signer);
+          let options = {
+            value: ethers.utils.parseEther("1"),
+          };
+          console.log(props.id, variationSelection);
+
+
+          let tx = await contract.changeVariation(props.id, variationSelection, options);
+          console.log(tx.hash);
+          //setTxProcessing(false);
+          alert(
+            "Variation Committed! Check out your NFT on Campfire, Kalao or Joepegs!"
+          );
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      //setTxProcessing(false);
+    }
   }
 
   async function commitVariation() {
@@ -240,7 +277,7 @@ console.log(variation2);
             <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-              onMouseEnter={changeVariation1}
+
               onClick={changeVariation1}
             >
               1
@@ -248,37 +285,37 @@ console.log(variation2);
             <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-              onMouseEnter={changeVariation2}
+
               onClick={changeVariation2}
             >
               2
             </button>
             <div className={props.variations === "2" ? "hidden" : "flex grid gap-4"}>
-            <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-              onMouseEnter={changeVariation3}
-              onClick={changeVariation3}
-            >
-              3
-            </button></div>
+
+                onClick={changeVariation3}
+              >
+                3
+              </button></div>
             <div className={props.variations === "2" ? "hidden" : "flex grid gap-4"}>
-            <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-              onMouseEnter={changeVariation4}
-              onClick={changeVariation4}
-            >
-              4
-            </button></div>
+
+                onClick={changeVariation4}
+              >
+                4
+              </button></div>
           </div>
           <div className="flex grid grid-cols-1 justify-center">
-         
+
             <h5></h5> <button
               className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
       hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l flex justify-center"
-              
-              onClick={commitVariation}
+
+              onClick={commitVar}
             >
               Click to Commit Variation {variationSelection}
             </button>

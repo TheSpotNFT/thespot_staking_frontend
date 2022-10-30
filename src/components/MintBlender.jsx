@@ -39,12 +39,12 @@ function Mint(props) {
 
 
   }
-  /*useEffect(() => {
+  useEffect(() => {
     isApprovedForAll();
   }, []);
-  */
 
-  // console.log(isApproved, userAddress)
+
+  console.log(isApproved, userAddress)
 
 
   async function blendMyNfts() {
@@ -155,16 +155,29 @@ function Mint(props) {
     return (
 
       <div className="flex">
+        <div className={isApproved ? "flex" : "hidden"}>
+          <button className="m-1 rounded-lg px-1 py-1 border-2 border-gray-200 text-gray-200
+     hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base" onClick={blendMyNfts}>Blend (0)</button>
+
+
+
+          <div className={isApproved ? "hidden" : "flex"}>
+            <button className="m-1 w-max rounded-lg px-1 py-1 border-2 border-gray-200 text-gray-200
+     hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base" onClick={setApproval}>Approve</button>
+          </div>
+
+          {/*</div>
+      <div className="flex">
         <div className={isApproved ? "flex" : "flex"}>
           <button className="m-1 rounded-lg px-3.5 py-2 border-2 border-gray-200 text-gray-200
      hover:bg-gray-200 hover:text-gray-900 duration-300 font-mono font-bold text-base" onClick={blendMyNfts}>Blend (0.5)</button>
         </div>
 
+    */}
 
 
 
-
-      </div>
+        </div></div>
 
 
     )
