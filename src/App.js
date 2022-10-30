@@ -16,6 +16,7 @@ import Learning from "./pages/learning";
 import Expand from "./pages/Expand";
 import Blender from "./pages/Blender";
 import Bizness from "./pages/Bizness";
+import StakingCards from "./components/StakingCards";
 import { web3ModalSetup } from "./helpers/Web3Modal";
 import { ethers } from "ethers";
 

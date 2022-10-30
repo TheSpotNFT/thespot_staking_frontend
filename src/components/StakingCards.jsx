@@ -55,10 +55,11 @@ function Card(
         if (STAKING_ABI && STAKING_ADDRESS && signer) {
           const contract = new Contract(STAKING_ADDRESS, STAKING_ABI, signer);
 
-          let timeRemaining = await contract.timeUntilClaimable(account, props.contract, props.contractIndex);
+          let timeRemaining = await contract.timeUntilClaimable(props.account, props.contract, props.contractIndex);
           console.log(timeRemaining);
+          console.log(timeRemaining.toNumber())
           //setTxProcessing(false);
-          setTimeLeftSecs(parseInt(timeRemaining, 16));
+          setTimeLeftSecs(timeRemaining.toNumber());
 
           let d = Math.floor(timeRemaining / (3600 * 24));
           let h = Math.floor((timeRemaining % (3600 * 24)) / 3600);
@@ -154,14 +155,14 @@ function Card(
         if (STAKING_ABI && STAKING_ADDRESS && signer) {
           const contract = new Contract(STAKING_ADDRESS, STAKING_ABI, signer);
 
-          let hasClaimed = await contract.userToIndexClaimed(account, props.masterIndex);
-          console.log(hasClaimed);
+          let hasClaimed = await contract.userToIndexClaimed(props.account, props.masterIndex);
+          console.log(hasClaimed.toNumber());
           //setTxProcessing(false);
-          setUserClaimed(hasClaimed);
-          console.log("contract index", props.masterIndex, "Claimed", hasClaimed, timeLeftSecs, props.stakingTimeSecs);
+          setUserClaimed(hasClaimed.toNumber());
+          console.log("contract index", props.masterIndex, "Claimed", userClaimed, timeLeftSecs, props.stakingTimeSecs);
           console.log("component rendering4");
 
-          if (hasClaimed === "0" && timeLeftSecs === 0) {
+          if (userClaimed === "0" && timeLeftSecs === 0) {
             return setDisplay(
               <div>
                 {/*} <h5>
@@ -192,7 +193,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
             )/*setStakeButton("Stake"),
         setClaimButton("Claim");*/
           }
-          else if (hasClaimed === "0" && timeLeftSecs < props.stakingTimeSecs) {
+          else if (userClaimed === "0" && timeLeftSecs < props.stakingTimeSecs) {
             return setDisplay(
               <div>
                 {/*} <h5>
@@ -232,57 +233,57 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
         setClaimButton("Claim");*/
           }
           else
-            if (hasClaimed === "0") {
-              return setDisplay(
-                <div>
-                  {/*} <h5>
+            /*if (userClaimed === "0" && timeLeftSecs === props.stakingTimeSecs)*/ {
+            return setDisplay(
+              <div>
+                {/*} <h5>
                 Number of {props.nftName} in Wallet: {nftContractCount}
               </h5>
               <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
 
 
-                  <div className="flex flex-col space-y-4 py-4">
-                    <button
-                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                <div className="flex flex-col space-y-4 py-4">
+                  <button
+                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
   hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                      onClick={stake}
-                    >
-                      Stake
-                    </button>
+                    onClick={stake}
+                  >
+                    Stake
+                  </button>
 
-                    <button
-                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                  <button
+                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
   hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                      onClick={getTimeLeft}
-                    >
-                      Update Time Remaining
-                    </button>
+                    onClick={getTimeLeft}
+                  >
+                    Update Time Remaining
+                  </button>
 
-                    <button
-                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                  <button
+                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
   hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                      onClick={claim}
-                    >
-                      Claim
-                    </button>
+                    onClick={claim}
+                  >
+                    Claim
+                  </button>
 
-                  </div>
                 </div>
-              )/*setStakeButton("Stake"),
+              </div>
+            )/*setStakeButton("Stake"),
           setClaimButton("Claim");*/
 
-            }
-            else {
-              return setDisplay(<div className="flex flex-col space-y-4 py-4">
-                <button
-                  className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
- font-mono text-l"
+          }
+          /*else {
+            return setDisplay(<div className="flex flex-col space-y-4 py-4">
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+font-mono text-l"
 
-                >
-                  Claimed
-                </button>
-              </div>)
-            }
+              >
+                Claimed
+              </button>
+            </div>)
+          }*/
         }
       }
     } catch (error) {
@@ -527,7 +528,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
   }*/
 
   async function stake() {
-    //setTxProcessing(true);
+    props.setTxProcessing(true);
     try {
       const { ethereum } = window;
       if (ethereum) {
@@ -538,14 +539,15 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
 
           let staking = await contract.stake(props.contract, props.contractIndex);
 
-          //setTxProcessing(false);
+          props.setTxProcessing(false);
 
         }
       }
     } catch (error) {
       console.log(error);
+
     } finally {
-      //setTxProcessing(false);
+      props.setTxProcessing(false);
     }
   }
 
@@ -705,13 +707,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
             >
               Stake Your {props.nftName}
             </button>
-            <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-xl"
-              onClick={getUserClaimed}
-            >
-              Claimed? {props.nftName}
-            </button>
+
           </div>
           <div className={hide ? "hidden" : "text-slate-50 text-base"}>
             <h5>Left to Claim: {NFTsRemaining}</h5>

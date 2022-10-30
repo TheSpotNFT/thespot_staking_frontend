@@ -2,6 +2,15 @@ import React from "react";
 import collection from "../StakingCollections";
 import Card from "../components/StakingCards";
 
+export const StakingCards = ({account,
+  web3Modal,
+  loadWeb3Modal,
+  web3Provider,
+  setWeb3Provider,
+  logoutOfWeb3Modal,
+  txProcessing,
+  setTxProcessing}) => {
+
 const renderCard = (collection, index) => {
   return (
     <Card
@@ -18,11 +27,15 @@ const renderCard = (collection, index) => {
       rewardName={collection.rewardName}
       stakingTime={collection.stakingTime}
       stakingTimeSecs={collection.stakingTimeSecs}
+      txProcessing={txProcessing}
+      setTxProcessing={setTxProcessing}
+      web3Provider={web3Provider}
+      account={account}
     />
   );
 };
 
-function StakingCards() {
+
   return (
     <div className="px-10 py-4 gap-10 font-mono text-spot-yellow bg-slate-900">
       Stake your NFTs in either our non-custodial single sided staking or our
