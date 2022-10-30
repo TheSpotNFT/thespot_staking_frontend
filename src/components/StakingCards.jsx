@@ -4,12 +4,21 @@ import {
   useWeb3ExecuteFunction,
   useMoralisWeb3Api,
 } from "react-moralis";
+import { STAKING_ABI, STAKING_ADDRESS } from "../ABI/stakingAbi"
+import axios from "axios";
+import { ethers, Contract } from "ethers";
+import Moralis from 'moralis';
 
 //Production
-function Card(props) {
+function Card(
+  props,
+  account,
+  txProcessing,
+  setTxProcessing,
+  web3Provider,
+) {
   console.log("component rendering");
-  const { Moralis } = useMoralis();
-  const { account, isAuthenticated } = useMoralis();
+  const isAuthenticated = Boolean(account);
   const userAddress = account;
   const chain = "avalanche";
   //mainnet address const spotContract = "0x0C6945E825fc3c80F0a1eA1d3E24d6854F7460d8";
@@ -34,32 +43,46 @@ function Card(props) {
   const [hide, setHide] = useState([]);
   const [display, setDisplay] = useState([]);
 
-  /*async function getNfts() {
-    const options = {
-      address: account,
-      chain: chain,
-      token_address: props.contract,
-    };
-    const countNFTs = await Moralis.Web3API.account.getNFTsForContract(options);
-    const nftCount = countNFTs.result.length;
-    setNftContractCount(nftCount);
-    console.log("get spots");
+  //timefetch
+  //setTxProcessing not a function error?
+  async function getTimeLeft() {
+    //setTxProcessing(true);
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        if (STAKING_ABI && STAKING_ADDRESS && signer) {
+          const contract = new Contract(STAKING_ADDRESS, STAKING_ABI, signer);
+
+          let timeRemaining = await contract.timeUntilClaimable(account, props.contract, props.contractIndex);
+          console.log(timeRemaining);
+          //setTxProcessing(false);
+          setTimeLeftSecs(parseInt(timeRemaining, 16));
+
+          let d = Math.floor(timeRemaining / (3600 * 24));
+          let h = Math.floor((timeRemaining % (3600 * 24)) / 3600);
+          let m = Math.floor((timeRemaining % 3600) / 60);
+          let s = Math.floor(timeRemaining % 60);
+
+          if (h > 0 || m > 0 || s > 0) {
+            return setDisplayTime(`${d}d:${h}h:${m}m:${s}s`);
+          } else {
+            return setDisplayTime("Start Staking!");
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      //setTxProcessing(false);
+    }
   }
 
-   async function getSpotNfts() {
-    const options = {
-      address: account,
-      chain: chain,
-      token_address: spotContract,
-    };
-    const spotNFTs = await Moralis.Web3API.account.getNFTsForContract(options);
-    const spotCount = spotNFTs.result.length;
-    setSpotNftCount(spotCount);
-    console.log("get other nft");
-  }*/
 
-  //timefetch
-  async function getTimeLeft() {
+
+  //MORALIS
+  /*async function getTimeLeft() {
     const options = {
       chain: chain,
       address: stakingContract,
@@ -119,147 +142,218 @@ function Card(props) {
       return setDisplayTime("Start Staking!");
     }
   }
+*/
 
   async function getUserClaimed() {
-    const options = {
-      chain: chain,
-      address: "0xfe5C0c66986Be8Fb16A5186Fd047eb035468db74",
-      function_name: "userToIndexClaimed",
-      abi: [
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "address",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "_contractIndex",
-              type: "uint256",
-            },
-          ],
-          name: "userToIndexClaimed",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "claimed",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-      ],
-      params: {
-        address: account,
-        _contractIndex: props.masterIndex,
-      },
-    };
-    const hasClaimed = await Moralis.Web3API.native.runContractFunction(
-      options
-    );
-    setUserClaimed(hasClaimed);
-    console.log("contract index", props.masterIndex, "Claimed", hasClaimed, timeLeftSecs, props.stakingTimeSecs);
-    console.log("component rendering4");
+    //setTxProcessing(true);
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        if (STAKING_ABI && STAKING_ADDRESS && signer) {
+          const contract = new Contract(STAKING_ADDRESS, STAKING_ABI, signer);
 
-    if (hasClaimed === "0" && timeLeftSecs === 0) {
-      return setDisplay(
-        <div>
-          {/*} <h5>
+          let hasClaimed = await contract.userToIndexClaimed(account, props.masterIndex);
+          console.log(hasClaimed);
+          //setTxProcessing(false);
+          setUserClaimed(hasClaimed);
+          console.log("contract index", props.masterIndex, "Claimed", hasClaimed, timeLeftSecs, props.stakingTimeSecs);
+          console.log("component rendering4");
+
+          if (hasClaimed === "0" && timeLeftSecs === 0) {
+            return setDisplay(
+              <div>
+                {/*} <h5>
               Number of {props.nftName} in Wallet: {nftContractCount}
             </h5>
             <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
 
 
-          <div className="flex flex-col space-y-4 py-4">
-            <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                <div className="flex flex-col space-y-4 py-4">
+                  <button
+                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
  font-mono text-l"
 
-            >
-              Staking Complete
-            </button>
+                  >
+                    Staking Complete
+                  </button>
 
-            <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                  <button
+                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
 hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-              onClick={claim}
-            >
-              Claim
-            </button>
+                    onClick={claim}
+                  >
+                    Claim
+                  </button>
 
-          </div>
-        </div>
-      )/*setStakeButton("Stake"),
+                </div>
+              </div>
+            )/*setStakeButton("Stake"),
         setClaimButton("Claim");*/
-    }
-    else if (hasClaimed === "0" && timeLeftSecs < props.stakingTimeSecs) {
-      return setDisplay(
-        <div>
-          {/*} <h5>
+          }
+          else if (hasClaimed === "0" && timeLeftSecs < props.stakingTimeSecs) {
+            return setDisplay(
+              <div>
+                {/*} <h5>
               Number of {props.nftName} in Wallet: {nftContractCount}
             </h5>
             <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
 
 
-          <div className="flex flex-col space-y-4 py-4">
-            <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow hover:bg-spot-yellow hover:text-black duration-300 hover:border-white 
+                <div className="flex flex-col space-y-4 py-4">
+                  <button
+                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow hover:bg-spot-yellow hover:text-black duration-300 hover:border-white 
  font-mono text-l"
-              onClick={stake}
-            >
-              Stake
-            </button>
+                    onClick={stake}
+                  >
+                    Stake
+                  </button>
 
-            <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                  <button
+                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
 hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-              onClick={getTimeLeft}
-            >
-              Update Time Remaining
-            </button>
+                    onClick={getTimeLeft}
+                  >
+                    Update Time Remaining
+                  </button>
 
-            <button
-              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                  <button
+                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
 hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-              onClick={claim}
-            >
-              Claim
-            </button>
+                    onClick={claim}
+                  >
+                    Claim
+                  </button>
 
-          </div>
-        </div>
-      )/*setStakeButton("Stake"),
+                </div>
+              </div>
+            )/*setStakeButton("Stake"),
         setClaimButton("Claim");*/
-    }
-    else
-      if (hasClaimed === "0") {
-        return setDisplay(
-          <div>
-            {/*} <h5>
+          }
+          else
+            if (hasClaimed === "0") {
+              return setDisplay(
+                <div>
+                  {/*} <h5>
                 Number of {props.nftName} in Wallet: {nftContractCount}
               </h5>
               <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
 
 
+                  <div className="flex flex-col space-y-4 py-4">
+                    <button
+                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+  hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                      onClick={stake}
+                    >
+                      Stake
+                    </button>
+
+                    <button
+                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+  hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                      onClick={getTimeLeft}
+                    >
+                      Update Time Remaining
+                    </button>
+
+                    <button
+                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+  hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                      onClick={claim}
+                    >
+                      Claim
+                    </button>
+
+                  </div>
+                </div>
+              )/*setStakeButton("Stake"),
+          setClaimButton("Claim");*/
+
+            }
+            else {
+              return setDisplay(<div className="flex flex-col space-y-4 py-4">
+                <button
+                  className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+ font-mono text-l"
+
+                >
+                  Claimed
+                </button>
+              </div>)
+            }
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      //setTxProcessing(false);
+    }
+  }
+
+  /* MORALIS
+    async function getUserClaimed() {
+      const options = {
+        chain: chain,
+        address: "0xfe5C0c66986Be8Fb16A5186Fd047eb035468db74",
+        function_name: "userToIndexClaimed",
+        abi: [
+          {
+            inputs: [
+              {
+                internalType: "address",
+                name: "address",
+                type: "address",
+              },
+              {
+                internalType: "uint256",
+                name: "_contractIndex",
+                type: "uint256",
+              },
+            ],
+            name: "userToIndexClaimed",
+            outputs: [
+              {
+                internalType: "uint256",
+                name: "claimed",
+                type: "uint256",
+              },
+            ],
+            stateMutability: "view",
+            type: "function",
+          },
+        ],
+        params: {
+          address: account,
+          _contractIndex: props.masterIndex,
+        },
+      };
+      const hasClaimed = await Moralis.Web3API.native.runContractFunction(
+        options
+      );
+      setUserClaimed(hasClaimed);
+      console.log("contract index", props.masterIndex, "Claimed", hasClaimed, timeLeftSecs, props.stakingTimeSecs);
+      console.log("component rendering4");
+  
+      if (hasClaimed === "0" && timeLeftSecs === 0) {
+        return setDisplay(
+          <div>
+             <h5>
+                Number of {props.nftName} in Wallet: {nftContractCount}
+              </h5>
+              <h5>Number of Spots in Wallet: {spotNftCount}</h5>
+  
+  
             <div className="flex flex-col space-y-4 py-4">
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-  hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                onClick={stake}
+   font-mono text-l"
+  
               >
-                Stake
+                Staking Complete
               </button>
-
-              <button
-                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
-  hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                onClick={getTimeLeft}
-              >
-                Update Time Remaining
-              </button>
-
+  
               <button
                 className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
   hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
@@ -267,31 +361,145 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
               >
                 Claim
               </button>
-
+  
             </div>
           </div>
-        )/*setStakeButton("Stake"),
-          setClaimButton("Claim");*/
-
+        )setStakeButton("Stake"),
+          setClaimButton("Claim");
       }
-      else {
-        return setDisplay(<div className="flex flex-col space-y-4 py-4">
-          <button
-            className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
- font-mono text-l"
-
-          >
-            Claimed
-          </button>
-        </div>)
+      else if (hasClaimed === "0" && timeLeftSecs < props.stakingTimeSecs) {
+        return setDisplay(
+          <div>
+             <h5>
+                Number of {props.nftName} in Wallet: {nftContractCount}
+              </h5>
+              <h5>Number of Spots in Wallet: {spotNftCount}</h5>
+  
+  
+            <div className="flex flex-col space-y-4 py-4">
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow hover:bg-spot-yellow hover:text-black duration-300 hover:border-white 
+   font-mono text-l"
+                onClick={stake}
+              >
+                Stake
+              </button>
+  
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+  hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                onClick={getTimeLeft}
+              >
+                Update Time Remaining
+              </button>
+  
+              <button
+                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+  hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                onClick={claim}
+              >
+                Claim
+              </button>
+  
+            </div>
+          </div>
+        setStakeButton("Stake"),
+          setClaimButton("Claim");
       }
+      else
+        if (hasClaimed === "0") {
+          return setDisplay(
+            <div>
+               <h5>
+                  Number of {props.nftName} in Wallet: {nftContractCount}
+                </h5>
+                <h5>Number of Spots in Wallet: {spotNftCount}</h5>
+  
+  
+              <div className="flex flex-col space-y-4 py-4">
+                <button
+                  className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+    hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                  onClick={stake}
+                >
+                  Stake
+                </button>
+  
+                <button
+                  className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+    hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                  onClick={getTimeLeft}
+                >
+                  Update Time Remaining
+                </button>
+  
+                <button
+                  className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+    hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
+                  onClick={claim}
+                >
+                  Claim
+                </button>
+  
+              </div>
+            </div>
+          setStakeButton("Stake"),
+            setClaimButton("Claim");
+  
+        }
+        else {
+          return setDisplay(<div className="flex flex-col space-y-4 py-4">
+            <button
+              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+   font-mono text-l"
+  
+            >
+              Claimed
+            </button>
+          </div>)
+        }
+  
+  
+    }*/
 
 
+  async function getNFTsRemaining() {
+    //setTxProcessing(true);
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const balanceOfAbi = [
+          {
+            inputs: [
+              { internalType: "address", name: "account", type: "address" },
+              { internalType: "uint256", name: "id", type: "uint256" },
+            ],
+            name: "balanceOf",
+            outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+            stateMutability: "view",
+            type: "function",
+          },
+        ];
+        if (balanceOfAbi && STAKING_ADDRESS && signer) {
+          const contract = new Contract(props.rewardContract, balanceOfAbi, signer);
+
+          let NFTsLeft = await contract.balanceOf(stakingContract, props.stakingTokenId);
+          console.log(NFTsLeft);
+          console.log(NFTsRemaining);
+          //setTxProcessing(false);
+          setNFTsRemaining(parseInt(NFTsLeft, 16));
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      //setTxProcessing(false);
+    }
   }
 
-
-
-
+  /* MORALIS
   async function getNFTsRemaining() {
     const options = {
       chain: chain,
@@ -316,99 +524,146 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
     };
     const NFTsLeft = await Moralis.Web3API.native.runContractFunction(options);
     setNFTsRemaining(NFTsLeft);
-  }
+  }*/
 
   async function stake() {
-    let options = {
-      contractAddress: stakingContract,
-      functionName: "stake",
-      abi: [
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "_contract",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "_contractIndex",
-              type: "uint256",
-            },
-          ],
-          name: "stake",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-      ],
-      params: {
-        _contract: props.contract,
-        _contractIndex: props.contractIndex,
-      },
-    };
+    //setTxProcessing(true);
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        if (STAKING_ABI && STAKING_ADDRESS && signer) {
+          const contract = new Contract(STAKING_ADDRESS, STAKING_ABI, signer);
 
-    await contractProcessor.fetch({
-      params: options,
-      onError: (err) => {
-        setIsLoading(false);
-        alert(JSON.stringify(err.data.message));
-      },
-      onSuccess: (tx) => {
-        tx.wait(5)
-          .then(alert("Staking Successful"))
-          .then(setIsLoading(false))
-          .then(console.log(tx));
-      },
-    });
+          let staking = await contract.stake(props.contract, props.contractIndex);
+
+          //setTxProcessing(false);
+
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      //setTxProcessing(false);
+    }
   }
 
+  /* MORALIS
+    async function stake() {
+      let options = {
+        contractAddress: stakingContract,
+        functionName: "stake",
+        abi: [
+          {
+            inputs: [
+              {
+                internalType: "address",
+                name: "_contract",
+                type: "address",
+              },
+              {
+                internalType: "uint256",
+                name: "_contractIndex",
+                type: "uint256",
+              },
+            ],
+            name: "stake",
+            outputs: [],
+            stateMutability: "nonpayable",
+            type: "function",
+          },
+        ],
+        params: {
+          _contract: props.contract,
+          _contractIndex: props.contractIndex,
+        },
+      };
+  
+      await contractProcessor.fetch({
+        params: options,
+        onError: (err) => {
+          setIsLoading(false);
+          alert(JSON.stringify(err.data.message));
+        },
+        onSuccess: (tx) => {
+          tx.wait(5)
+            .then(alert("Staking Successful"))
+            .then(setIsLoading(false))
+            .then(console.log(tx));
+        },
+      });
+    }
+  */
   async function claim() {
-    let options = {
-      contractAddress: stakingContract,
-      functionName: "claimStake",
-      abi: [
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "_contract",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "_contractIndex",
-              type: "uint256",
-            },
-          ],
-          name: "claimStake",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-      ],
-      params: {
-        _contract: props.contract,
-        _contractIndex: props.contractIndex,
-      },
-    };
+    //setTxProcessing(true);
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        if (STAKING_ABI && STAKING_ADDRESS && signer) {
+          const contract = new Contract(STAKING_ADDRESS, STAKING_ABI, signer);
 
-    await contractProcessor.fetch({
-      params: options,
-      onError: (err) => {
-        setIsLoading(false);
-        alert(JSON.stringify(err.data.message));
-      },
-      onSuccess: (tx) => {
-        tx.wait(5)
-          .then(alert("Claimed!"))
-          .then(setIsLoading(false))
-          .then(console.log(tx));
-      },
-    });
-    console.log("Claiming");
+          let claim = await contract.claimStake(props.contract, props.contractIndex);
+
+          //setTxProcessing(false);
+
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      //setTxProcessing(false);
+    }
   }
-
+  /*
+    async function claim() {
+      let options = {
+        contractAddress: stakingContract,
+        functionName: "claimStake",
+        abi: [
+          {
+            inputs: [
+              {
+                internalType: "address",
+                name: "_contract",
+                type: "address",
+              },
+              {
+                internalType: "uint256",
+                name: "_contractIndex",
+                type: "uint256",
+              },
+            ],
+            name: "claimStake",
+            outputs: [],
+            stateMutability: "nonpayable",
+            type: "function",
+          },
+        ],
+        params: {
+          _contract: props.contract,
+          _contractIndex: props.contractIndex,
+        },
+      };
+  
+      await contractProcessor.fetch({
+        params: options,
+        onError: (err) => {
+          setIsLoading(false);
+          alert(JSON.stringify(err.data.message));
+        },
+        onSuccess: (tx) => {
+          tx.wait(5)
+            .then(alert("Claimed!"))
+            .then(setIsLoading(false))
+            .then(console.log(tx));
+        },
+      });
+      console.log("Claiming");
+    }
+  */
   function showInfo() {
     if (hide === false) {
       setHide(true);
@@ -449,6 +704,13 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
               onClick={showInfo}
             >
               Stake Your {props.nftName}
+            </button>
+            <button
+              className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-xl"
+              onClick={getUserClaimed}
+            >
+              Claimed? {props.nftName}
             </button>
           </div>
           <div className={hide ? "hidden" : "text-slate-50 text-base"}>
