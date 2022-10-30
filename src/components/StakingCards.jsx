@@ -162,7 +162,7 @@ function Card(
           console.log("contract index", props.masterIndex, "Claimed", userClaimed, timeLeftSecs, props.stakingTimeSecs);
           console.log("component rendering4");
 
-          if (userClaimed === "0" && timeLeftSecs === 0) {
+          if (userClaimed === 0 && timeLeftSecs === 0) {
             return setDisplay(
               <div>
                 {/*} <h5>
@@ -193,7 +193,7 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
             )/*setStakeButton("Stake"),
         setClaimButton("Claim");*/
           }
-          else if (userClaimed === "0" && timeLeftSecs < props.stakingTimeSecs) {
+          else if (userClaimed === 0 && timeLeftSecs < props.stakingTimeSecs) {
             return setDisplay(
               <div>
                 {/*} <h5>
@@ -233,57 +233,57 @@ hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono 
         setClaimButton("Claim");*/
           }
           else
-            /*if (userClaimed === "0" && timeLeftSecs === props.stakingTimeSecs)*/ {
-            return setDisplay(
-              <div>
-                {/*} <h5>
+            if (userClaimed === 0) {
+              return setDisplay(
+                <div>
+                  {/*} <h5>
                 Number of {props.nftName} in Wallet: {nftContractCount}
               </h5>
               <h5>Number of Spots in Wallet: {spotNftCount}</h5>*/}
 
 
-                <div className="flex flex-col space-y-4 py-4">
-                  <button
-                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                  <div className="flex flex-col space-y-4 py-4">
+                    <button
+                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
   hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                    onClick={stake}
-                  >
-                    Stake
-                  </button>
+                      onClick={stake}
+                    >
+                      Stake
+                    </button>
 
-                  <button
-                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                    <button
+                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
   hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                    onClick={getTimeLeft}
-                  >
-                    Update Time Remaining
-                  </button>
+                      onClick={getTimeLeft}
+                    >
+                      Update Time Remaining
+                    </button>
 
-                  <button
-                    className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+                    <button
+                      className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
   hover:bg-spot-yellow hover:text-black duration-300 hover:border-white font-mono text-l"
-                    onClick={claim}
-                  >
-                    Claim
-                  </button>
+                      onClick={claim}
+                    >
+                      Claim
+                    </button>
 
+                  </div>
                 </div>
-              </div>
-            )/*setStakeButton("Stake"),
+              )/*setStakeButton("Stake"),
           setClaimButton("Claim");*/
 
-          }
-          /*else {
-            return setDisplay(<div className="flex flex-col space-y-4 py-4">
-              <button
-                className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
+            }
+            else if (userClaimed === 1) {
+              return setDisplay(<div className="flex flex-col space-y-4 py-4">
+                <button
+                  className="align-middle rounded-lg px-4 py-2 border-4 border-spot-yellow text-spot-yellow 
 font-mono text-l"
 
-              >
-                Claimed
-              </button>
-            </div>)
-          }*/
+                >
+                  Claimed
+                </button>
+              </div>)
+            }
         }
       }
     } catch (error) {
@@ -292,6 +292,10 @@ font-mono text-l"
       //setTxProcessing(false);
     }
   }
+
+  useEffect(() => {
+    getUserClaimed();
+  }, []);
 
   /* MORALIS
     async function getUserClaimed() {
